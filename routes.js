@@ -30,7 +30,7 @@ module.exports = function (app, client) {
         var UUID  = basicString[1]; //使用UUID当做密码,128位
 
         //add for test
-        //SID = 1;UUID=2;
+        SID = 1;UUID=2;
 
 
         res.setHeader("Content-Type","application/json;charset='utf-8'");

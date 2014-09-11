@@ -32,6 +32,7 @@ exports.getLatestPhotoList = function(req, res){
                 res.statusCode = 500;
                 res.end(util.combineFailureRes(labels.DBError));
             }else{
+                res.statusCode = 200;
                 res.end(util.combineSuccessRes(docs));
             }
         })
@@ -61,6 +62,7 @@ exports.getOldestPhotoList = function(req, res){
                 res.statusCode = 500;
                 res.end(util.combineFailureRes(labels.DBError));
             }else{
+                res.statusCode = 200;
                 res.end(util.combineSuccessRes(docs));
             }
         })
@@ -96,6 +98,7 @@ exports.getSegmentPhotoList = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    res.statusCode = 200;
                     res.end(util.combineSuccessRes(docs));
                 }
             })
@@ -130,6 +133,7 @@ exports.likePhoto = function(req, res){
                      res.statusCode = 500;
                      res.end(util.combineFailureRes(labels.DBError));
                  }else{
+                     res.statusCode = 200;
                      res.end(util.combineSuccessRes(docs));
                  }
              })
@@ -163,6 +167,7 @@ exports.unLikePhoto = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    res.statusCode = 200;
                     res.end(util.combineSuccessRes(docs));
                 }
             })
@@ -191,6 +196,7 @@ exports.getPhotoDetail = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    res.statusCode = 200;
                     res.end(util.combineSuccessRes(doc));
                 }
             })
@@ -222,6 +228,7 @@ exports.getComments = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    res.statusCode = 200;
                     res.end(util.combineSuccessRes(docs));
                 }
             })
@@ -257,6 +264,7 @@ exports.postComment = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    res.statusCode = 200;
                     res.end(util.combineSuccessRes(docs));
                 }
             })
@@ -271,10 +279,6 @@ exports.postComment = function(req, res){
  * @param res
  */
 exports.uploadCallback = function(req, res){
-    if(!req.session.user){
-        res.statusCode = 401;
-        res.end(util.combineFailureRes(labels.AuthError));
-    }else{
         var data = req.body;
         var tags = data.tags,
             userId = data.userId,
@@ -292,9 +296,9 @@ exports.uploadCallback = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    res.statusCode = 200;
                     res.end(util.combineSuccessRes(docs));
                 }
             })
         }
-    }
 }

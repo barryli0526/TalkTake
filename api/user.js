@@ -35,6 +35,7 @@ exports.followUser = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    res.statusCode = 200;
                     res.end(util.combineSuccessRes(docs));
                 }
             })
@@ -68,6 +69,7 @@ exports.unFollowUser = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    res.statusCode = 200;
                     res.end(util.combineSuccessRes(docs));
                 }
             })
@@ -98,6 +100,7 @@ exports.getUserDetail = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    res.statusCode = 200;
                     res.end(util.combineSuccessRes(docs));
                 }
             })
@@ -126,6 +129,7 @@ exports.getAllFollowingUser = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    res.statusCode = 200;
                     res.end(util.combineSuccessRes(docs));
                 }
             })
@@ -149,6 +153,7 @@ exports.getAllFollowerUser = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    res.statusCode = 200;
                     res.end(util.combineSuccessRes(docs));
                 }
             })
@@ -172,6 +177,7 @@ exports.getAllLikedPhotoList = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    res.statusCode = 200;
                     res.end(util.combineSuccessRes(docs));
                 }
             })
