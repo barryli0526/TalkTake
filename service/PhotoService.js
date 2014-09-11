@@ -44,3 +44,7 @@ exports.getComments = function(photoId, startIndex, size, callback){
 exports.postComments = function(photoId, uid, comments, replyTime, callback){
     return callback(null,[]);
 }
+
+exports.createNewPhoto = function(userId, tags, createTime, location, desc, isPublic, callback){
+    return callback(null,[]);
+}

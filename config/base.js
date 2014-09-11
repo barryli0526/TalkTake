@@ -20,12 +20,13 @@ exports.config = {
         scope:'talktake',
         ACCESS_KEY : 'NuAufwBA-BaCTCuDJ0P-PMSl3BvkFalvuSyN-qwL',
         SECRET_KEY : 'ZsW_9EPX4IIScrFo-2Gg3k3IB0-N_j0N2FDhQdcw',
-        callbackUrl:'http://121.199.58.200:3000/TalkTake/Photo/Upload/CallBack',
+        callbackUrl:'http://121.199.58.200:3001/TalkTake/Photo/Upload/CallBack',
+        callbackBody:'tags=$(x:tags)&desc=$(x:desc)&createTime=$(x:createTime)&location=$(x:location)&userId=$(x:userId)&isPublic=$(x:isPublic)',
         expires:7200
     },
 
     db: 'mongodb://127.0.0.1/TalkTake',
-    port: 3000
+    port: 3001
 };
 
 exports.labels = {

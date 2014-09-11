@@ -59,13 +59,14 @@ exports.getUploadToken = function(req, res){
         qn.conf.ACCESS_KEY = qnConfig.ACCESS_KEY;
         qn.conf.SECRET_KEY = qnConfig.SECRET_KEY;
         var expires = req.query.expires ? req.query.expires : qnConfig.expires;
-        var putPolicy = new qn.rs.PutPolicy(qnConfig.scope,qnConfig.callbackUrl,null,null,null,null,expires);
+        var putPolicy = new qn.rs.PutPolicy(qnConfig.scope,qnConfig.callbackUrl,qnConfig.callbackBody,null,null,null,null,expires);
         var token =   putPolicy.token();
         if(!token){
             res.statusCode = 500;
             res.end(util.combineFailureRes(labels.AuthError));
         }else{
             res.statusCode = 200;
+            console.log(token);
             var resData = {
                 uploadToken : token
             }

@@ -263,3 +263,38 @@ exports.postComment = function(req, res){
         }
     }
 }
+
+
+/**
+ * 客户端上传图片后云服务器回调的入口
+ * @param req
+ * @param res
+ */
+exports.uploadCallback = function(req, res){
+    if(!req.session.user){
+        res.statusCode = 401;
+        res.end(util.combineFailureRes(labels.AuthError));
+    }else{
+        var data = req.body;
+        var tags = data.tags,
+            userId = data.userId,
+            createTime = data.createTime,
+            location = data.location,
+            desc = data.desc,
+            isPublic = data.isPublic;
+        if(!tags || !userId){
+            res.statusCode = 412;
+            res.end(util.combineFailureRes(labels.requestError));
+            return;
+        }else{
+            PhotoService.createNewPhoto(userId, tags, createTime,location,desc,isPublic, function(err, docs){
+                if(err){
+                    res.statusCode = 500;
+                    res.end(util.combineFailureRes(labels.DBError));
+                }else{
+                    res.end(util.combineSuccessRes(docs));
+                }
+            })
+        }
+    }
+}

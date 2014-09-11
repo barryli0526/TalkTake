@@ -31,7 +31,7 @@ module.exports = function (app, client) {
         var UUID  = basicString[1]; //使用UUID当做密码,128位
 
         //add for test
-//        SID = 1;UUID=2;
+        //SID = 1;UUID=2;
 
 
         res.setHeader("Content-Type","application/json;charset='utf-8'");
@@ -88,10 +88,7 @@ module.exports = function (app, client) {
     //获取个人用户信息
     app.get('/TalkTake/User', BasicAuth, user.getUserDetail);
     app.get('/TalkTake/User/:userId', BasicAuth, user.getUserDetail);
-
-    app.post('/TalkTake/Photo/Upload/CallBack',function(req, res){
-        console.log(req.headers['authorization']);
-        console.log(req.body);
-    });
+    //上传回调
+    app.post('/TalkTake/Photo/Upload/CallBack',photos.uploadCallback);
 
 };
