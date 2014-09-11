@@ -2,7 +2,6 @@
 
 var fs = require('fs');
 var path = require('path');
-var ndir = require('ndir');
 var config = require('./config/base').config;
 
 var util = require('./lib/util');

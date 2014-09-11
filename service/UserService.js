@@ -1,9 +1,9 @@
-﻿var dbHelper = require('../dbHelper');
-var User = dbHelper.User;
-var UserInfo = dbHelper.UserInfo;
-var Message = require('../config/message').Message;
-var labels = require('../config/labels').labels;
-var EventProxy = require('EventProxy');
+﻿//var dbHelper = require('../dbHelper');
+//var User = dbHelper.User;
+//var UserInfo = dbHelper.UserInfo;
+//var Message = require('../config/message').Message;
+//var labels = require('../config/labels').labels;
+//var EventProxy = require('EventProxy');
 var util = require('../lib/util');
 
 var sampleData = require('../Sample/photos');
