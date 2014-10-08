@@ -11,15 +11,16 @@ var ObjectId = Schema.ObjectId;
 
 var PhotoSchema = new Schema({
     user_id: { type: ObjectId , index:true },
+    name : {type:String},
     description: { type: String},
     source_url : {type : String},
     location: {type : String},
     thumbnail_url : {type : String},
 
     isPublic: { type: Boolean, default: true },
-    enable_comment: { type: Boolean, default: true},
-    state: { type: Number, default: 0},
-
+    reply_count: { type: Number, default: 0 },
+    shared_count: { type: Number, default: 0 },
+    up_count: { type: Number, default: 0 },
     create_at: { type: Date, default: Date.now }
 });
 

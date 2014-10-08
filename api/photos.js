@@ -17,26 +17,33 @@ var PhotoService = require('../service/PhotoService');
  * @param res
  */
 exports.getLatestPhotoList = function(req, res){
-
     if(!req.session.user){
         res.statusCode = 401;
         res.end(util.combineFailureRes(labels.AuthError));
     }else{
-        var query = req.query;
-        var anchorTime = query.anchorTime ? query.anchorTime : util.getDateTime();
-        var listSize = query.listSize ? query.listSize : labels.PhotoListSize;
-        var category = query.category ? query.category : labels.Category;
 
-        PhotoService.getLatestPhotos(category, anchorTime, listSize, function(err, docs){
-            if(err){
-                res.statusCode = 500;
-                res.end(util.combineFailureRes(labels.DBError));
-            }else{
-                res.statusCode = 200;
-                res.end(util.combineSuccessRes(docs));
-            }
-        })
+        var uid = req.session.user._id;
+        if(!uid){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.sessionError));
+            return;
+        }else{
+            var query = req.query;
+            var anchorTime = query.anchorTime ? query.anchorTime : util.getDateTime();
+            var listSize = query.listSize ? query.listSize : labels.PhotoListSize;
+            var category = query.category ? query.category : labels.Category;
 
+            PhotoService.getLatestPhotos(uid,category, anchorTime, listSize, function(err, docs){
+                if(err){
+                    res.statusCode = 500;
+                    res.end(util.combineFailureRes(labels.DBError));
+                }else{
+                    res.statusCode = 200;
+                    res.end(util.combineSuccessRes(docs));
+                }
+            })
+
+        }
     }
 
 }
@@ -47,27 +54,32 @@ exports.getLatestPhotoList = function(req, res){
  * @param res
  */
 exports.getOldestPhotoList = function(req, res){
-
     if(!req.session.user){
         res.statusCode = 401;
         res.end(util.combineFailureRes(labels.AuthError));
     }else{
-        var query = req.query;
-        var anchorTime = query.anchorTime ? query.anchorTime : util.getDateTime();
-        var listSize = query.listSize ? query.listSize : labels.PhotoListSize;
-        var category = query.category ? query.category : labels.Category;
+        var uid = req.session.user._id;
+        if(!uid){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.sessionError));
+            return;
+        }else{
+            var query = req.query;
+            var anchorTime = query.anchorTime ? query.anchorTime : util.getDateTime();
+            var listSize = query.listSize ? query.listSize : labels.PhotoListSize;
+            var category = query.category ? query.category : labels.Category;
 
-        PhotoService.getOldestPhotos(category, anchorTime, listSize, function(err, docs){
-            if(err){
-                res.statusCode = 500;
-                res.end(util.combineFailureRes(labels.DBError));
-            }else{
-                res.statusCode = 200;
-                res.end(util.combineSuccessRes(docs));
-            }
-        })
+            PhotoService.getOldestPhotos(uid,category, anchorTime, listSize, function(err, docs){
+                if(err){
+                    res.statusCode = 500;
+                    res.end(util.combineFailureRes(labels.DBError));
+                }else{
+                    res.statusCode = 200;
+                    res.end(util.combineSuccessRes(docs));
+                }
+            })
+        }
     }
-
 }
 
 /**
@@ -76,7 +88,6 @@ exports.getOldestPhotoList = function(req, res){
  * @param res
  */
 exports.getSegmentPhotoList = function(req, res){
- //   console.log('segment');
     if(!req.session.user){
         res.statusCode = 401;
         res.end(util.combineFailureRes(labels.AuthError));
@@ -84,16 +95,22 @@ exports.getSegmentPhotoList = function(req, res){
         var query = req.query;
         var startDate = query.startDate ;
         var endDate = query.endDate ;
-        var days = query.days ;
+       // var days = query.days ;
         var listSize = query.listSize ? query.listSize : labels.PhotoListSize;
         var category = query.category ? query.category : labels.Category;
 
+        var uid = req.session.user._id;
+        if(!uid){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.sessionError));
+            return;
+        }
         if(!startDate ||!endDate){
             res.statusCode = 412;
             res.end(util.combineFailureRes(labels.requestError));
             return;
         }else{
-            PhotoService.getSegmentPhoto(category, startDate, endDate, listSize, function(err, docs){
+            PhotoService.getSegmentPhoto(uid,category, startDate, endDate, listSize, function(err, docs){
                 if(err){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
@@ -117,8 +134,9 @@ exports.likePhoto = function(req, res){
         res.statusCode = 401;
         res.end(util.combineFailureRes(labels.AuthError));
     }else{
-        var photoId = req.params.photoId;
-        var uid = req.session.user._id;
+        var photoId = req.params.photoId,
+            uid = req.session.user._id,
+            date = req.headers['date'] ? req.headers['date'] : Date.now();
         if(!photoId){
             res.statusCode = 412;
             res.end(util.combineFailureRes(labels.requestError));
@@ -128,7 +146,7 @@ exports.likePhoto = function(req, res){
             res.end(util.combineFailureRes(labels.sessionError));
             return;
         }else{
-             PhotoService.addLikeForThePhoto(uid, photoId, function(err, docs){
+             PhotoService.likePhoto(uid, photoId,date, function(err, docs){
                  if(err){
                      res.statusCode = 500;
                      res.end(util.combineFailureRes(labels.DBError));
@@ -162,7 +180,7 @@ exports.unLikePhoto = function(req, res){
             res.end(util.combineFailureRes(labels.sessionError));
             return;
         }else{
-            PhotoService.unLikeForThePhoto(uid, photoId, function(err, docs){
+            PhotoService.unlikePhoto(uid, photoId, function(err, docs){
                 if(err){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
@@ -185,13 +203,18 @@ exports.getPhotoDetail = function(req, res){
         res.statusCode = 401;
         res.end(util.combineFailureRes(labels.AuthError));
     }else{
-        var photoId = req.params.photoId;
+        var photoId = req.params.photoId,
+            uid = req.session.user._id;
         if(!photoId){
             res.statusCode = 503;
             res.end(util.combineFailureRes(labels.requestError));
             return;
+        }else if(!uid){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.sessionError));
+            return;
         }else{
-            PhotoService.getPhotoDetail(photoId, function(err, doc){
+            PhotoService.getPhotoDetail(uid,photoId, function(err, doc){
                 if(err){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
@@ -279,19 +302,27 @@ exports.postComment = function(req, res){
  * @param res
  */
 exports.uploadCallback = function(req, res){
+
+    res.setHeader("Content-Type","application/json;charset='utf-8'");
         var data = req.body;
         var tags = data.tags,
             userId = data.userId,
             createTime = data.createTime,
             location = data.location,
             desc = data.desc,
-            isPublic = data.isPublic;
+            isPublic = data.isPublic ? data.isPublic : true,
+            key = data.key,
+            name = data.fname ? data.fname : data.key;
         if(!tags || !userId){
             res.statusCode = 412;
             res.end(util.combineFailureRes(labels.requestError));
             return;
+        }else if(!key){
+            res.statusCode = 412;
+            res.end(util.combineFailureRes(labels.qnCallbackError));
+            return;
         }else{
-            PhotoService.createNewPhoto(userId, tags, createTime,location,desc,isPublic, function(err, docs){
+            PhotoService.createNewPhoto(userId,name,key,tags, createTime,location,desc,isPublic, function(err, docs){
                 if(err){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));

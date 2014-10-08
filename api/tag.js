@@ -1,0 +1,64 @@
+/**
+ * Created with JetBrains WebStorm.
+ * User: bli111
+ * Date: 9/17/14
+ * Time: 2:19 PM
+ * To change this template use File | Settings | File Templates.
+ */
+
+var TagService = require('../service/TagService');
+var util = require('../lib/util');
+
+/**
+ * 首页推荐标签
+ * @param req
+ * @param res
+ * @constructor
+ */
+exports.Index = function(req, res){
+    if(!req.session.user){
+        res.statusCode = 401;
+        res.end(util.combineFailureRes(labels.AuthError));
+    }else{
+        var uid = req.session.user._id;
+        if(!uid){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.sessionError));
+            return;
+        }else{
+            TagService.getIndexTags(uid, function(err,docs){
+                if(err){
+                    res.statusCode = 500;
+                    res.end(util.combineFailureRes(labels.DBError));
+                }else{
+                    res.statusCode = 200;
+                    res.end(util.combineSuccessRes(docs));
+                }
+            })
+        }
+    }
+}
+
+exports.Recommend = function(req, res){
+    if(!req.session.user){
+        res.statusCode = 401;
+        res.end(util.combineFailureRes(labels.AuthError));
+    }else{
+        var uid = req.session.user._id;
+        if(!uid){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.sessionError));
+            return;
+        }else{
+            TagService.getRecommendTags(uid, function(err,docs){
+                if(err){
+                    res.statusCode = 500;
+                    res.end(util.combineFailureRes(labels.DBError));
+                }else{
+                    res.statusCode = 200;
+                    res.end(util.combineSuccessRes(docs));
+                }
+            })
+        }
+    }
+}

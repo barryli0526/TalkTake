@@ -10,20 +10,12 @@ mongoose.connect(config.db, function(err){
 
 require('./photo');
 require('./photoInfo');
-require('./photoRelation');
 require('./user');
-require('./userInfo');
 require('./userRelation');
-require('./category');
 require('./comment');
-require('./commentInfo');
 
 exports.User = mongoose.model('User');
 exports.Photo = mongoose.model('Photo');
-exports.PhotoRelation = mongoose.model('PhotoRelation');
-exports.User = mongoose.model('User');
-exports.UserInfo = mongoose.model('UserInfo');
+exports.PhotoInfo = mongoose.model('PhotoInfo');
 exports.UserRelation = mongoose.model('UserRelation');
-exports.Category = mongoose.model('Category');
 exports.Comment = mongoose.model('Comment');
-exports.CommentInfo = mongoose.model('CommentInfo');

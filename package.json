@@ -9,6 +9,7 @@
     "express": "2.5.1",
     "mongoose": "*",
     "qiniu":"*",
-    "redis":"*"
+    "redis":"*",
+    "eventproxy": "0.2.2"
   }
 }

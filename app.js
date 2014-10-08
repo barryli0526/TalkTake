@@ -7,7 +7,7 @@ var path = require('path');
 var express = require('express');
 var config = require('./config/base').config;
 var routes = require('./routes');
-var redis = require('redis');
+//var redis = require('redis');
 var fs = require('fs');
 //var ejsfilter = require('./lib/ejs_filter');
 
@@ -49,18 +49,13 @@ app.configure(function () {
 
 
 // routes
-//routes(app, client);
 routes(app);
 
-var env = process.argv[2] || process.env.NODE_ENV || 'dev';
 
+app.listen(config.port);
 
+console.log("You can debug your app with http://" + config.hostname + ':' + config.port);
 
-//if (process.env.NODE_ENV !== 'test') {
-  app.listen(config.port);
-
-  console.log("You can debug your app with http://" + config.hostname + ':' + config.port);
-//}
 
 module.exports = app;
 

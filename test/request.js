@@ -23,7 +23,7 @@ var makeHttpPost = function(path,post_data){
 // An object of options to indicate where to post to
     var post_options = {
         host: '127.0.0.1',
-        port: '3000',
+        port: '3001',
         path: path,
         method: 'POST',
         headers: {
@@ -47,7 +47,7 @@ var makeHttpPost = function(path,post_data){
 
 exports.testInitClient = function(){
     var post_data = querystring.stringify({
-        UUID:'12312313'
+        UUID:'789789'
     });
 
     makeHttpPost('/TalkTake/InitClient',post_data);
@@ -88,7 +88,7 @@ exports.testFollow = function(){
 
     });
 
-    makeHttpPost('/TalkTake/User/234/follow',post_data);
+    makeHttpPost('/TalkTake/User/541930ce3466dde424ce606f/follow',post_data);
 }
 
 exports.testunFollow = function(){
@@ -96,5 +96,26 @@ exports.testunFollow = function(){
 
     });
 
-    makeHttpPost('/TalkTake/User/234/unFollow',post_data);
+    makeHttpPost('/TalkTake/User/541791aaee4075701e2d0534/unFollow',post_data);
 }
+
+exports.testSyncContacts = function(){
+    var post_data = querystring.stringify(
+        {array:[
+        {
+        firstName : '的',
+        lastName : '额',
+        photoNumber : '865659556566'
+        },
+        {
+            firstName : 'w',
+            lastName : 'e',
+            photoNumber : '86225659556566'
+        }
+    ] }
+    );
+    console.log(post_data);
+
+    makeHttpPost('/TalkTake/SyncContacts',post_data);
+}
+

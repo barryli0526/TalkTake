@@ -1,13 +1,3 @@
-//exports.User = require('./user');
-//exports.Article = require('./article');
-//exports.ArticleInfo = require('./articleInfo');
-//exports.Category = require('./category');
-//exports.CategoryInfo = require('./categoryInfo');
-//exports.CategoryRelation = require('./categoryRelation');
-//exports.Comment = require('./comment');
-//exports.CommentInfo = require('./commentInfo');
-//exports.Log = require('./log');
-//exports.Relation = require('./relation');
-//exports.Tag = require('./tag');
-//exports.UserInfo = require('./userInfo');
-//exports.LabProduct = require('./labProduct');
+exports.User = require('./user');
+exports.Photo = require('./photo');
+exports.Comment = require('./comment');

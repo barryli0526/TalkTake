@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Created with JetBrains WebStorm.
  * User: bli111
  * Date: 9/9/14

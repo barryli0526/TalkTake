@@ -118,13 +118,16 @@ exports.getAllFollowingUser = function(req, res){
         res.statusCode = 401;
         res.end(util.combineFailureRes(labels.AuthError));
     }else{
-        var uid = req.session.user._id ;
+        var uid = req.params.userId ? req.params.userId : req.session.user._id ,
+            query = req.query;
+        var startIndex = query.startIndex ? query.startIndex : 0,
+            size = query.size ? query.size : labels.UserList;
         if(!uid){
             res.statusCode = 503;
             res.end(util.combineFailureRes(labels.sessionError));
             return;
         }else{
-            UserService.getAllFollowingUser(uid, function(err,docs){
+            UserService.getAllFollowingUser(uid,startIndex,size, function(err,docs){
                 if(err){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
@@ -137,18 +140,26 @@ exports.getAllFollowingUser = function(req, res){
     }
 }
 
+/**
+ * 获取所有粉丝列表
+ * @param req
+ * @param res
+ */
 exports.getAllFollowerUser = function(req, res){
     if(!req.session.user){
         res.statusCode = 401;
         res.end(util.combineFailureRes(labels.AuthError));
     }else{
-        var uid = req.session.user._id ;
+        var uid = req.params.userId ? req.params.userId : req.session.user._id,
+            query = req.query;
+        var startIndex = query.startIndex ? query.startIndex : 0,
+            size = query.size ? query.size : labels.UserList;
         if(!uid){
             res.statusCode = 503;
             res.end(util.combineFailureRes(labels.sessionError));
             return;
         }else{
-            UserService.getAllFollowerUser(uid, function(err,docs){
+            UserService.getAllFollowerUser(uid,startIndex,size, function(err,docs){
                 if(err){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
@@ -161,18 +172,26 @@ exports.getAllFollowerUser = function(req, res){
     }
 }
 
+/**
+ * 获取所有喜欢的图片列表
+ * @param req
+ * @param res
+ */
 exports.getAllLikedPhotoList = function(req, res){
     if(!req.session.user){
         res.statusCode = 401;
         res.end(util.combineFailureRes(labels.AuthError));
     }else{
-        var uid = req.session.user._id ;
+        var uid = req.params.userId ? req.params.userId : req.session.user._id,
+            query = req.query;
+        var startIndex = query.startIndex ? query.startIndex : 0,
+            size = query.size ? query.size : labels.UserList;
         if(!uid){
             res.statusCode = 503;
             res.end(util.combineFailureRes(labels.sessionError));
             return;
         }else{
-            UserService.getAllLikedPhotoList(uid, function(err,docs){
+            UserService.getAllLikedPhotoList(uid, startIndex, size, function(err,docs){
                 if(err){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
@@ -181,6 +200,127 @@ exports.getAllLikedPhotoList = function(req, res){
                     res.end(util.combineSuccessRes(docs));
                 }
             })
+        }
+    }
+}
+
+
+/**
+ * 同步通讯录
+ * @param req
+ * @param res
+ */
+exports.syncContacts = function(req, res){
+    if(!req.session.user){
+        res.statusCode = 401;
+        res.end(util.combineFailureRes(labels.AuthError));
+    }else{
+        var uid = req.session.user._id;
+        if(!uid){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.sessionError));
+            return;
+        }else{
+            var rqData = req.body;
+            UserService.HandleContactsRelation(uid,rqData, function(err,docs){
+                if(err){
+                    res.statusCode = 500;
+                    res.end(util.combineFailureRes(labels.DBError));
+                }else{
+                    res.statusCode = 200;
+                    res.end(util.combineSuccessRes(docs));
+                }
+            })
+        }
+    }
+}
+
+
+/**
+ * 完善个人信息
+ * @param req
+ * @param res
+ */
+exports.updateUserProfile = function(req, res){
+    if(!req.session.user){
+        res.statusCode = 401;
+        res.end(util.combineFailureRes(labels.AuthError));
+    }else{
+        var uid = req.params.userId ? req.params.userId : req.session.user._id;
+        if(!uid){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.sessionError));
+            return;
+        }else{
+            var rqData = req.body;
+            UserService.updateUserProfile(uid,rqData, function(err,docs){
+                if(err){
+                    res.statusCode = 500;
+                    res.end(util.combineFailureRes(labels.DBError));
+                }else{
+                    res.statusCode = 200;
+                    res.end(util.combineSuccessRes(docs));
+                }
+            })
+        }
+    }
+}
+
+
+/**
+ * 获取某个目录下的图片信息
+ * @param req
+ * @param res
+ */
+exports.getAlbumPhotos = function(req, res){
+    if(!req.session.user){
+        res.statusCode = 401;
+        res.end(util.combineFailureRes(labels.AuthError));
+    }else{
+        var uid = req.params.userId ? req.params.userId : req.session.user._id;
+        if(!uid){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.sessionError));
+            return;
+        }else{
+            var uid = req.params.userId ? req.params.userId : req.session.user._id,
+                query = req.query;
+            var tagName = query.category,
+                startDate = query.startDate ,
+                endDate = query.endDate ,
+                startIndex = query.startIndex ? query.startIndex : 0,
+                size = query.size ? query.size : labels.PhotoListSize;
+            if(!uid){
+                res.statusCode = 503;
+                res.end(util.combineFailureRes(labels.sessionError));
+                return;
+            }else if(!tagName){
+                res.statusCode = 412;
+                res.end(util.combineFailureRes(labels.requestError));
+                return;
+            }else{
+                if(startDate && endDate){
+                    UserService.getSegementPhotosByAlbumInfo(uid, tagName, startDate, endDate, size, function(err,docs){
+                        if(err){
+                            res.statusCode = 500;
+                            res.end(util.combineFailureRes(labels.DBError));
+                        }else{
+                            res.statusCode = 200;
+                            res.end(util.combineSuccessRes(docs));
+                        }
+                    })
+                }else{
+                    UserService.getPhotosByAlbumInfo(uid, tagName, startIndex, size, function(err,docs){
+                        if(err){
+                            res.statusCode = 500;
+                            res.end(util.combineFailureRes(labels.DBError));
+                        }else{
+                            res.statusCode = 200;
+                            res.end(util.combineSuccessRes(docs));
+                        }
+                    })
+                }
+            }
         }
     }
 }

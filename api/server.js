@@ -25,12 +25,16 @@ var qn = require('qiniu');
  */
 exports.InitClient = function(req, res){
 
+    res.setHeader("Content-Type","application/json;charset='utf-8'");
+  //  res.setHeader("Access-Control-Allow-Origin", "*");
+
     var rqData = req.body;
 
     var UUID = rqData.UUID;
 
     UserService.createClient(UUID, function(err, doc){
         if(err || !doc || doc.length == 0){
+            console.log(err);
             res.statusCode = 500;
             res.end(util.combineFailureRes(labels.DBError));
         }else{
@@ -38,7 +42,7 @@ exports.InitClient = function(req, res){
 
             var resData = {
                 UUID:UUID,
-                SID:doc._id
+                SID:doc.userId
             }
             res.end(util.combineSuccessRes(resData));
         }
@@ -60,13 +64,12 @@ exports.getUploadToken = function(req, res){
         qn.conf.SECRET_KEY = qnConfig.SECRET_KEY;
         var expires = req.query.expires ? req.query.expires : qnConfig.expires;
         var putPolicy = new qn.rs.PutPolicy(qnConfig.scope,qnConfig.callbackUrl,qnConfig.callbackBody,null,null,null,null,expires);
-        var token =   putPolicy.token();
+        var token = putPolicy.token();
         if(!token){
             res.statusCode = 500;
             res.end(util.combineFailureRes(labels.AuthError));
         }else{
             res.statusCode = 200;
-            console.log(token);
             var resData = {
                 uploadToken : token
             }
