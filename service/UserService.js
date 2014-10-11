@@ -513,6 +513,7 @@ exports.getPhotosByAlbumInfo = function(uid, tagName, page, size, callback){
                 results[i].commentCount = doc.reply_count;
                 photo.location ? results[i].location = photo.location : null;
                 results[i].uploadTime = util.getDateTime(photo.post_at);
+                photo.description ? results[i].description = photo.description : null;
                 proxy.emit('photo_ready');
             })
         }
@@ -575,6 +576,7 @@ exports.getSegementPhotosByAlbumInfo = function(uid, tagName, startDate, endDate
                 results[i].commentCount = doc.reply_count;
                 photo.location ? results[i].location = photo.location : null;
                 results[i].uploadTime = util.getDateTime(doc.post_at);
+                photo.description ? results[i].description = photo.description : null;
                 proxy.emit('photo_ready');
             })
         }

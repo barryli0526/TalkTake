@@ -16,6 +16,8 @@ var requestCase = require('./request');
 
 //requestCase.testSyncContacts();
 
-var str = 'NGU3MDlwY2l3Y2FjODFhZjcxMzYyMzNiOjc0MkRDNEYyLUQ3RjgtNDk2Mi1BQUVDLUUwRkRFQURENzU3Mg==';
-var basicString = new Buffer(str, 'base64').toString().split(':');
-console.log(basicString);
+requestCase.testUpdateUser();
+
+//var str = 'NGU3MDlwY2l3Y2FjODFhZjcxMzYyMzNiOjc0MkRDNEYyLUQ3RjgtNDk2Mi1BQUVDLUUwRkRFQURENzU3Mg==';
+//var basicString = new Buffer(str, 'base64').toString().split(':');
+//console.log(basicString);
