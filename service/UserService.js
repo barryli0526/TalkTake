@@ -405,13 +405,12 @@ exports.HandleContactsRelation = function(uid, users, callback){
     var phoneObject = {};
     for(var k=0;k<users.length;k++){
         var phoneNumber = users[k].phoneNumber[0];
-        if(phoneNumber.indexOf('-') != -1){
-            users[k].syncPhone = phoneNumber ? phoneNumber.slice(phoneNumber.length-13,phoneNumber) : null;
-        }else{
-            users[k].syncPhone = phoneNumber ? phoneNumber.slice(phoneNumber.length-11,phoneNumber) : null;
-        }
-
         if(phoneNumber){
+            if(phoneNumber.indexOf('-') != -1){
+                users[k].syncPhone = phoneNumber ? phoneNumber.slice(phoneNumber.length-13,phoneNumber) : null;
+            }else{
+                users[k].syncPhone = phoneNumber ? phoneNumber.slice(phoneNumber.length-11,phoneNumber) : null;
+            }
             phoneObject[users[k].syncPhone] = true;
         }
     }
