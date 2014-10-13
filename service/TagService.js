@@ -118,24 +118,28 @@ exports.getRecommendTags = function(userId, callback){
                                                         if(err){
                                                             return callback(err,results);
                                                         }else{
-                                                            var proxy = new EventProxy();
-                                                            proxy.after('tag_ready', tags.length, function(){
-                                                                return callback(null, {items:results});
-                                                            })
-
-                                                            tags.forEach(function(tag, i){
-                                                                results[i] = {};
-                                                                results[i].tagName = tag._id.tag;
-                                                                results[i].count = tag.count;
-                                                                Photo.getCoverForTag(tag._id.tag, function(err, doc){
-                                                                    if(err){
-                                                                        proxy.emit('error');
-                                                                    }else{
-                                                                        results[i].cover = doc.photo_id.photoUrl;
-                                                                        proxy.emit('tag_ready');
-                                                                    }
+                                                            if(tags.length == 0){
+                                                                return callback(null,{items:[{tagName:labels.Category, count:0}]}) ;
+                                                            }else{
+                                                                var proxy = new EventProxy();
+                                                                proxy.after('tag_ready', tags.length, function(){
+                                                                    return callback(null, {items:results});
                                                                 })
-                                                            })
+
+                                                                tags.forEach(function(tag, i){
+                                                                    results[i] = {};
+                                                                    results[i].tagName = tag._id.tag;
+                                                                    results[i].count = tag.count;
+                                                                    Photo.getCoverForTag(tag._id.tag, function(err, doc){
+                                                                        if(err){
+                                                                            proxy.emit('error');
+                                                                        }else{
+                                                                            results[i].cover = doc.photo_id.photoUrl;
+                                                                            proxy.emit('tag_ready');
+                                                                        }
+                                                                    })
+                                                                })
+                                                            }
                                                         }
                                                     })
                                                 }

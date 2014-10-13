@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f2263c5b-ff48-40e8-b4cc-02932417bef7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/TagService.js" afterPath="$PROJECT_DIR$/service/TagService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/photos.js" afterPath="$PROJECT_DIR$/api/photos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/util.js" afterPath="$PROJECT_DIR$/lib/util.js" />
     </list>
     <ignored path="barryCode.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,7 +70,7 @@
     <file path="/LMS.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1410832295514" ignored="false" />
     <file path="/testService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411969011041" ignored="false" />
     <file path="/tag.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413194558342" ignored="false" />
-    <file path="/TagService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413207424373" ignored="false" />
+    <file path="/TagService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413208737337" ignored="false" />
     <file path="$PROJECT_DIR$/../testTalkTake/models/User.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411697962352" ignored="false" />
     <file path="$PROJECT_DIR$/../testTalkTake/flow/InitClient.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1412037973454" ignored="false" />
     <file path="/post.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411976832464" ignored="false" />
@@ -116,10 +114,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TagService.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TagService.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/service/TagService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="130" column="54" selection-start="5602" selection-end="5602" vertical-scroll-proportion="0.0">
+            <state line="141" column="61" selection-start="6615" selection-end="6615" vertical-scroll-proportion="0.9269341">
               <folding />
             </state>
           </provider>
@@ -152,10 +150,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="photos.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="photos.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/photos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="316" column="68" selection-start="9647" selection-end="9647" vertical-scroll-proportion="0.6948424">
+            <state line="320" column="39" selection-start="9791" selection-end="9791" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -257,9 +255,9 @@
         <option value="$PROJECT_DIR$/dbHelper/user.js" />
         <option value="$PROJECT_DIR$/test/request.js" />
         <option value="$PROJECT_DIR$/test/testCase.js" />
-        <option value="$PROJECT_DIR$/service/TagService.js" />
         <option value="$PROJECT_DIR$/lib/util.js" />
         <option value="$PROJECT_DIR$/api/photos.js" />
+        <option value="$PROJECT_DIR$/service/TagService.js" />
       </list>
     </option>
   </component>
@@ -652,13 +650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/TagService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="54" selection-start="5602" selection-end="5602" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/tag.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="21" selection-start="1950" selection-end="1950" vertical-scroll-proportion="0.0">
@@ -714,7 +705,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/photos.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="316" column="68" selection-start="9647" selection-end="9647" vertical-scroll-proportion="0.6948424">
+        <state line="320" column="39" selection-start="9791" selection-end="9791" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/TagService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="61" selection-start="6615" selection-end="6615" vertical-scroll-proportion="0.9269341">
           <folding />
         </state>
       </provider>
