@@ -221,7 +221,7 @@ exports.syncContacts = function(req, res){
             res.end(util.combineFailureRes(labels.sessionError));
             return;
         }else{
-            var rqData = req.body;
+            var rqData = req.body.contactlist;
             UserService.HandleContactsRelation(uid,rqData, function(err,docs){
                 if(err){
                     res.statusCode = 500;

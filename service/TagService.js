@@ -32,8 +32,10 @@ exports.getIndexTags = function(userId, callback){
                Ids[i] = docs[i-1].follow_id;
            }
            Photo.countTagsByUserIds(Ids, function(err, tags){
-               if(err || !tags || tags.length == 0){
+               if(err){
                    return callback(err,[]);
+               }else if(!tags || tags.length == 0){
+                   return callback(null,[{'tagName':labels.Category}]);
                }else{
                    var results = [],count = 0, maxCount = labels.tagRecommendCount;
                    for(var i=0;i<tags.length;i++){
@@ -116,13 +118,23 @@ exports.getRecommendTags = function(userId, callback){
                                                         if(err){
                                                             return callback(err,results);
                                                         }else{
-                                                            for(var i=0;i<tags.length;i++){
-                                                                var tag = {};
-                                                                tag.tagName = tags[i]._id.tag;
-                                                                tag.count = tags[i].count;
-                                                                results.push(tag);
-                                                            }
-                                                            return callback(null, {items:results});
+                                                            var proxy = new EventProxy();
+                                                            proxy.after('tag_ready', tags.length, function(){
+                                                                return callback(null, {items:results});
+                                                            })
+
+                                                            tags.forEach(function(tag, i){
+                                                                results[i].tagName = tag._id.tag;
+                                                                results[i].count = tag.count;
+                                                                Photo.getCoverForTag(tag._id.tag, function(err, doc){
+                                                                    if(err){
+                                                                        proxy.emit('error');
+                                                                    }else{
+                                                                        results[i].cover = doc.photo_id.photoUrl;
+                                                                        proxy.emit('tag_ready');
+                                                                    }
+                                                                })
+                                                            })
                                                         }
                                                     })
                                                 }

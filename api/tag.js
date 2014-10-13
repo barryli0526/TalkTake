@@ -9,6 +9,9 @@
 var TagService = require('../service/TagService');
 var util = require('../lib/util');
 
+var config = require('../config/base').config;
+var labels = require('../config/base').labels;
+
 /**
  * 首页推荐标签
  * @param req
@@ -31,6 +34,12 @@ exports.Index = function(req, res){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
+                    if(docs.length == 0){
+                        var doc = {};
+                        doc.tagName = labels.Category;
+                        doc.count = 0;
+                        docs[0] = doc;
+                    }
                     res.statusCode = 200;
                     res.end(util.combineSuccessRes(docs));
                 }
@@ -56,6 +65,12 @@ exports.Recommend = function(req, res){
                     res.end(util.combineFailureRes(labels.DBError));
                 }else{
                     res.statusCode = 200;
+                    if(docs.length == 0){
+                        var doc = {};
+                        doc.tagName = labels.Category;
+                        doc.count = 0;
+                        docs[0] = doc;
+                    }
                     res.end(util.combineSuccessRes(docs));
                 }
             })

@@ -344,6 +344,10 @@ exports.countTags = function(tags, callback){
     )
 }
 
+exports.getCoverForTag = function(tagName, callback){
+    PhotoInfo.findOne({'tag':{$all:tagName}}).populate('photo_id').exec(callback);
+}
+
 
 
 /**

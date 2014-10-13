@@ -28,7 +28,7 @@ exports.config = {
     },
 
     db: 'mongodb://127.0.0.1/perTalkTake',
-    port: 3001
+    port: 3003
 };
 
 exports.labels = {

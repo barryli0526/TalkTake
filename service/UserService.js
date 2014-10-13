@@ -393,6 +393,8 @@ exports.HandleContactsRelation = function(uid, users, callback){
         return callback(null,[]);
     }
 
+//    console.log(users);
+
     var proxy = new EventProxy(),
          relations = [];
 
@@ -402,11 +404,20 @@ exports.HandleContactsRelation = function(uid, users, callback){
 
     var phoneObject = {};
     for(var k=0;k<users.length;k++){
-        phoneObject[users[k].phoneNumber[0]] = true;
+        var phoneNumber = users[k].phoneNumber[0];
+        if(phoneNumber.indexOf('-') != -1){
+            users[k].syncPhone = phoneNumber ? phoneNumber.slice(phoneNumber.length-13,phoneNumber) : null;
+        }else{
+            users[k].syncPhone = phoneNumber ? phoneNumber.slice(phoneNumber.length-11,phoneNumber) : null;
+        }
+
+        if(phoneNumber){
+            phoneObject[users[k].syncPhone] = true;
+        }
     }
 
     users.forEach(function(user, i){
-        User.checkUserByNameAndPhone(user.phoneNumber[0], user.firstName, user.lastName, function(err, doc){
+        User.checkUserByNameAndPhone(user.syncPhone, user.lastName, user.firstName, function(err, doc){
             if(err){
                return proxy.emit('error');
 
@@ -417,8 +428,8 @@ exports.HandleContactsRelation = function(uid, users, callback){
                 relations[i].relationLevel = 0;   //无法在使用人群中找到好友
                 proxy.emit('relation_ready');
             }else{
-                if(doc.telephone && doc.telephone == user.phoneNumber[0]){
-                    User.addFriends(uid, doc._id,user.firstName, user.lastName,function(){});
+                if(doc.telephone && doc.telephone == user.syncPhone){
+                    User.addFriends(uid, doc._id,user.lastName, user.firstName,function(){});
                     User.addFriends(doc._id, uid,'','',function(){});
                     relations[i] = {};
                     relations[i].userId = uid;
