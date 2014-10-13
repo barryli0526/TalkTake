@@ -10,7 +10,7 @@ var UserSchema = new Schema({
   constellation: { type: String },
   selfDesc:{type:String},
   siteUrl : {type:String},
-  telephone : {type : Number},
+  telephone : {type : String},
   address: {
         country:{type:String},
         city:{type:String},

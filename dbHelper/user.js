@@ -260,7 +260,7 @@ exports.getUserFriendsIdAndNickName = function(uid, callback){
 //通过电话和姓名检索用户是否存在
 exports.checkUserByNameAndPhone = function(phoneNumber, firstName, lastName, callback){
 
-    User.findOne({$or:[{'telephone':phoneNumber, $and : [{'firstName':firstName,'lastName':lastName}]}]}, callback);
+    User.findOne({$or:[{'telephone':phoneNumber}, {$and : [{'firstName':firstName},{'lastName':lastName}]}]}, callback);
   //  User.findOne({$or:[{'telephone':phoneNumber}, {'first_name':firstName}]}, callback);
    // User.findOne({'first_name':firstName}, callback);
 }

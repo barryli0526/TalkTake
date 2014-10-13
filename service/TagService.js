@@ -35,7 +35,7 @@ exports.getIndexTags = function(userId, callback){
                if(err){
                    return callback(err,[]);
                }else if(!tags || tags.length == 0){
-                   return callback(null,[{'tagName':labels.Category}]);
+                   return callback(null,{items:[{'tagName':labels.Category}]});
                }else{
                    var results = [],count = 0, maxCount = labels.tagRecommendCount;
                    for(var i=0;i<tags.length;i++){
@@ -46,7 +46,7 @@ exports.getIndexTags = function(userId, callback){
                            count++;
                        }
                    }
-                   return callback(null, results);
+                   return callback(null, {items:results});
                }
            })
         }

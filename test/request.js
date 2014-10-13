@@ -139,9 +139,9 @@ exports.testSyncContacts = function(){
     var post_data = querystring.stringify(
         {array:[
         {
-        firstName : '的',
-        lastName : '额',
-        photoNumber : '865659556566'
+        firstName : '',
+        lastName : '李雷',
+        photoNumber : '15601909527'
         },
         {
             firstName : 'w',
@@ -157,15 +157,15 @@ exports.testSyncContacts = function(){
 
 exports.testUpdateUser = function(){
     var UUID = '123-456-789',
-        SID = '543529c20b439ae15fb5a663';
+        SID = '543bb2059fb2b04576c186bd';
 
     var auth =  new Buffer(SID + ':' + UUID).toString('base64');
 
 
     var post_data =  {
     nickName:'巴瑞力',
-    firstName:'李雷',
-    lastName:'',
+    firstName:'',
+    lastName:'李雷',
     mobilePhone:15601909527,
     sex:'男',
     location:{
