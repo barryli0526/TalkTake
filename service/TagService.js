@@ -124,6 +124,7 @@ exports.getRecommendTags = function(userId, callback){
                                                             })
 
                                                             tags.forEach(function(tag, i){
+                                                                results[i] = {};
                                                                 results[i].tagName = tag._id.tag;
                                                                 results[i].count = tag.count;
                                                                 Photo.getCoverForTag(tag._id.tag, function(err, doc){
