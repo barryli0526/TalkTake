@@ -345,7 +345,7 @@ exports.countTags = function(tags, callback){
 }
 
 exports.getCoverForTag = function(tagName, callback){
-    PhotoInfo.findOne({'tag':{$all:tagName}}).populate('photo_id').exec(callback);
+    PhotoInfo.findOne({'tags':{$all:tagName}}).populate('photo_id').exec(callback);
 }
 
 
@@ -370,7 +370,7 @@ exports.increaseCommentCount = function(photoId, callback){
  */
 exports.getUserOldestPhotosByTag = function(Ids, tagName, anchorTime, size, callback){
     var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$lt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$lt: anchorTime}}]}]};
-    PhotoInfo.find(query).populate('photo_id author_id forward.forwarder_id')
+    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
         .limit(size)
         .exec(callback);
 }
@@ -385,7 +385,7 @@ exports.getUserOldestPhotosByTag = function(Ids, tagName, anchorTime, size, call
  */
 exports.getUserLatestPhotosByTag = function(Ids, tagName, anchorTime, size, callback){
     var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$gt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$gt: anchorTime}}]}]};
-    PhotoInfo.find(query).populate('photo_id author_id forward.forwarder_id')
+    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
         .limit(size)
         .exec(callback);
 }
@@ -402,7 +402,7 @@ exports.getUserLatestPhotosByTag = function(Ids, tagName, anchorTime, size, call
 exports.getUserSegmentPhotosByTag = function(Ids, tagName, startDate,endDate, size, callback){
     var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'post_at':{$gte: startDate}},{'post_at':{$lte: endDate}}]}]},
         {$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'forward.forward_at':{$gte: startDate}},{'forward.forward_at':{$lte: endDate}}]}]}]};
-    PhotoInfo.find(query).populate('photo_id author_id forward.forwarder_id')
+    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
         .limit(size)
         .exec(callback);
 }

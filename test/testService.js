@@ -217,6 +217,17 @@ var UserRelation = models.UserRelation;
 //
 //
 //]
+
+    var photo = {
+        userId : '541930ce3466dde424ce6073',
+        name : 'photo11.jpg',
+        key : 'f86664b7ae82f1191a3e10b1276db7d5.jpg',
+        tags : '工作',
+        createTime : new Date('2014/10/16 11:55:31:310'),
+        location : 'llala',
+        desc : 'sddf',
+        isPublic : true
+}
 //
 //photos.forEach(function(photo, i){
 //    photoService.createNewPhoto(photo.userId,photo.name,photo.key,photo.tags,photo.createTime,photo.location,photo.desc,photo.isPublic, function(err, docs){
@@ -224,13 +235,17 @@ var UserRelation = models.UserRelation;
 //    })
 //})
 
+//    photoService.createNewPhoto(photo.userId,photo.name,photo.key,photo.tags,photo.createTime,photo.location,photo.desc,photo.isPublic, function(err, docs){
+//        console.log(docs);
+//    })
+
 //photoService.createNewPhoto(userId,name,key,tags,createTime,location,desc,isPublic, function(err, docs){
 //    console.log(docs);
 //})
 
-//photoService.getLatestPhotos('541930ce3466dde424ce606f','工作',new Date('2013/09/09 12:12:12'),10, function(err, docs){
-//    console.log(docs);
-//})
+photoService.getLatestPhotos('541930ce3466dde424ce6073','工作',new Date('2013/10/16 11:55:31'),10, function(err, docs){
+    console.log(docs);
+})
 
 var userId = '541930ce3466dde424ce6070',
     s = '541930ce3466dde424ce6073',
@@ -358,12 +373,12 @@ var data = {
 
 
 
-
-var arr = [];
-
-for(var i=5000;i<10000;i++){
-    arr.push({uuid:i});
-}
+//
+//var arr = [];
+//
+//for(var i=5000;i<10000;i++){
+//    arr.push({uuid:i});
+//}
 
 //arr.forEach(function(value,i){
 //    User.findOne(value,function(err,doc){
@@ -390,19 +405,19 @@ for(var i=5000;i<10000;i++){
 //    })
 //})
 
-var userId = new ObjectId('5428d860a185436c240ca611');
-
-arr.forEach(function(value,i){
-    User.findOne(value,function(err,doc){
-        var s = parseInt(10*Math.random());
-        if(s>5){
-            userDB.addFriends(userId,doc._id,doc._id,'',function(){});
-            userDB.addFriends(doc._id,userId,'','',function(){
-                console.log('done')
-            });
-        }
-    })
-})
+//var userId = new ObjectId('5428d860a185436c240ca611');
+//
+//arr.forEach(function(value,i){
+//    User.findOne(value,function(err,doc){
+//        var s = parseInt(10*Math.random());
+//        if(s>5){
+//            userDB.addFriends(userId,doc._id,doc._id,'',function(){});
+//            userDB.addFriends(doc._id,userId,'','',function(){
+//                console.log('done')
+//            });
+//        }
+//    })
+//})
 
 
 

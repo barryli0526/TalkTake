@@ -108,4 +108,541 @@ Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED
     at model.Document.init (E:\src\Talk Take\node_modules\mongoose\lib\document.js:250:11)
     at completeOne (E:\src\Talk Take\node_modules\mongoose\lib\query.js:1392:10)
     at Object.cb (E:\src\Talk Take\node_modules\mongoose\lib\query.js:1151:11)
-    at Object._onImmediate (E:\src\Talk Take\node_modules\mongoose\node_modules\mquery\lib\utils.js:137:16)
+    at Object._onImmediate (E:\src\Talk Take\node_modules\mongoose\node_modules\mquery\lib\utils.js:137:16)TypeError: Cannot read property 'length' of undefined
+    at E:\src\Talk Take\api\tag.js:68:28
+    at null.<anonymous> (E:\src\Talk Take\node_modules\eventproxy\lib\eventproxy.js:266:7)
+    at wrapper (E:\src\Talk Take\node_modules\eventproxy\lib\eventproxy.js:157:16)
+    at EventProxy.trigger (E:\src\Talk Take\node_modules\eventproxy\lib\eventproxy.js:133:22)
+    at Promise.<anonymous> (E:\src\Talk Take\service\TagService.js:140:83)
+    at Promise.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:172:8)
+    at Promise.EventEmitter.emit (events.js:95:17)
+    at Promise.emit (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:84:38)
+    at Promise.reject (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:111:15)
+    at Promise.error (E:\src\Talk Take\node_modules\mongoose\lib\promise.js:95:15)TypeError: Cannot read property 'length' of undefined
+    at E:\src\Talk Take\api\tag.js:68:28
+    at null.<anonymous> (E:\src\Talk Take\node_modules\eventproxy\lib\eventproxy.js:266:7)
+    at wrapper (E:\src\Talk Take\node_modules\eventproxy\lib\eventproxy.js:157:16)
+    at EventProxy.trigger (E:\src\Talk Take\node_modules\eventproxy\lib\eventproxy.js:133:22)
+    at Promise.<anonymous> (E:\src\Talk Take\service\TagService.js:140:83)
+    at Promise.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:172:8)
+    at Promise.EventEmitter.emit (events.js:95:17)
+    at Promise.emit (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:84:38)
+    at Promise.reject (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:111:15)
+    at Promise.error (E:\src\Talk Take\node_modules\mongoose\lib\promise.js:95:15)TypeError: Cannot read property 'photo_id' of null
+    at Promise.<anonymous> (E:\src\Talk Take\service\TagService.js:143:99)
+    at Promise.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:177:8)
+    at Promise.EventEmitter.emit (events.js:95:17)
+    at Promise.emit (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:84:38)
+    at Promise.fulfill (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:97:20)
+    at Promise.resolve (E:\src\Talk Take\node_modules\mongoose\lib\promise.js:114:23)
+    at Promise.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:177:8)
+    at Promise.EventEmitter.emit (events.js:95:17)
+    at Promise.emit (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:84:38)
+    at Promise.fulfill (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:97:20)TypeError: Cannot read property 'photo_id' of null
+    at Promise.<anonymous> (E:\src\Talk Take\service\TagService.js:143:99)
+    at Promise.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:177:8)
+    at Promise.EventEmitter.emit (events.js:95:17)
+    at Promise.emit (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:84:38)
+    at Promise.fulfill (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:97:20)
+    at Promise.resolve (E:\src\Talk Take\node_modules\mongoose\lib\promise.js:114:23)
+    at Promise.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:177:8)
+    at Promise.EventEmitter.emit (events.js:95:17)
+    at Promise.emit (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:84:38)
+    at Promise.fulfill (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:97:20)TypeError: Cannot read property 'photo_id' of null
+    at Promise.<anonymous> (E:\src\Talk Take\service\TagService.js:143:99)
+    at Promise.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:177:8)
+    at Promise.EventEmitter.emit (events.js:95:17)
+    at Promise.emit (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:84:38)
+    at Promise.fulfill (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:97:20)
+    at Promise.resolve (E:\src\Talk Take\node_modules\mongoose\lib\promise.js:114:23)
+    at Promise.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:177:8)
+    at Promise.EventEmitter.emit (events.js:95:17)
+    at Promise.emit (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:84:38)
+    at Promise.fulfill (E:\src\Talk Take\node_modules\mongoose\node_modules\mpromise\lib\promise.js:97:20)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:533:10)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:441:14
+    at process._tickCallback (node.js:415:13)Error: failed to connect to [127.0.0.1:27017]
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:546:74)
+    at EventEmitter.emit (events.js:106:17)
+    at null.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:150:15)
+    at EventEmitter.emit (events.js:98:17)
+    at Socket.<anonymous> (E:\src\Talk Take\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\connection.js:544:12)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at TCP.close (net.js:466:12)

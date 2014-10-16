@@ -46,6 +46,35 @@ var makeHttpPost = function(path,post_data){
     post_req.end();
 }
 
+var makeAuthGet = function(auth, path, callback){
+    var post_options = {
+        host: '121.199.58.200',
+        port: '3003',
+        path: path,
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            //    'Content-Length': post_data.length,
+            'Authorization':auth,
+            'date':new Date()
+        }
+    };
+
+    //  console.log(post_data);
+// Set up the request
+    var post_req = http.request(post_options, function(res) {
+        res.setEncoding('utf8');
+        res.on('data', function (chunk) {
+            //  console.log('Response: ' + chunk);
+            return callback(chunk);
+        });
+    });
+
+// post the data
+   // post_req.write(post_data);
+    post_req.end();
+}
+
 
 var makeAuthPost = function(auth, path, post_data,callback){
     //   post_data = querystring.stringify(post_data);
@@ -166,7 +195,7 @@ exports.testUpdateUser = function(){
     nickName:'巴瑞力',
     firstName:'',
     lastName:'李雷',
-    mobilePhone:15601909527,
+    mobilePhone:13776920138,
     sex:'男',
     location:{
         country:'中国',
@@ -179,6 +208,21 @@ exports.testUpdateUser = function(){
     privacy:0
     };
     makeAuthPost(auth,'/TalkTake/User',post_data,function(err, doc){
+        console.log(err);
+    });
+}
+
+exports.testGetRecommend = function(){
+    //var UUID = '123-456-789',
+    //    SID = '543bb2059fb2b04576c186bd';
+
+    var UUID = 'F2F691D6-21EA-4052-B623-BAC87F0B0EAE',
+        SID = '543c51290fdf66f279cf7a43';
+
+    var auth =  new Buffer(SID + ':' + UUID).toString('base64');
+
+
+    makeAuthGet(auth,'/TalkTake/Tags/Recommend',function(err, doc){
         console.log(err);
     });
 }

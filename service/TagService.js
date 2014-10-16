@@ -64,6 +64,18 @@ exports.getRecommendTags = function(userId, callback){
         userId = new ObjectId(userId);
     }
 
+    var rProxy = new EvenrProxy();
+    var events = ['recommend', 'tag'];
+
+    rProxy.assign(events,function(recommend, tags){
+           return callback(null,{
+               items:{
+                   recommend:recommend,
+                   tags:tags
+               }
+           })
+    })
+
     User.getUserFriendsId(userId, function(err, docs){
         if(err){
             return callback(err,[]);
@@ -118,13 +130,16 @@ exports.getRecommendTags = function(userId, callback){
                                                         if(err){
                                                             return callback(err,results);
                                                         }else{
+
                                                             if(tags.length == 0){
-                                                                return callback(null,{items:[{tagName:labels.Category, count:0}]}) ;
+                                                                rProxy.emit('recommend',[{tagName:labels.Category, count:0}]);
+                                                                //return callback(null,{items:}) ;
                                                             }else{
                                                                 var proxy = new EventProxy();
                                                                 proxy.after('tag_ready', tags.length, function(){
-                                                                    return callback(null, {items:results});
-                                                                })
+                                                                    rProxy.emit('recommend', results);
+                                                                  //  return callback(null, {items:results});
+                                                                }).fail(callback);
 
                                                                 tags.forEach(function(tag, i){
                                                                     results[i] = {};
@@ -134,7 +149,7 @@ exports.getRecommendTags = function(userId, callback){
                                                                         if(err){
                                                                             proxy.emit('error');
                                                                         }else{
-                                                                            results[i].cover = doc.photo_id.photoUrl;
+                                                                            results[i].cover = doc.photo_id.source_url;
                                                                             proxy.emit('tag_ready');
                                                                         }
                                                                     })
@@ -156,6 +171,20 @@ exports.getRecommendTags = function(userId, callback){
             })
         }
     })
+
+    Photo.getUserAllTag(userId, function(err, docs){
+        if(err){
+            rProxy.emit('error');
+        }else{
+            var results = [];
+            for(var i=0;i<docs.length;i++){
+                results[i] = {};
+                results[i].tagName = docs[i]._id;
+                results[i].count = docs[i].count;
+            }
+            rProxy.emit('tag',results);
+        }
+    });
 }
 
 

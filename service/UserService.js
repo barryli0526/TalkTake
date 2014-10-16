@@ -393,7 +393,6 @@ exports.HandleContactsRelation = function(uid, users, callback){
         return callback(null,[]);
     }
 
-//    console.log(users);
 
     var proxy = new EventProxy(),
          relations = [];
@@ -497,7 +496,7 @@ exports.getPhotosByAlbumInfo = function(uid, tagName, page, size, callback){
         events = ['photos','count'];
 
     proxy.assign(events, function(photos, count){
-        var count = count - page*size;
+        var count = count - (page+1)*size;
         count = (count > 0) ? count : 0;
         return callback(null,{
             remain:count,
@@ -522,7 +521,7 @@ exports.getPhotosByAlbumInfo = function(uid, tagName, page, size, callback){
                 results[i].upCount = doc.like ? doc.like.length : 0;
                 results[i].commentCount = doc.reply_count;
                 photo.location ? results[i].location = photo.location : null;
-                results[i].uploadTime = util.getDateTime(photo.post_at);
+                results[i].uploadTime = util.getDateTime(photo.create_at);
                 photo.description ? results[i].description = photo.description : null;
                 proxy.emit('photo_ready');
             })

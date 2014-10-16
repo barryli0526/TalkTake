@@ -27,7 +27,7 @@ exports.config = {
         domain:'http://talktake.qiniudn.com'
     },
 
-    db: 'mongodb://127.0.0.1/perTalkTake',
+    db: 'mongodb://127.0.0.1/TalkTake',
     port: 3003
 };
 

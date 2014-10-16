@@ -16,8 +16,8 @@ var requestCase = require('./request');
 
 //requestCase.testSyncContacts();
 
-//requestCase.testUpdateUser();
+requestCase.testGetRecommend();
 
-var str = 'NTQzYTU4YjQzN2EyZTNIODZmNzBjYjY4O';
-var basicString = new Buffer(str, 'base64').toString().split(':');
-console.log(basicString);
+//var str = 'NTQzYTU4YjQzN2EyZTNIODZmNzBjYjY4O';
+//var basicString = new Buffer(str, 'base64').toString().split(':');
+//console.log(basicString);
