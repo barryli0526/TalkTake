@@ -16,7 +16,7 @@ var requestCase = require('./request');
 
 //requestCase.testSyncContacts();
 
-requestCase.testGetRecommend();
+requestCase.getGetInfo();
 
 //var str = 'NTQzYTU4YjQzN2EyZTNIODZmNzBjYjY4O';
 //var basicString = new Buffer(str, 'base64').toString().split(':');

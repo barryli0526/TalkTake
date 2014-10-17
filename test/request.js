@@ -212,17 +212,17 @@ exports.testUpdateUser = function(){
     });
 }
 
-exports.testGetRecommend = function(){
+exports.getGetInfo = function(){
     //var UUID = '123-456-789',
     //    SID = '543bb2059fb2b04576c186bd';
 
-    var UUID = 'F2F691D6-21EA-4052-B623-BAC87F0B0EAE',
-        SID = '543c51290fdf66f279cf7a43';
+    var UUID = '6A832D3D-134F-4EE9-B55C-7CA5C055177C',
+        SID = '54408cdce2aecef304f8d078';
 
     var auth =  new Buffer(SID + ':' + UUID).toString('base64');
 
 
-    makeAuthGet(auth,'/TalkTake/Tags/Recommend',function(err, doc){
+    makeAuthGet(auth,'/TalkTake/User',function(err, doc){
         console.log(err);
     });
 }

@@ -150,6 +150,9 @@ exports.getRecommendTags = function(userId, callback){
                                                                             proxy.emit('error');
                                                                         }else{
                                                                             results[i].cover = doc.photo_id.source_url;
+                                                                            if(config.qnConfig.compress){
+                                                                                results[i].cover += config.qnConfig.quality;
+                                                                            }
                                                                             proxy.emit('tag_ready');
                                                                         }
                                                                     })
@@ -217,6 +220,9 @@ exports.getAlbumInfo = function(userId, callback){
                         for(var j=0;j<photos.length;j++){
                             tags[i].photos[j] = {};
                             tags[i].photos[j].photoUrl = photos[j].photo_id.source_url;
+                            if(config.qnConfig.compress){
+                                tags[i].photos[j].photoUrl += config.qnConfig.quality;
+                            }
                             tags[i].photos[j].uploadDate = util.getDateTime(photos[j].post_at);
                         }
                     proxy.emit('tag_ready');

@@ -24,7 +24,9 @@ exports.config = {
         callbackBody:'name=${fname}&key=${key}&tags=$(x:tags)&desc=$(x:desc)&createTime=$(x:createTime)&location=$(x:location)&userId=$(x:userId)&isPublic=$(x:isPublic)',
         persistentOps:'avthumb/imageView2/2/w/320',
         expires:7200,
-        domain:'http://talktake.qiniudn.com'
+        domain:'http://talktake.qiniudn.com',
+        compress:true,
+        quality:'imageView2/2/w/640/format/jpg/q/50'
     },
 
     db: 'mongodb://127.0.0.1/TalkTake',

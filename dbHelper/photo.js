@@ -369,7 +369,22 @@ exports.increaseCommentCount = function(photoId, callback){
  * @param callback
  */
 exports.getUserOldestPhotosByTag = function(Ids, tagName, anchorTime, size, callback){
-    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$lt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$lt: anchorTime}}]}]};
+//    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$lt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$lt: anchorTime}}]}]};
+//    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
+//        .limit(size)
+//        .exec(callback);
+    var query = {},
+        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$lt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$lt:anchorTime}}]}]},
+        privacyQuery = {'isPublic':true};
+
+
+    if(tagName){
+        var tagQuery = {'tags':{$all:tagName}};
+        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+    }else{
+        query  = {$and:[basicQuery, privacyQuery]};
+    }
+
     PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
         .limit(size)
         .exec(callback);
@@ -384,10 +399,29 @@ exports.getUserOldestPhotosByTag = function(Ids, tagName, anchorTime, size, call
  * @param callback
  */
 exports.getUserLatestPhotosByTag = function(Ids, tagName, anchorTime, size, callback){
-    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$gt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$gt: anchorTime}}]}]};
+//    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$gt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$gt: anchorTime}}]}]};
+//    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
+//        .limit(size)
+//        .exec(callback);
+
+
+    var query = {},
+        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$gt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$gt:anchorTime}}]}]},
+        privacyQuery = {'isPublic':true};
+
+
+    if(tagName){
+        var tagQuery = {'tags':{$all:tagName}};
+        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+    }else{
+        query  = {$and:[basicQuery, privacyQuery]};
+    }
+
     PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
         .limit(size)
         .exec(callback);
+
+
 }
 
 /**
@@ -400,11 +434,28 @@ exports.getUserLatestPhotosByTag = function(Ids, tagName, anchorTime, size, call
  * @param callback
  */
 exports.getUserSegmentPhotosByTag = function(Ids, tagName, startDate,endDate, size, callback){
-    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'post_at':{$gte: startDate}},{'post_at':{$lte: endDate}}]}]},
-        {$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'forward.forward_at':{$gte: startDate}},{'forward.forward_at':{$lte: endDate}}]}]}]};
+//    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'post_at':{$gte: startDate}},{'post_at':{$lte: endDate}}]}]},
+//        {$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'forward.forward_at':{$gte: startDate}},{'forward.forward_at':{$lte: endDate}}]}]}]};
+//    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
+//        .limit(size)
+//        .exec(callback);
+
+    var query = {},
+        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$and:[{$gte:startDate}, {$lte:endDate}]}}]},
+            {$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$and:[{$gte:startDate}, {$lte:endDate}]}}]}]},
+        privacyQuery = {'isPublic':true};
+
+    if(tagName){
+        var tagQuery = {'tags':{$all:tagName}};
+        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+    }else{
+        query  = {$and:[basicQuery, privacyQuery]};
+    }
+
     PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
         .limit(size)
         .exec(callback);
+
 }
 
 /**
@@ -416,7 +467,19 @@ exports.getUserSegmentPhotosByTag = function(Ids, tagName, startDate,endDate, si
  * @param callback
  */
 exports.getUserOldestPhotoCount = function(Ids, tagName, anchorTime, size, callback){
-    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$lt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$lt: anchorTime}}]}]};
+  //  var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$lt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$lt: anchorTime}}]}]};
+    var query = {},
+        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$lt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$lt:anchorTime}}]}]},
+        privacyQuery = {'isPublic':true};
+
+
+    if(tagName){
+        var tagQuery = {'tags':{$all:tagName}};
+        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+    }else{
+        query  = {$and:[basicQuery, privacyQuery]};
+    }
+
     PhotoInfo.count(query, callback);
 }
 
@@ -430,7 +493,19 @@ exports.getUserOldestPhotoCount = function(Ids, tagName, anchorTime, size, callb
  * @param callback
  */
 exports.getUserLatestPhotoCount  = function(Ids, tagName, anchorTime, size, callback){
-    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$gt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$gt: anchorTime}}]}]};
+   // var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$gt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$gt: anchorTime}}]}]};
+    var query = {},
+        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$gt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$gt:anchorTime}}]}]},
+        privacyQuery = {'isPublic':true};
+
+
+    if(tagName){
+        var tagQuery = {'tags':{$all:tagName}};
+        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+    }else{
+        query  = {$and:[basicQuery, privacyQuery]};
+    }
+
     PhotoInfo.count(query,callback);
 }
 
@@ -445,23 +520,13 @@ exports.getUserLatestPhotoCount  = function(Ids, tagName, anchorTime, size, call
  * @param callback
  */
 exports.getUserSegementPhotoCount = function(Ids, tagName, startDate,endDate, size, callback){
-    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'post_at':{$gte: startDate}},{'post_at':{$lte: endDate}}]}]},
-        {$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'forward.forward_at':{$gte: startDate}},{'forward.forward_at':{$lte: endDate}}]}]}]};
+  //  var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'post_at':{$gte: startDate}},{'post_at':{$lte: endDate}}]}]},
+//        {$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'forward.forward_at':{$gte: startDate}},{'forward.forward_at':{$lte: endDate}}]}]}]};
 
-    PhotoInfo.count(query, callback);
-}
-
-
-exports.getOnlyLatestFollowInfo = function(firendIds, FollowingIds, anchorTime, size, callback){
-    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$gt: anchorTime}}]},
-        {$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$gt: anchorTime}}]}]};
-}
-
-exports.getLatestPhotos = function(Ids, tagName, anchorTime, size ,callback){
     var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$lt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$lt:anchorTime}}]}]},
+        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$and:[{$gte:startDate}, {$lte:endDate}]}}]},
+            {$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$and:[{$gte:startDate}, {$lte:endDate}]}}]}]},
         privacyQuery = {'isPublic':true};
-
 
     if(tagName){
         var tagQuery = {'tags':{$all:tagName}};
@@ -470,9 +535,21 @@ exports.getLatestPhotos = function(Ids, tagName, anchorTime, size ,callback){
         query  = {$and:[basicQuery, privacyQuery]};
     }
 
-    PhotoInfo.find({$and:query}).populate('photo_id author_id forward.forwarder_id')
-             .limit(size)
-             .exec(callback);
+    PhotoInfo.count(query, callback);
+}
+
+
+
+exports.getLatestPhotos = function(Ids, tagName, anchorTime, size ,callback){
+
+}
+
+exports.getOldestPhotos = function(Ids, tagName, anchorTime, size, callback){
+
+}
+
+exports.getSegementPhotos = function(Ids, tagName, startDate,endDate, size, callback){
+
 }
 
 

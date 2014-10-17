@@ -354,6 +354,9 @@ exports.getAllLikedPhotoList = function(uid,page,size, callback){
                     user = doc.author_id;
                 results[i].photoId = photo._id;
                 results[i].photoUrl = photo.source_url;
+                if(config.qnConfig.compress){
+                    results[i].photoUrl += config.qnConfig.quality;
+                }
                 results[i].upCount = doc.like ? doc.like.length : 0;
                 results[i].commentCount = doc.reply_count;
                 photo.location ? results[i].location = photo.location : null;
@@ -518,6 +521,9 @@ exports.getPhotosByAlbumInfo = function(uid, tagName, page, size, callback){
                 var photo = doc.photo_id;
                 results[i].photoId = photo._id;
                 results[i].photoUrl = photo.source_url;
+                if(config.qnConfig.compress){
+                    results[i].photoUrl += config.qnConfig.quality;
+                }
                 results[i].upCount = doc.like ? doc.like.length : 0;
                 results[i].commentCount = doc.reply_count;
                 photo.location ? results[i].location = photo.location : null;
@@ -581,6 +587,9 @@ exports.getSegementPhotosByAlbumInfo = function(uid, tagName, startDate, endDate
                 var photo = doc.photo_id;
                 results[i].photoId = photo._id;
                 results[i].photoUrl = photo.source_url;
+                if(config.qnConfig.compress){
+                    results[i].photoUrl += config.qnConfig.quality;
+                }
                 results[i].upCount = doc.like ? doc.like.length : 0;
                 results[i].commentCount = doc.reply_count;
                 photo.location ? results[i].location = photo.location : null;

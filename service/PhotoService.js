@@ -71,6 +71,9 @@ exports.getLatestPhotos = function(uid,category, anchorTime, listSize, callback)
                             user = doc.author_id;
                         results[i].photoId = photo._id;
                         results[i].photoUrl = photo.source_url;
+                        if(config.qnConfig.compress){
+                            results[i].photoUrl += config.qnConfig.quality;
+                        }
                         results[i].upCount = doc.like ? doc.like.length : 0;
                         results[i].commentCount = doc.reply_count;
                         photo.location ? results[i].location = photo.location : null;
@@ -189,6 +192,9 @@ exports.getOldestPhotos = function(uid,category, anchorTime, listSize, callback)
                             user = doc.author_id;
                         results[i].photoId = photo._id;
                         results[i].photoUrl = photo.source_url;
+                        if(config.qnConfig.compress){
+                            results[i].photoUrl += config.qnConfig.quality;
+                        }
                         results[i].upCount = doc.like ? doc.like.length : 0;
                         results[i].commentCount = doc.reply_count;
                         photo.location ? results[i].location = photo.location : null;
@@ -286,6 +292,9 @@ exports.getSegmentPhoto = function(uid,category, startDate, endDate, listSize, c
                             user = doc.author_id;
                         results[i].photoId = photo._id;
                         results[i].photoUrl = photo.source_url;
+                        if(config.qnConfig.compress){
+                            results[i].photoUrl += config.qnConfig.quality;
+                        }
                         results[i].upCount = doc.like ? doc.like.length : 0;
                         results[i].commentCount = doc.reply_count;
                         photo.location ? results[i].location = photo.location : null;
@@ -384,6 +393,9 @@ exports.getPhotoDetail = function(userId,photoId, callback){
                 author = doc.author_id;
             photo.photoId = photoDetail._id;
             photo.photoUrl = photoDetail.source_url;
+            if(config.qnConfig.compress){
+                photo.photoUrl += config.qnConfig.quality;
+            }
             photo.upCount = photoDetail.like ? photoDetail.like.length : 0;
             photo.commentCount  = photoDetail.reply_count;
             photoDetail.location ? photo.location = photoDetail.location : null;
