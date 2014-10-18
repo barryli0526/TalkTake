@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2263c5b-ff48-40e8-b4cc-02932417bef7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/PhotoService.js" afterPath="$PROJECT_DIR$/service/PhotoService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/TagService.js" afterPath="$PROJECT_DIR$/service/TagService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/UserService.js" afterPath="$PROJECT_DIR$/service/UserService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/base.js" afterPath="$PROJECT_DIR$/config/base.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbHelper/photo.js" afterPath="$PROJECT_DIR$/dbHelper/photo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/request.js" afterPath="$PROJECT_DIR$/test/request.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/testCase.js" afterPath="$PROJECT_DIR$/test/testCase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="barryCode.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,14 +56,14 @@
     <file path="/main.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1377663826406" ignored="false" />
     <file path="/article.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1409214974758" ignored="false" />
     <file path="/photoInfo.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411621802786" ignored="false" />
-    <file path="/photo.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413517525885" ignored="false" />
+    <file path="/photo.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413627219604" ignored="false" />
     <file path="/photoRelation.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411110906687" ignored="false" />
     <file path="/category.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1409625976332" ignored="false" />
     <file path="/userRelation.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411561842029" ignored="false" />
     <file path="/comment.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411555582587" ignored="false" />
     <file path="/server.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1412839674301" ignored="false" />
     <file path="/request.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413519402761" ignored="false" />
-    <file path="/UserService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413547828065" ignored="false" />
+    <file path="/UserService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413549236978" ignored="false" />
     <file path="/photos.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413208384100" ignored="false" />
     <file path="/base.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413546803728" ignored="false" />
     <file path="/PhotoService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413547462541" ignored="false" />
@@ -77,7 +73,7 @@
     <file path="/LMS.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1410832295514" ignored="false" />
     <file path="/testService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413457113877" ignored="false" />
     <file path="/tag.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413194558342" ignored="false" />
-    <file path="/TagService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413547575341" ignored="false" />
+    <file path="/TagService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413550108428" ignored="false" />
     <file path="$PROJECT_DIR$/../testTalkTake/models/User.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411697962352" ignored="false" />
     <file path="$PROJECT_DIR$/../testTalkTake/flow/InitClient.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1412037973454" ignored="false" />
     <file path="/post.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411976832464" ignored="false" />
@@ -142,25 +138,7 @@
       <file leaf-file-name="base.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="51" selection-start="890" selection-end="890" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="13" selection-start="3878" selection-end="3892" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="comment.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/comment.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="47" column="20" selection-start="1225" selection-end="1225" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -169,7 +147,7 @@
       <file leaf-file-name="photo.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dbHelper/photo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="561" column="115" selection-start="15114" selection-end="15114" vertical-scroll-proportion="0.7204783">
+            <state line="454" column="32" selection-start="11784" selection-end="11784" vertical-scroll-proportion="0.5844544">
               <folding />
             </state>
           </provider>
@@ -178,16 +156,25 @@
       <file leaf-file-name="UserService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/UserService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="494" column="36" selection-start="15010" selection-end="15010" vertical-scroll-proportion="0.0">
+            <state line="494" column="76" selection-start="15024" selection-end="15024" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
+      <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="43" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tag.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/tag.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="35" selection-start="1094" selection-end="1095" vertical-scroll-proportion="-24.84">
               <folding />
             </state>
           </provider>
@@ -196,7 +183,7 @@
       <file leaf-file-name="TagService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/TagService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="104" selection-start="4990" selection-end="4990" vertical-scroll-proportion="0.0">
+            <state line="66" column="26" selection-start="1937" selection-end="1937" vertical-scroll-proportion="-6.64">
               <folding />
             </state>
           </provider>
@@ -205,7 +192,16 @@
       <file leaf-file-name="PhotoService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/PhotoService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="686" column="66" selection-start="22750" selection-end="22750" vertical-scroll-proportion="-20.84">
+            <state line="268" column="21" selection-start="10284" selection-end="10284" vertical-scroll-proportion="-20.4">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="photos.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/photos.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="125" column="30" selection-start="3842" selection-end="3842" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -238,13 +234,13 @@
         <option value="$PROJECT_DIR$/lib/util.js" />
         <option value="$PROJECT_DIR$/test/testService.js" />
         <option value="$PROJECT_DIR$/api/user.js" />
-        <option value="$PROJECT_DIR$/dbHelper/photo.js" />
         <option value="$PROJECT_DIR$/test/request.js" />
         <option value="$PROJECT_DIR$/test/testCase.js" />
-        <option value="$PROJECT_DIR$/config/base.js" />
         <option value="$PROJECT_DIR$/service/PhotoService.js" />
-        <option value="$PROJECT_DIR$/service/TagService.js" />
+        <option value="$PROJECT_DIR$/config/base.js" />
         <option value="$PROJECT_DIR$/service/UserService.js" />
+        <option value="$PROJECT_DIR$/service/TagService.js" />
+        <option value="$PROJECT_DIR$/dbHelper/photo.js" />
       </list>
     </option>
   </component>
@@ -570,27 +566,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/api/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="212" column="15" selection-start="6278" selection-end="6281" vertical-scroll-proportion="-8.96">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbHelper/comment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="15" selection-start="324" selection-end="327" vertical-scroll-proportion="-9.2">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbHelper/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dbHelper/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="336" column="21" selection-start="8725" selection-end="8729" vertical-scroll-proportion="-8.96">
@@ -647,35 +622,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="51" selection-start="890" selection-end="890" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/TagService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="104" selection-start="4990" selection-end="4990" vertical-scroll-proportion="0.0">
+        <state line="47" column="20" selection-start="1225" selection-end="1225" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service/UserService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="494" column="36" selection-start="15010" selection-end="15010" vertical-scroll-proportion="0.0">
+        <state line="494" column="76" selection-start="15024" selection-end="15024" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/tag.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="35" selection-start="1094" selection-end="1095" vertical-scroll-proportion="-24.84">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/TagService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="26" selection-start="1937" selection-end="1937" vertical-scroll-proportion="-6.64">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/photos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="30" selection-start="3842" selection-end="3842" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service/PhotoService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="686" column="66" selection-start="22750" selection-end="22750" vertical-scroll-proportion="-20.84">
+        <state line="268" column="21" selection-start="10284" selection-end="10284" vertical-scroll-proportion="-20.4">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dbHelper/photo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="561" column="115" selection-start="15114" selection-end="15114" vertical-scroll-proportion="0.7204783">
+        <state line="454" column="32" selection-start="11784" selection-end="11784" vertical-scroll-proportion="0.5844544">
           <folding />
         </state>
       </provider>

@@ -64,7 +64,7 @@ exports.getRecommendTags = function(userId, callback){
         userId = new ObjectId(userId);
     }
 
-    var rProxy = new EvenrProxy();
+    var rProxy = new EventProxy();
     var events = ['recommend', 'tag'];
 
     rProxy.assign(events,function(recommend, tags){

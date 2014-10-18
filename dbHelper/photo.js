@@ -441,8 +441,8 @@ exports.getUserSegmentPhotosByTag = function(Ids, tagName, startDate,endDate, si
 //        .exec(callback);
 
     var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$and:[{$gte:startDate}, {$lte:endDate}]}}]},
-            {$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$and:[{$gte:startDate}, {$lte:endDate}]}}]}]},
+        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{$and:[{'post_at':{$gte:startDate}},{'post_at':{$lte:endDate}}]}]},
+            {$and:[{'forward.forwarder_id' : {$in:Ids}},{$and:[{'forward.forward_at':{$gte:startDate}},{'forward.forward_at':{$lte:endDate}}]}]}]},
         privacyQuery = {'isPublic':true};
 
     if(tagName){
@@ -524,8 +524,8 @@ exports.getUserSegementPhotoCount = function(Ids, tagName, startDate,endDate, si
 //        {$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'forward.forward_at':{$gte: startDate}},{'forward.forward_at':{$lte: endDate}}]}]}]};
 
     var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$and:[{$gte:startDate}, {$lte:endDate}]}}]},
-            {$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$and:[{$gte:startDate}, {$lte:endDate}]}}]}]},
+        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{$and:[{'post_at':{$gte:startDate}},{'post_at':{$lte:endDate}}]}]},
+            {$and:[{'forward.forwarder_id' : {$in:Ids}},{$and:[{'forward.forward_at':{$gte:startDate}},{'forward.forward_at':{$lte:endDate}}]}]}]},
         privacyQuery = {'isPublic':true};
 
     if(tagName){

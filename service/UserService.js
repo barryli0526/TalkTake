@@ -6,6 +6,7 @@
 //var EventProxy = require('EventProxy');
 var util = require('../lib/util');
 var lms = require('../lib/LMS');
+var config = require('../config/base').config;
 var labels = require('../config/base').labels;
 
 var sampleData = require('../Sample/photos');
