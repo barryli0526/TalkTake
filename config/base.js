@@ -29,7 +29,7 @@ exports.config = {
         quality:'?imageView2/2/w/640/format/jpg/q/50'
     },
 
-    db: 'mongodb://127.0.0.1/TalkTake',
+    db: 'mongodb://127.0.0.1/perTalkTake',
     port: 3003
 };
 

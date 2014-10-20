@@ -99,6 +99,10 @@ exports.getSegmentPhotoList = function(req, res){
         var listSize = query.listSize ? query.listSize : labels.PhotoListSize;
         var category = query.category ? query.category : labels.Category;
 
+        if(endDate.length < 11){
+            endDate +=  ' 23:59:59:999';
+        }
+
         var uid = req.session.user._id;
         if(!uid){
             res.statusCode = 503;

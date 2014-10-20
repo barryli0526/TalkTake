@@ -290,6 +290,11 @@ exports.getAlbumPhotos = function(req, res){
                 endDate = query.endDate ,
                 startIndex = query.startIndex ? query.startIndex : 0,
                 size = query.size ? query.size : labels.PhotoListSize;
+
+            if(endDate.length < 11){
+                endDate += ' 23:59:59:999';
+            }
+
             if(!uid){
                 res.statusCode = 503;
                 res.end(util.combineFailureRes(labels.sessionError));

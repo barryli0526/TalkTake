@@ -273,7 +273,7 @@ exports.checkUserByNameAndPhone = function(phoneNumber, firstName, lastName, cal
  * @param callback
  */
 exports.checkIsFollow = function(uid, followId, callback){
-   User.findOne({'user_id':uid, 'follow_id':followId},'isFollowing', function(err, doc){
+   UserRelation.findOne({'user_id':uid, 'follow_id':followId},'isFollowing', function(err, doc){
        if(err || !doc || doc.length == 0){
            return callback(err,false);
        }else{
@@ -283,7 +283,7 @@ exports.checkIsFollow = function(uid, followId, callback){
 }
 
 exports.getRelationInfo = function(uid, followId, callback){
-    User.findOne({'user_id':uid, 'follow_id':followId},'isFollowing remark_name', function(err, doc){
+    UserRelation.findOne({'user_id':uid, 'follow_id':followId},'isFollowing remark_name', function(err, doc){
         if(err || !doc || doc.length == 0){
             return callback(err,false);
         }else{

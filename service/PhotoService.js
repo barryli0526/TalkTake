@@ -416,7 +416,8 @@ exports.getPhotoDetail = function(userId,photoId, callback){
                 photo.uploader.isFollowing = relation.isfollowing;
                 relation.remark_name ? photo.uploader.name = relation.remark_name : null;
                 photo.likedUserList = likeList;
-            })
+                return callback(null,photo);
+            }).fail(callback);
 
             User.getRelationInfo(userId, author._id, photoProxy.done('relation'));
 
