@@ -291,7 +291,7 @@ exports.getAlbumPhotos = function(req, res){
                 startIndex = query.startIndex ? query.startIndex : 0,
                 size = query.size ? query.size : labels.PhotoListSize;
 
-            if(endDate.length < 11){
+            if(endDate && endDate.length < 11){
                 endDate += ' 23:59:59:999';
             }
 

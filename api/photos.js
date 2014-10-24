@@ -241,16 +241,21 @@ exports.getComments = function(req, res){
         res.statusCode = 401;
         res.end(util.combineFailureRes(labels.AuthError));
     }else{
-        var photoId = req.params.photoId;
+        var photoId = req.params.photoId,
+            uid = req.session.user._id;
         if(!photoId){
             res.statusCode = 503;
             res.end(util.combineFailureRes(labels.requestError));
+            return;
+        }else if(!uid){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.sessionError));
             return;
         }else{
             var query = req.query;
             var startIndex = query.startIndex ? query.startIndex : 0,
                 size = query.size ? query.size : labels.CommentListSize;
-            PhotoService.getComments(photoId, startIndex, size, function(err, docs){
+            PhotoService.getComments(uid,photoId, startIndex, size, function(err, docs){
                 if(err){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));

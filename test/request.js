@@ -222,7 +222,7 @@ exports.getGetInfo = function(){
     var auth =  new Buffer(SID + ':' + UUID).toString('base64');
 
 
-    makeAuthGet(auth,'/TalkTake/User',function(err, doc){
+    makeAuthGet(auth,'/TalkTake/Photos/5440955fe2aecef304f8d07f',function(err, doc){
         console.log(err);
     });
 }

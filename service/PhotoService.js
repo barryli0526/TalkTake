@@ -405,6 +405,7 @@ exports.getPhotoDetail = function(userId,photoId, callback){
             photo.uploader = {};
             photo.uploader.userId = author._id;
             photo.uploader.name = author.showName;
+            photo.tags = doc.tags;
             author.avatar ? photo.uploader.avatar = author.avatar : null;
             //photo.uploader.isFollowing = '';
             photo.likedUserList = [];

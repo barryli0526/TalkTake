@@ -94,7 +94,7 @@ exports.UnFollowUser = function(unFollowerId, uid, callback){
         uid = new ObjectId(uid);
     }
 
-    if(typeof followerId === 'string'){
+    if(typeof unFollowerId === 'string'){
         unFollowerId = new ObjectId(unFollowerId);
     }
 
