@@ -99,7 +99,7 @@ exports.getSegmentPhotoList = function(req, res){
         var listSize = query.listSize ? query.listSize : labels.PhotoListSize;
         var category = query.category ? query.category : labels.Category;
 
-        if(endDate.length < 11){
+        if(endDate && endDate.length < 11){
             endDate +=  ' 23:59:59:999';
         }
 
@@ -315,13 +315,13 @@ exports.uploadCallback = function(req, res){
     res.setHeader("Content-Type","application/json;charset='utf-8'");
         var data = req.body;
         var tags = data.tags,
-            userId = data.userId,
+            userId = req.session.user._id,
             createTime = data.createTime ? data.createTime : Date.now(),
             location = data.location,
             desc = data.desc,
             isPublic = data.isPublic ? data.isPublic : true,
-            key = data.key,
-            name = data.fname ? data.fname : data.key;
+            key = data.Key ? data.Key : data.key;
+        var name = data.fname ? data.fname : data.key;
         if(!tags || !userId){
             res.statusCode = 412;
             res.end(util.combineFailureRes(labels.requestError));

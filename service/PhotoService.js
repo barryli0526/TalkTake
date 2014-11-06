@@ -391,13 +391,19 @@ exports.getPhotoDetail = function(userId,photoId, callback){
             var photo = {},
                 photoDetail = doc.photo_id,
                 author = doc.author_id;
+
+            //添加路过信息
+            if(author._id.toString() != userId.toString()){
+                Photo.addVisitPhotoInfo(userId, photoId, Date.now(), function(){})
+            }
+
             photo.photoId = photoDetail._id;
             photo.photoUrl = photoDetail.source_url;
             if(config.qnConfig.compress){
                 photo.photoUrl += config.qnConfig.quality;
             }
-            photo.upCount = photoDetail.like ? photoDetail.like.length : 0;
-            photo.commentCount  = photoDetail.reply_count;
+            photo.upCount = doc.like ? doc.like.length : 0;
+            photo.commentCount  = doc.reply_count ? doc.reply_count : 0;
             photoDetail.location ? photo.location = photoDetail.location : null;
             photo.uploadTime = util.getDateTime(doc.post_at);
             photo.bLiked = false;
@@ -487,7 +493,7 @@ exports.getComments = function(userId, photoId, startIndex, size, callback){
                 doc.author_id.avatar ? comment.avatar = doc.author_id.avatar : null;
                 comment.isFollowing = false;
                 doc.content ? comment.comments = doc.content : null;
-                comment.replyTime = doc.create_at;
+                comment.replyTime = util.getDateTime(doc.create_at);
                 User.getRelationInfo(userId, doc.author_id, function(err, relation){
                     if(err){
                         proxy1.emit('error');

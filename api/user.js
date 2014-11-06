@@ -222,6 +222,23 @@ exports.syncContacts = function(req, res){
             return;
         }else{
             var rqData = req.body.contactlist;
+//            rqData = [
+//                { phoneNumber: [ '15921853464' ], lastName: 'test1' },
+//            { phoneNumber: [ '+8613818890852' ], lastName: 'test2¸)' },
+//            { phoneNumber: [ '13816156904' ], lastName: 'test3)' },
+//            { phoneNumber: [ '02133576073' ], lastName: 'test4' },
+//            { phoneNumber: [ '13918819954' ], lastName: 'test5' },
+//                { phoneNumber: [ '07562312157' ], lastName: 'test6' },
+//                { phoneNumber: [ '18221571877' ], lastName: 'test7' },
+//                { phoneNumber: [ '13918938324' ], lastName: 'test8' },
+//                { phoneNumber: [ '18778158616' ], lastName: 'test9' },
+//                { phoneNumber: [ '18651376980' ], lastName: 'test10' },
+//                { phoneNumber: [ '15900522623' ], lastName: 'Tony' },
+//                { phoneNumber: [ '4008895543' ], lastName: 'test11' },
+//                { phoneNumber: ['15896228422', '189-0629-8512' ], lastName: 'test12' },
+//                { phoneNumber: [ '152-5132-6433' ], lastName: 'test13)' },
+//                { phoneNumber: [ '+8618221576973' ], lastName: 'test14' }
+//            ];
             UserService.HandleContactsRelation(uid,rqData, function(err,docs){
                 if(err){
                     res.statusCode = 500;

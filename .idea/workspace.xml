@@ -2,21 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2263c5b-ff48-40e8-b4cc-02932417bef7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cache/redisClient.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cache/user.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/testUpload.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/PhotoService.js" afterPath="$PROJECT_DIR$/service/PhotoService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/UserService.js" afterPath="$PROJECT_DIR$/service/UserService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/base.js" afterPath="$PROJECT_DIR$/config/base.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.txt" afterPath="$PROJECT_DIR$/log.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbHelper/photo.js" afterPath="$PROJECT_DIR$/dbHelper/photo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/photoInfo.js" afterPath="$PROJECT_DIR$/models/photoInfo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/photos.js" afterPath="$PROJECT_DIR$/api/photos.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/request.js" afterPath="$PROJECT_DIR$/test/request.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes.js" afterPath="$PROJECT_DIR$/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/server.js" afterPath="$PROJECT_DIR$/api/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/testCase.js" afterPath="$PROJECT_DIR$/test/testCase.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/user.js" afterPath="$PROJECT_DIR$/api/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbHelper/user.js" afterPath="$PROJECT_DIR$/dbHelper/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="barryCode.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414147200199" ignored="false" />
-    <file path="/routes.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1412839952481" ignored="false" />
+    <file path="/Dummy.txt" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415273959854" ignored="false" />
+    <file path="/routes.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415264641838" ignored="false" />
     <file path="/site.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1376558091149" ignored="false" />
-    <file path="/app.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411973899825" ignored="false" />
+    <file path="/app.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414397831962" ignored="false" />
     <file path="/runjs.html" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1376550831287" ignored="false" />
     <file path="/runjs1.html" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1376989150997" ignored="false" />
     <file path="/LabService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1376556876159" ignored="false" />
@@ -33,7 +41,7 @@
     <file path="/override.css" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1376550002285" ignored="false" />
     <file path="/util.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413457574390" ignored="false" />
     <file path="/layout.html" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1377663800033" ignored="false" />
-    <file path="/user.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413808624643" ignored="false" />
+    <file path="/user.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415238378638" ignored="false" />
     <file path="/articleService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1376622041120" ignored="false" />
     <file path="/index.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411978175608" ignored="false" />
     <file path="/index.html" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411978483405" ignored="false" />
@@ -59,20 +67,20 @@
     <file path="/webshot.phantom.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1377062397504" ignored="false" />
     <file path="/main.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1377663826406" ignored="false" />
     <file path="/article.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1409214974758" ignored="false" />
-    <file path="/photoInfo.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411621802786" ignored="false" />
-    <file path="/photo.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413627219604" ignored="false" />
+    <file path="/photoInfo.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414398620151" ignored="false" />
+    <file path="/photo.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414398709890" ignored="false" />
     <file path="/photoRelation.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411110906687" ignored="false" />
     <file path="/category.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1409625976332" ignored="false" />
     <file path="/userRelation.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411561842029" ignored="false" />
     <file path="/comment.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411555582587" ignored="false" />
-    <file path="/server.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1412839674301" ignored="false" />
-    <file path="/request.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413519402761" ignored="false" />
-    <file path="/UserService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413885560976" ignored="false" />
-    <file path="/photos.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414147367917" ignored="false" />
+    <file path="/server.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415274024916" ignored="false" />
+    <file path="/request.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414553057240" ignored="false" />
+    <file path="/UserService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415238490877" ignored="false" />
+    <file path="/photos.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415264615128" ignored="false" />
     <file path="/base.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413546803728" ignored="false" />
-    <file path="/PhotoService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413946396754" ignored="false" />
-    <file path="/testCase.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413419812114" ignored="false" />
-    <file path="/test.html" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413249777021" ignored="false" />
+    <file path="/PhotoService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414483968909" ignored="false" />
+    <file path="/testCase.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414552742211" ignored="false" />
+    <file path="/test.html" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414380265175" ignored="false" />
     <file path="/dispacher.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1410758257269" ignored="false" />
     <file path="/LMS.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1410832295514" ignored="false" />
     <file path="/testService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413457113877" ignored="false" />
@@ -104,6 +112,18 @@
     <file path="/photos (1).js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1412761816757" ignored="false" />
     <file path="/redisClient.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414052560177" ignored="false" />
     <file path="/ChatService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414052505569" ignored="false" />
+    <file path="$PROJECT_DIR$/../../nShoperV1/models/mysql/products.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415264793387" ignored="false" />
+    <file path="/products.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415264793387" ignored="false" />
+    <file path="$PROJECT_DIR$/../../nShoperV1/models/mysql/products_specification.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415264806165" ignored="false" />
+    <file path="/products_specification.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415264806165" ignored="false" />
+    <file path="$PROJECT_DIR$/../../nShoperV1/models/mysql/products_specification_val.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415264810844" ignored="false" />
+    <file path="/products_specification_val.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415264810844" ignored="false" />
+    <file path="$PROJECT_DIR$/../../nShoperV1/models/mysql/member.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415264846449" ignored="false" />
+    <file path="$PROJECT_DIR$/../../nShoperV1/services/mysql/goods_type.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415267690143" ignored="false" />
+    <file path="/goods_type.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415267558489" ignored="false" />
+    <file path="$PROJECT_DIR$/../../nShoperV1/test/testDB.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415267187866" ignored="false" />
+    <file path="/testDB.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415267186874" ignored="false" />
+    <file path="$PROJECT_DIR$/../../nShoperV1/DB/mysql.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415266584452" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,82 +143,93 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ChatService.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://E:/barryCode/service/ChatService.js">
+      <file leaf-file-name="routes.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="124" column="59" selection-start="2801" selection-end="2801" vertical-scroll-proportion="0.0">
+            <state line="14" column="0" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tag.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/tag.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhotoService.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/PhotoService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="252" column="20" selection-start="9793" selection-end="9793" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cache/user.js">
+        <entry file="file://$PROJECT_DIR$/dbHelper/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="13" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0">
+            <state line="20" column="6" selection-start="412" selection-end="412" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="redisClient.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cache/redisClient.js">
+      <file leaf-file-name="server.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="40" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0">
+            <state line="75" column="52" selection-start="2288" selection-end="2288" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes.js">
+      <file leaf-file-name="UserService.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/UserService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="39" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="57" column="58" selection-start="1535" selection-end="1535" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="5" selection-start="235" selection-end="235" vertical-scroll-proportion="-9.153846">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="photos.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="photos.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/photos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="275" column="41" selection-start="8232" selection-end="8232" vertical-scroll-proportion="0.0">
+            <state line="329" column="50" selection-start="10106" selection-end="10106" vertical-scroll-proportion="0.512894">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhotoService.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/service/PhotoService.js">
+      <file leaf-file-name="base.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="549" column="36" selection-start="19658" selection-end="19658" vertical-scroll-proportion="0.94824964">
+            <state line="31" column="47" selection-start="943" selection-end="943" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
+      <file leaf-file-name="photo.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbHelper/photo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="37" selection-start="1299" selection-end="1299" vertical-scroll-proportion="0.0">
+            <state line="408" column="10" selection-start="9705" selection-end="9705" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="request.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/request.js">
+      <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="211" column="19" selection-start="5052" selection-end="5052" vertical-scroll-proportion="0.0">
+            <state line="87" column="27" selection-start="2445" selection-end="2447" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -222,28 +253,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/lib/util.js" />
-        <option value="$PROJECT_DIR$/test/testService.js" />
-        <option value="$PROJECT_DIR$/test/testCase.js" />
-        <option value="$PROJECT_DIR$/service/TagService.js" />
-        <option value="$PROJECT_DIR$/dbHelper/photo.js" />
-        <option value="$PROJECT_DIR$/routes.js" />
-        <option value="$PROJECT_DIR$/dbHelper/user.js" />
+        <option value="$PROJECT_DIR$/test/testUpload.js" />
+        <option value="$PROJECT_DIR$/../../QNDemo/views/test.html" />
         <option value="$PROJECT_DIR$/config/base.js" />
-        <option value="$PROJECT_DIR$/api/user.js" />
-        <option value="$PROJECT_DIR$/service/UserService.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/log.txt" />
+        <option value="$PROJECT_DIR$/models/photoInfo.js" />
+        <option value="$PROJECT_DIR$/dbHelper/photo.js" />
         <option value="$PROJECT_DIR$/service/PhotoService.js" />
+        <option value="$PROJECT_DIR$/test/testCase.js" />
         <option value="$PROJECT_DIR$/test/request.js" />
-        <option value="$PROJECT_DIR$/cache/user.js" />
-        <option value="E:/barryCode/service/ChatService.js" />
-        <option value="$PROJECT_DIR$/cache/redisClient.js" />
+        <option value="$PROJECT_DIR$/api/user.js" />
+        <option value="$PROJECT_DIR$/dbHelper/user.js" />
+        <option value="$PROJECT_DIR$/service/UserService.js" />
         <option value="$PROJECT_DIR$/api/photos.js" />
+        <option value="$PROJECT_DIR$/api/server.js" />
+        <option value="$PROJECT_DIR$/routes.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1600" />
-    <option name="height" value="860" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -271,6 +304,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -327,6 +361,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="dbHelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="barryCode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TalkTake" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="barryCode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TalkTake" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="cache" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -347,7 +409,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -417,13 +478,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1600" height="860" extended-state="0" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20179372" sideWeight="0.73480666" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2016487" sideWeight="0.73480666" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -507,102 +568,110 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/service/TagService.js">
+    <entry file="file://$PROJECT_DIR$/test/testUpload.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbHelper/photo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="717" column="24" selection-start="18589" selection-end="18605" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/photoInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="60" selection-start="930" selection-end="930" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/UserService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="41" selection-start="2158" selection-end="2159" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/testService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="21" selection-start="1120" selection-end="1120" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/testCase.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="35" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="101" selection-start="879" selection-end="879" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cache/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/barryCode/service/ChatService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="59" selection-start="2801" selection-end="2801" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cache/redisClient.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="40" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="37" selection-start="1299" selection-end="1299" vertical-scroll-proportion="0.0">
+        <state line="5" column="8" selection-start="98" selection-end="99" vertical-scroll-proportion="0.68">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/request.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="19" selection-start="5052" selection-end="5052" vertical-scroll-proportion="0.0">
+        <state line="185" column="23" selection-start="4523" selection-end="4523" vertical-scroll-proportion="-19.64" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/testCase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="18" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cache/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes.js">
+    <entry file="file://$PROJECT_DIR$/dbHelper/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="39" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="5" selection-start="235" selection-end="235" vertical-scroll-proportion="-9.153846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/photos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="275" column="41" selection-start="8232" selection-end="8232" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service/PhotoService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="549" column="36" selection-start="19658" selection-end="19658" vertical-scroll-proportion="0.94824964">
+        <state line="252" column="20" selection-start="9793" selection-end="9793" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbHelper/photo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="408" column="10" selection-start="9705" selection-end="9705" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbHelper/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="6" selection-start="412" selection-end="412" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/UserService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="58" selection-start="1535" selection-end="1535" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="27" selection-start="2445" selection-end="2447" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="47" selection-start="943" selection-end="943" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="52" selection-start="2288" selection-end="2288" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/tag.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/photos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="329" column="50" selection-start="10106" selection-end="10106" vertical-scroll-proportion="0.512894">
           <folding />
         </state>
       </provider>

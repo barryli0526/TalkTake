@@ -64,7 +64,7 @@ module.exports = app;
  */
 
 process.on('uncaughtException', function(err){
-    console.log('Exception: ' + err.stack);
+    console.log(Date.now() + 'Exception: ' + err.stack);
     fs.appendFile(path.resolve('log.txt'),err.stack,function(err){
     })
 });

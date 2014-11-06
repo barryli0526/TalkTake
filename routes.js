@@ -30,9 +30,6 @@ module.exports = function (app, client) {
         var SID = basicString[0];   //使用唯一的server ID当做用户名
         var UUID  = basicString[1]; //使用UUID当做密码,128位
 
-        //add for test
-        //SID = '5428d860a185436c240ca611';UUID='99955';
-
 
         res.setHeader("Content-Type","application/json;charset='utf-8'");
         res.setHeader("date",util.getDateTime());
@@ -47,8 +44,6 @@ module.exports = function (app, client) {
                 }else if(!doc || doc.length == 0){
                     res.statusCode = 401;
                     res.send({apiStatus:'failure',msg:'Forbidden! You do not have permission to use this API...'});
-              //      req.session.user = {a:1};
-               //     return next();
                 }else{
                     req.session.user = doc;
                     return next();
@@ -101,7 +96,7 @@ module.exports = function (app, client) {
     //修改个人用户信息   -done
     app.post('/TalkTake/User', BasicAuth, user.updateUserProfile);
     //上传回调     -done
-    app.post('/TalkTake/Photo/Upload/CallBack',photos.uploadCallback);
+    app.post('/TalkTake/Photo/Upload/CallBack', BasicAuth, photos.uploadCallback);
     //获取首页的推荐标签   -done
     app.get('/TalkTake/Tags/Index', BasicAuth, tag.Index);
     //获取首页的推荐标签   -done

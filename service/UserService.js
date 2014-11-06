@@ -42,13 +42,22 @@ exports.SignIn = function(sid, uuid, callback){
  * @param callback
  */
 exports.createClient = function(uuid, callback){
-    User.createNewUser(uuid, function(err,doc){
-        if(err || !doc || doc.length == 0){
-            return callback(err, []);
+    User.getUserByUUID(uuid, function(err, doc){
+        if(err){
+            return callback(err,{});
+        }else if(!doc){
+            User.createNewUser(uuid, function(err,doc){
+                if(err || !doc || doc.length == 0){
+                    return callback(err, {});
+                }else{
+                    return callback(null, {userId:doc._id});
+                }
+            })
         }else{
-            return callback(null, {userId:doc._id});
+            return callback(null, {userId : doc._id});
         }
     })
+
 }
 
 /**
@@ -406,20 +415,35 @@ exports.HandleContactsRelation = function(uid, users, callback){
     }).fail(callback);
 
     var phoneObject = {};
+//    for(var k=0;k<users.length;k++){
+//        var phoneNumber = users[k].phoneNumber[0];
+//        if(phoneNumber){
+//            if(phoneNumber.indexOf('-') != -1){
+//                users[k].syncPhone = phoneNumber ? phoneNumber.slice(phoneNumber.length-13,phoneNumber) : null;
+//            }else{
+//                users[k].syncPhone = phoneNumber ? phoneNumber.slice(phoneNumber.length-11,phoneNumber) : null;
+//            }
+//            phoneObject[users[k].syncPhone] = true;
+//        }
+//    }
+
     for(var k=0;k<users.length;k++){
-        var phoneNumber = users[k].phoneNumber[0];
-        if(phoneNumber){
-            if(phoneNumber.indexOf('-') != -1){
-                users[k].syncPhone = phoneNumber ? phoneNumber.slice(phoneNumber.length-13,phoneNumber) : null;
-            }else{
-                users[k].syncPhone = phoneNumber ? phoneNumber.slice(phoneNumber.length-11,phoneNumber) : null;
+        users[k].syncPhones = [];
+        for(var j= 0,len=users[k].phoneNumber ? users[k].phoneNumber.length : 0; j< len ; j++){
+            var phoneNumber = users[k].phoneNumber[j];
+            if(phoneNumber){
+                phoneNumber = phoneNumber.replace(/-/g,'');
+                phoneNumber = phoneNumber.slice(phoneNumber.length-11, phoneNumber);
             }
-            phoneObject[users[k].syncPhone] = true;
+            users[k].syncPhones[j] = phoneNumber;
+
+            phoneObject[phoneNumber] = true;
         }
     }
 
     users.forEach(function(user, i){
-        User.checkUserByNameAndPhone(user.syncPhone, user.lastName, user.firstName, function(err, doc){
+
+        User.checkUserByNameAndPhones(user.syncPhones, user.lastName, user.firstName, function(err, doc){
             if(err){
                return proxy.emit('error');
 
@@ -430,7 +454,7 @@ exports.HandleContactsRelation = function(uid, users, callback){
                 relations[i].relationLevel = 0;   //无法在使用人群中找到好友
                 proxy.emit('relation_ready');
             }else{
-                if(doc.telephone && doc.telephone == user.syncPhone){
+                if(doc.telephone && phoneObject[doc.telephone]/*doc.telephone == user.syncPhone*/){
                     User.addFriends(uid, doc._id,user.lastName, user.firstName,function(){});
                     User.addFriends(doc._id, uid,'','',function(){});
                     relations[i] = {};

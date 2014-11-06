@@ -73,6 +73,24 @@ exports.addLikePhotoInfo = function(userId, photoId, likeTime, callback){
 }
 
 /**
+ * 图片浏览
+ * @param userId
+ * @param photoId
+ * @param visitTime
+ * @param callback
+ */
+exports.addVisitPhotoInfo = function(userId, photoId, visitTime, callback){
+    PhotoInfo.findOneAndUpdate({'photo_id':photoId},{
+        $addToSet:{
+            'visit':{
+                'visit_at':likeTime,
+                'visiter_id':userId
+            }
+        }
+    }, callback);
+}
+
+/**
  * 取消点赞后触发
  * @param userId
  * @param photoId

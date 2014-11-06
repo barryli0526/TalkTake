@@ -29,6 +29,13 @@ var PhotoInfoSchema = new Schema({
             _id:false
         }
     ],
+    visit:[
+        {
+            visit_at:{type:Date},
+            visiter_id:{type:ObjectId, ref:'User'},
+            _id:false
+        }
+    ],
     reply_count: { type: Number, default: 0 },
     post_at:{type:Date, default:Date.now()}
 });

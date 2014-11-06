@@ -19,6 +19,10 @@ exports.createNewUser = function(uuid, callback){
     user.save(callback);
 }
 
+exports.getUserByUUID = function(uuid, callback){
+    User.findOne({'uuid':uuid}, callback);
+}
+
 /**
  * 新建关联
  * @param followerId
@@ -263,6 +267,17 @@ exports.checkUserByNameAndPhone = function(phoneNumber, firstName, lastName, cal
     User.findOne({$or:[{'telephone':phoneNumber}, {$and : [{'firstName':firstName},{'lastName':lastName}]}]}, callback);
   //  User.findOne({$or:[{'telephone':phoneNumber}, {'first_name':firstName}]}, callback);
    // User.findOne({'first_name':firstName}, callback);
+}
+
+/**
+ * 通过电话组和姓名检索用户是否存在
+ * @param phones
+ * @param firstName
+ * @param lastName
+ * @param callback
+ */
+exports.checkUserByNameAndPhones = function(phones, firstName, lastName, callback){
+    User.findOne({$or:[{'telephone':{$in:phones}}, {$and : [{'firstName':firstName},{'lastName':lastName}]}]}, callback);
 }
 
 

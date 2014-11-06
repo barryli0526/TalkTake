@@ -63,7 +63,8 @@ exports.getUploadToken = function(req, res){
         qn.conf.ACCESS_KEY = qnConfig.ACCESS_KEY;
         qn.conf.SECRET_KEY = qnConfig.SECRET_KEY;
         var expires = req.query.expires ? req.query.expires : qnConfig.expires;
-        var putPolicy = new qn.rs.PutPolicy(qnConfig.scope,qnConfig.callbackUrl,qnConfig.callbackBody,null,null,null,null,expires);
+//        var putPolicy = new qn.rs.PutPolicy(qnConfig.scope,qnConfig.callbackUrl,qnConfig.callbackBody,null,null,null,null,expires);
+        var putPolicy = new qn.rs.PutPolicy(qnConfig.scope,null,null,null,null,null,null,expires);
 //        var putPolicy = new qn.rs.PutPolicy(qnConfig.scope,qnConfig.callbackUrl,qnConfig.callbackBody,null,null,null,null,expires,qnConfig.persistentOps);
         var token = putPolicy.token();
         if(!token){

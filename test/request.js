@@ -19,16 +19,17 @@ var querystring = require('querystring');
 //543529c20b439ae15fb5a663,123-456-789
 
 var makeHttpPost = function(path,post_data){
-
+    post_data = JSON.stringify(post_data);
 
 // An object of options to indicate where to post to
     var post_options = {
-        host: '121.199.58.200',
+        host: 'localhost',
+      //  host:'210.22.174.102',
         port: '3003',
         path: path,
         method: 'POST',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
             'Content-Length': post_data.length
         }
     };
@@ -48,7 +49,8 @@ var makeHttpPost = function(path,post_data){
 
 var makeAuthGet = function(auth, path, callback){
     var post_options = {
-        host: '121.199.58.200',
+      //  host: '210.22.174.102',
+        host:'121.199.58.200',
         port: '3003',
         path: path,
         method: 'GET',
@@ -83,7 +85,8 @@ var makeAuthPost = function(auth, path, post_data,callback){
     // console.log(post_data);
 // An object of options to indicate where to post to
     var post_options = {
-        host: '121.199.58.200',
+      //  host: '210.22.174.102',
+        host:'localhost',
         port: '3003',
         path: path,
         method: 'POST',
@@ -111,9 +114,10 @@ var makeAuthPost = function(auth, path, post_data,callback){
 }
 
 exports.testInitClient = function(){
-    var post_data = querystring.stringify({
-        UUID:'123-456-789'
-    });
+    var post_data = {
+        UUID:'3'
+    };
+    console.log(post_data);
 
     makeHttpPost('/TalkTake/InitClient',post_data);
 }
@@ -165,28 +169,28 @@ exports.testunFollow = function(){
 }
 
 exports.testSyncContacts = function(){
-    var post_data = querystring.stringify(
-        {array:[
-        {
-        firstName : '',
-        lastName : '李雷',
-        photoNumber : '15601909527'
-        },
-        {
-            firstName : 'w',
-            lastName : 'e',
-            photoNumber : '86225659556566'
-        }
-    ] }
-    );
-    console.log(post_data);
+//    var post_data =
+//        {contactlist:[
+//        {
+//        firstName : '',
+//        lastName : '李雷',
+//        photoNumber : '15601909527'
+//        },
+//        {
+//            firstName : 'w',
+//            lastName : 'e',
+//            photoNumber : '86225659556566'
+//        }
+//    ]}
+//    ;
+    var post_data = {};
 
-    makeHttpPost('/TalkTake/SyncContacts',post_data);
+    makeHttpPost('/TalkTake/User/SyncContacts',post_data);
 }
 
 exports.testUpdateUser = function(){
-    var UUID = '123-456-789',
-        SID = '543bb2059fb2b04576c186bd';
+    var UUID = '3',
+        SID = '54505c1d92a9bfdc04ccea4d';
 
     var auth =  new Buffer(SID + ':' + UUID).toString('base64');
 
@@ -194,8 +198,8 @@ exports.testUpdateUser = function(){
     var post_data =  {
     nickName:'巴瑞力',
     firstName:'',
-    lastName:'李雷',
-    mobilePhone:13776920138,
+    lastName:'李雷1',
+    mobilePhone:15251326433,
     sex:'男',
     location:{
         country:'中国',
@@ -225,5 +229,44 @@ exports.getGetInfo = function(){
     makeAuthGet(auth,'/TalkTake/Photos/5440955fe2aecef304f8d07f',function(err, doc){
         console.log(err);
     });
+}
+
+exports.getUploadToke = function(){
+    var UUID = '123-456-789',
+        SID = '544dbc276d45403804082705';
+      //  SID = '544dba483676e2f418a2e987';
+
+    var auth =  new Buffer(SID + ':' + UUID).toString('base64');
+
+    makeAuthGet(auth,'/TalkTake/UploadToken',function(doc){
+        console.log(doc);
+    });
+
+}
+
+exports.postData = function(){
+
+    var UUID = '123-456-789',
+        SID = '544b652ba83ba34d16de1f17';
+
+    var auth =  new Buffer(SID + ':' + UUID).toString('base64');
+
+    makeAuthPost(auth,'/TalkTake/Photo/Upload/CallBack',{},function(err, doc){
+        console.log(err);
+    })
+}
+
+exports.getPhotoDetail = function(){
+
+    var photoId = '544096b8e2aecef304f8d083';
+
+    var UUID = '6A832D3D-134F-4EE9-B55C-7CA5C055177C',
+        SID = '54408cdce2aecef304f8d078';
+
+    var auth =  new Buffer(SID + ':' + UUID).toString('base64');
+
+    makeAuthGet(auth, '/TalkTake/Photos/544096b8e2aecef304f8d083', function(doc){
+        console.log(doc);
+    })
 }
 
