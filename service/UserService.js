@@ -506,6 +506,40 @@ exports.updateUserProfile = function(uid, data, callback){
     User.updateUserProfile(uid, data, callback);
 }
 
+/**
+ * 获取个人设置信息
+ * @param uid
+ * @param callback
+ */
+exports.getUserSetting = function(uid, callback){
+    if(typeof uid === 'string'){
+        uid = new ObjectId(uid);
+    }
+
+    User.getUserSetting(uid, function(err, doc){
+        if(err){
+            return callback(err,{});
+        }else{
+            var user = {};
+            user.nickName = doc.nick_name;
+            user.firstName = doc.first_name;
+            user.lastName = doc.second_name;
+            user.mobilePhone = doc.telephone;
+            user.sex = doc.sex;
+            user.location = {};
+            user.location.country = doc.location.country;
+            user.location.county = doc.location.county;
+            user.location.city = doc.location.city;
+            user.constellation = doc.constellation;
+            user.selfDesc = doc.selfDesc;
+            user.qrCode = doc.qr_code;
+            user.privacy = doc.privacy;
+            return callback(null, user);
+        }
+    })
+
+}
+
 
 /**
  * 根据目录获取照片

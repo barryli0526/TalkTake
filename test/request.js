@@ -85,8 +85,8 @@ var makeAuthPost = function(auth, path, post_data,callback){
     // console.log(post_data);
 // An object of options to indicate where to post to
     var post_options = {
-      //  host: '210.22.174.102',
-        host:'localhost',
+        host: '210.22.174.102',
+ //       host:'localhost',
         port: '3003',
         path: path,
         method: 'POST',
@@ -198,8 +198,8 @@ exports.testUpdateUser = function(){
     var post_data =  {
     nickName:'巴瑞力',
     firstName:'',
-    lastName:'李雷1',
-    mobilePhone:15251326433,
+    lastName:'李雷',
+    mobilePhone:15601909527,
     sex:'男',
     location:{
         country:'中国',
@@ -270,3 +270,15 @@ exports.getPhotoDetail = function(){
     })
 }
 
+
+exports.postPhoto = function(photo){
+    var UUID = '',
+        SID = '';
+
+    var auth = new Buffer(SID + ':' + UUID).toString('base64');
+
+    makeAuthPost(auth,'/TalkTake/Photo/Upload/CallBack', photo, function(err,doc){
+        console.log(err) ;
+    })
+
+}

@@ -13,9 +13,11 @@ require('./photoInfo');
 require('./user');
 require('./userRelation');
 require('./comment');
+require('./apiInfo');
 
 exports.User = mongoose.model('User');
 exports.Photo = mongoose.model('Photo');
 exports.PhotoInfo = mongoose.model('PhotoInfo');
 exports.UserRelation = mongoose.model('UserRelation');
 exports.Comment = mongoose.model('Comment');
+exports.ApiInfo = mongoose.model('ApiInfo');

@@ -358,6 +358,15 @@ exports.updateUserProfile = function(uid, data, callback){
     })
 }
 
+/**
+ * 获取个人信息设置
+ * @param uid
+ * @param callback
+ */
+exports.getUserSetting = function(uid, callback){
+    User.findOne({'_id':uid}, callback);
+}
+
 exports.testCreateUser = function(doc, callback){
     var user = new User();
     user.uuid = doc.uuid;
