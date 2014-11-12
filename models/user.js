@@ -40,12 +40,6 @@ UserSchema.virtual('showName').get(function(){
     }
 })
 
-UserSchema.virtual('location').get(function(){
-    var country = this.address.county ? (this.address.county+',') : '',
-        city = this.address.city ? (this.address.city+',') : '',
-        county = this.address.county ? this.address.county : '';
-    return country + city + county;
-})
 
 
 
