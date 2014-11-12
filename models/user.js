@@ -11,11 +11,12 @@ var UserSchema = new Schema({
   selfDesc:{type:String},
   siteUrl : {type:String},
   telephone : {type : String},
-  address: {
-        country:{type:String},
-        city:{type:String},
-        county:{type:String}
-  },
+  location : {type : String},
+//  address: {
+//        country:{type:String},
+//        city:{type:String},
+//        county:{type:String}
+//  },
   signature: { type: String },
   avatar: { type: String },
   qr_code:{type:String},

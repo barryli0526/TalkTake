@@ -2,22 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2263c5b-ff48-40e8-b4cc-02932417bef7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/HelpService.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dbHelper/apiInfo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/apiInfo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/LMS.js" afterPath="$PROJECT_DIR$/lib/LMS.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/TagService.js" afterPath="$PROJECT_DIR$/service/TagService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/UserService.js" afterPath="$PROJECT_DIR$/service/UserService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbHelper/index.js" afterPath="$PROJECT_DIR$/dbHelper/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/index.js" afterPath="$PROJECT_DIR$/models/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbHelper/photo.js" afterPath="$PROJECT_DIR$/dbHelper/photo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/request.js" afterPath="$PROJECT_DIR$/test/request.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes.js" afterPath="$PROJECT_DIR$/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/tag.js" afterPath="$PROJECT_DIR$/api/tag.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/testCase.js" afterPath="$PROJECT_DIR$/test/testCase.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/user.js" afterPath="$PROJECT_DIR$/api/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbHelper/user.js" afterPath="$PROJECT_DIR$/dbHelper/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/user.js" afterPath="$PROJECT_DIR$/models/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="barryCode.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415617313722" ignored="false" />
+    <file path="/Dummy.txt" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415804514196" ignored="false" />
     <file path="/routes.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415609971469" ignored="false" />
     <file path="/site.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1376558091149" ignored="false" />
     <file path="/app.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414397831962" ignored="false" />
@@ -37,7 +36,7 @@
     <file path="/override.css" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1376550002285" ignored="false" />
     <file path="/util.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413457574390" ignored="false" />
     <file path="/layout.html" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1377663800033" ignored="false" />
-    <file path="/user.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415609772805" ignored="false" />
+    <file path="/user.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415805139158" ignored="false" />
     <file path="/articleService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1376622041120" ignored="false" />
     <file path="/index.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415348986243" ignored="false" />
     <file path="/index.html" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411978483405" ignored="false" />
@@ -70,12 +69,12 @@
     <file path="/userRelation.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411561842029" ignored="false" />
     <file path="/comment.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411555582587" ignored="false" />
     <file path="/server.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415274024916" ignored="false" />
-    <file path="/request.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415608689148" ignored="false" />
-    <file path="/UserService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415609701736" ignored="false" />
+    <file path="/request.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415627794259" ignored="false" />
+    <file path="/UserService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415805230559" ignored="false" />
     <file path="/photos.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415264615128" ignored="false" />
     <file path="/base.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413546803728" ignored="false" />
     <file path="/PhotoService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414483968909" ignored="false" />
-    <file path="/testCase.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415610587297" ignored="false" />
+    <file path="/testCase.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415627905720" ignored="false" />
     <file path="/test.html" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414380265175" ignored="false" />
     <file path="/dispacher.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1410758257269" ignored="false" />
     <file path="/LMS.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1410832295514" ignored="false" />
@@ -142,7 +141,7 @@
     <file path="/apiCount.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415347680455" ignored="false" />
     <file path="/apiInfo.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415592086026" ignored="false" />
     <file path="/HelpService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415591867848" ignored="false" />
-    <file path="$PROJECT_DIR$/../../nShoperV1/services/mysql/goods_category.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415612197006" ignored="false" />
+    <file path="$PROJECT_DIR$/../../nShoperV1/services/mysql/goods_category.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415627743985" ignored="false" />
     <file path="$PROJECT_DIR$/../../nShoperV1/node_modules/sequelize/lib/associations/helpers.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415602673107" ignored="false" />
     <file path="/helpers.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415602610470" ignored="false" />
     <file path="$PROJECT_DIR$/../../nShoperV1/node_modules/sequelize/lib/associations/belongs-to.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415602842317" ignored="false" />
@@ -165,19 +164,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="routes.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes.js">
+      <file leaf-file-name="tag.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/tag.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="46" selection-start="6117" selection-end="6117" vertical-scroll-proportion="0.0">
+            <state line="69" column="14" selection-start="1895" selection-end="1895" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tag.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/tag.js">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="19" column="2" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -186,34 +185,25 @@
       <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="289" column="10" selection-start="9094" selection-end="9881" vertical-scroll-proportion="0.0">
+            <state line="273" column="39" selection-start="8806" selection-end="8806" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dbHelper/user.js">
+      <file leaf-file-name="routes.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="362" column="6" selection-start="9450" selection-end="9597" vertical-scroll-proportion="0.0">
+            <state line="141" column="22" selection-start="6368" selection-end="6368" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testUpload.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/testUpload.js">
+      <file leaf-file-name="photos.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/photos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="32" selection-start="1914" selection-end="1914" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testService.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/testService.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="0" selection-start="2783" selection-end="5837" vertical-scroll-proportion="0.0">
+            <state line="272" column="13" selection-start="8183" selection-end="8183" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -222,36 +212,43 @@
       <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="39" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
+            <state line="21" column="8" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserService.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="photo.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/photo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="photo.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbHelper/photo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserService.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/service/UserService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="541" column="29" selection-start="15717" selection-end="16628" vertical-scroll-proportion="0.0">
+            <state line="528" column="8" selection-start="16006" selection-end="16006" vertical-scroll-proportion="0.25462964">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testCase.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/testCase.js">
+      <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbHelper/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="6" selection-start="4166" selection-end="4166" vertical-scroll-proportion="0.7550143">
-              <folding>
-                <element signature="e#548#4073#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="request.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/request.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="200" column="35" selection-start="4833" selection-end="4833" vertical-scroll-proportion="0.0">
+            <state line="381" column="19" selection-start="9748" selection-end="9759" vertical-scroll-proportion="-8.96">
               <folding />
             </state>
           </provider>
@@ -275,22 +272,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/service/PhotoService.js" />
-        <option value="$PROJECT_DIR$/api/photos.js" />
-        <option value="$PROJECT_DIR$/api/server.js" />
-        <option value="$PROJECT_DIR$/models/apiCount.js" />
-        <option value="$PROJECT_DIR$/dbHelper/apiUsage.js" />
         <option value="$PROJECT_DIR$/models/index.js" />
         <option value="$PROJECT_DIR$/dbHelper/index.js" />
         <option value="$PROJECT_DIR$/models/apiInfo.js" />
         <option value="$PROJECT_DIR$/service/HelpService.js" />
         <option value="$PROJECT_DIR$/dbHelper/apiInfo.js" />
-        <option value="$PROJECT_DIR$/dbHelper/user.js" />
-        <option value="$PROJECT_DIR$/api/user.js" />
-        <option value="$PROJECT_DIR$/service/UserService.js" />
+        <option value="$PROJECT_DIR$/dbHelper/photo.js" />
         <option value="$PROJECT_DIR$/routes.js" />
-        <option value="$PROJECT_DIR$/test/request.js" />
+        <option value="$PROJECT_DIR$/service/TagService.js" />
+        <option value="$PROJECT_DIR$/api/tag.js" />
+        <option value="$PROJECT_DIR$/lib/LMS.js" />
         <option value="$PROJECT_DIR$/test/testCase.js" />
+        <option value="$PROJECT_DIR$/test/request.js" />
+        <option value="$PROJECT_DIR$/models/user.js" />
+        <option value="$PROJECT_DIR$/api/user.js" />
+        <option value="$PROJECT_DIR$/dbHelper/user.js" />
+        <option value="$PROJECT_DIR$/service/UserService.js" />
       </list>
     </option>
   </component>
@@ -326,7 +323,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -342,20 +338,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="TalkTake" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="barryCode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TalkTake" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -411,40 +393,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="barryCode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TalkTake" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cache" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="barryCode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TalkTake" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -514,7 +469,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -604,105 +559,109 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dbHelper/photo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="727" column="59" selection-start="18881" selection-end="18881" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/HelpService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="52" selection-start="328" selection-end="328" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/apiInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="10" selection-start="320" selection-end="326" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbHelper/apiInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="43" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/photo.js">
+    <entry file="file://$PROJECT_DIR$/log.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/photoInfo.js">
+    <entry file="file://$PROJECT_DIR$/lib/LMS.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="36" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0" />
+        <state line="13" column="30" selection-start="268" selection-end="268" vertical-scroll-proportion="0.31661892" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/testUpload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="32" selection-start="1914" selection-end="1914" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/tag.js">
+    <entry file="file://$PROJECT_DIR$/test/testService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/user.js">
+    <entry file="file://$PROJECT_DIR$/test/testUpload.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="289" column="10" selection-start="9094" selection-end="9881" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/UserService.js">
+    <entry file="file://$PROJECT_DIR$/test/testCase.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="541" column="29" selection-start="15717" selection-end="16628" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbHelper/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="362" column="6" selection-start="9450" selection-end="9597" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="39" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="46" selection-start="6117" selection-end="6117" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/testService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="0" selection-start="2783" selection-end="5837" vertical-scroll-proportion="0.0">
+        <state line="178" column="29" selection-start="4279" selection-end="4279" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/request.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="35" selection-start="4833" selection-end="4833" vertical-scroll-proportion="0.0">
+        <state line="271" column="27" selection-start="6630" selection-end="6630" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/testCase.js">
+    <entry file="file://$PROJECT_DIR$/api/photos.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="6" selection-start="4166" selection-end="4166" vertical-scroll-proportion="0.7550143">
-          <folding>
-            <element signature="e#548#4073#0" expanded="false" />
-          </folding>
+        <state line="272" column="13" selection-start="8183" selection-end="8183" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/photo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbHelper/photo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/tag.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="14" selection-start="1895" selection-end="1895" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="2" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="8" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="22" selection-start="6368" selection-end="6368" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="273" column="39" selection-start="8806" selection-end="8806" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbHelper/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="381" column="19" selection-start="9748" selection-end="9759" vertical-scroll-proportion="-8.96">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/UserService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="528" column="8" selection-start="16006" selection-end="16006" vertical-scroll-proportion="0.25462964">
+          <folding />
         </state>
       </provider>
     </entry>

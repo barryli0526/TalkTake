@@ -279,6 +279,14 @@ exports.getTwoDimensionFavirouteTags = function(authorId, friendList, filterList
     );
 }
 
+/**
+ * 获取陌生人最喜欢的标签
+ * @param authorId
+ * @param friendList
+ * @param filterList
+ * @param limit
+ * @param callback
+ */
 exports.getStrangerFavoriteTags = function(authorId, friendList, filterList,limit, callback){
         PhotoInfo.aggregate(
         {$unwind:'$tags'},
@@ -316,6 +324,12 @@ exports.getStrangerFavoriteTags = function(authorId, friendList, filterList,limi
     );
 }
 
+/**
+ * 获取最新的标签
+ * @param filterList
+ * @param limit
+ * @param callback
+ */
 exports.getLatestTags = function(filterList,limit, callback){
     PhotoInfo.aggregate(
         {$unwind:'$tags'},
@@ -342,6 +356,11 @@ exports.getLatestTags = function(filterList,limit, callback){
     )
 }
 
+/**
+ * 统计所有标签
+ * @param tags
+ * @param callback
+ */
 exports.countTags = function(tags, callback){
     PhotoInfo.aggregate(
         {$unwind:'$tags'},
@@ -362,6 +381,11 @@ exports.countTags = function(tags, callback){
     )
 }
 
+/**
+ * 获取标签的封面
+ * @param tagName
+ * @param callback
+ */
 exports.getCoverForTag = function(tagName, callback){
     PhotoInfo.findOne({'tags':{$all:tagName}}).populate('photo_id').exec(callback);
 }

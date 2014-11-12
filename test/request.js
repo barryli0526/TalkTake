@@ -23,8 +23,8 @@ var makeHttpPost = function(path,post_data){
 
 // An object of options to indicate where to post to
     var post_options = {
-        host: 'localhost',
-      //  host:'210.22.174.102',
+//        host: '121.199.58.200',
+        host:'210.22.174.102',
         port: '3003',
         path: path,
         method: 'POST',
@@ -46,6 +46,8 @@ var makeHttpPost = function(path,post_data){
     post_req.write(post_data);
     post_req.end();
 }
+
+
 
 var makeAuthGet = function(auth, path, callback){
     var post_options = {
@@ -115,9 +117,9 @@ var makeAuthPost = function(auth, path, post_data,callback){
 
 exports.testInitClient = function(){
     var post_data = {
-        UUID:'3'
+        UUID:'56F1EB84-F11C-4C87-B7AD-28E763FD3274'
     };
-    console.log(post_data);
+   // console.log(post_data);
 
     makeHttpPost('/TalkTake/InitClient',post_data);
 }
@@ -189,17 +191,17 @@ exports.testSyncContacts = function(){
 }
 
 exports.testUpdateUser = function(){
-    var UUID = '3',
-        SID = '54505c1d92a9bfdc04ccea4d';
+    var UUID = '56F1EB84-F11C-4C87-B7AD-28E763FD3274',
+        SID = '5460b535fcfe2bc518201fb3';
 
     var auth =  new Buffer(SID + ':' + UUID).toString('base64');
 
 
     var post_data =  {
-    nickName:'巴瑞力',
+    nickName:'Clark',
     firstName:'',
-    lastName:'李雷',
-    mobilePhone:15601909527,
+    lastName:'郑凯元',
+    mobilePhone:18817367346,
     sex:'男',
     location:{
         country:'中国',
@@ -260,20 +262,21 @@ exports.getPhotoDetail = function(){
 
     var photoId = '544096b8e2aecef304f8d083';
 
-    var UUID = '6A832D3D-134F-4EE9-B55C-7CA5C055177C',
-        SID = '54408cdce2aecef304f8d078';
+    var UUID = '56F1EB84-F11C-4C87-B7AD-28E763FD3274',
+        SID = '5460b535fcfe2bc518201fb3';
 
     var auth =  new Buffer(SID + ':' + UUID).toString('base64');
+    console.log(auth);
 
-    makeAuthGet(auth, '/TalkTake/Photos/544096b8e2aecef304f8d083', function(doc){
-        console.log(doc);
-    })
+//    makeAuthGet(auth, '/TalkTake/Photos/544096b8e2aecef304f8d083', function(doc){
+//        console.log(doc);
+//    })
 }
 
 
 exports.postPhoto = function(photo){
-    var UUID = '',
-        SID = '';
+    var UUID = '56F1EB84-F11C-4C87-B7AD-28E763FD3274',
+        SID = '5460b535fcfe2bc518201fb3';
 
     var auth = new Buffer(SID + ':' + UUID).toString('base64');
 

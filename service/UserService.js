@@ -165,7 +165,13 @@ exports.getUserDetail = function(uid, callback){
 }
 
 
-
+/**
+ * 获取所有的关注列表
+ * @param uid
+ * @param page
+ * @param size
+ * @param callback
+ */
 exports.getAllFollowingUser = function(uid, page, size, callback){
 
     if(typeof uid === 'string'){
@@ -279,6 +285,11 @@ exports.getAllFollowerUser = function(uid, page, size, callback){
    // return callback(null, sampleData.followerList);
 }
 
+/**
+ * 获取所有的好友
+ * @param uid
+ * @param callback
+ */
 exports.getAllFriends = function(uid, callback){
     if(typeof uid === 'string'){
         uid = new ObjectId(uid);
@@ -506,6 +517,13 @@ exports.updateUserProfile = function(uid, data, callback){
     User.updateUserProfile(uid, data, callback);
 }
 
+//exports.setAvatar = function(uid, avatar, callback){
+//    if(typeof uid === 'string'){
+//        uid = new ObjectId(uid);
+//    }
+//    User.setAvatar(uid, avatar, callback);
+//}
+
 /**
  * 获取个人设置信息
  * @param uid
@@ -521,15 +539,13 @@ exports.getUserSetting = function(uid, callback){
             return callback(err,{});
         }else{
             var user = {};
+            user.avatar = doc.avatar;
             user.nickName = doc.nick_name;
             user.firstName = doc.first_name;
             user.lastName = doc.second_name;
             user.mobilePhone = doc.telephone;
             user.sex = doc.sex;
-            user.location = {};
-            user.location.country = doc.location.country;
-            user.location.county = doc.location.county;
-            user.location.city = doc.location.city;
+            user.location = doc.location;
             user.constellation = doc.constellation;
             user.selfDesc = doc.selfDesc;
             user.qrCode = doc.qr_code;

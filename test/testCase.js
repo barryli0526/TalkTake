@@ -168,9 +168,14 @@ var photos = [
     }
 ]
 
-for (var i= 0,l=photos.length;i<l;i++){
-    requestCase.postPhoto(photos[i],function(err){
+//for (var i= 0,l=photos.length;i<l;i++){
+//    requestCase.postPhoto(photos[i],function(err){
+//             console.log(err);
+//    })
+//}
 
-    })
-}
+//requestCase.testUpdateUser();
 
+requestCase.getPhotoDetail();
+
+//requestCase.testInitClient();

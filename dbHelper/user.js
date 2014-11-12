@@ -24,6 +24,25 @@ exports.getUserByUUID = function(uuid, callback){
 }
 
 /**
+ * 设置头像
+ * @param uuid
+ * @param avatar
+ * @param callback
+ */
+//exports.setAvatar = function(uid,avatar, callback){
+//    User.findOne({'_id':uid},function(err, doc){
+//        if(err){
+//            return callback(err,{});
+//        }else if(!doc){
+//            return callback('user not exist', {});
+//        }else{
+//            doc.avatar = avatar;
+//            doc.save(callback);
+//        }
+//    })
+//}
+
+/**
  * 新建关联
  * @param followerId
  * @param uid
@@ -344,15 +363,12 @@ exports.updateUserProfile = function(uid, data, callback){
             data.lastName ? doc.second_name = data.lastName : null;
             data.mobilePhone ? doc.telephone = data.mobilePhone : null;
             data.sex ? doc.sex = data.sex : null;
-            if(data.location){
-                data.location.country ? doc.address.country = data.location.country : null;
-                data.location.city ? doc.address.city = data.location.city : null;
-                data.location.county ? doc.address.county = data.location.county : null;
-            }
+            data.location ? doc.location = data.location : null;
             data.constellation ? doc.constellation = data.constellation : null;
             data.selfDesc ? doc.selfDesc = data.selfDesc : null;
             data.qrCode ? doc.qr_code = data.qrCode : null;
             data.privacy ? doc.privacy = data.privacy : null;
+            data.avatar ? doc.avatar = data.avatar : null;
             doc.save(callback);
         }
     })

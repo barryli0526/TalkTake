@@ -312,6 +312,36 @@ exports.getUserSetting = function(req, res){
     }
 }
 
+/**
+ * 上传头像
+ * @param req
+ * @param res
+ */
+exports.uploadAvatar = function(req, res){
+    if(!req.session.user){
+        res.statusCode = 401;
+        res.end(util.combineFailureRes(labels.AuthError));
+    }else{
+        var uid = req.session.user._id;
+        var avatar = req.body.avatar;
+        if(!uid){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.sessionError));
+            return;
+        }else{
+            UserService.setAvatar(uid,avatar, function(err,user){
+                if(err){
+                    res.statusCode = 500;
+                    res.end(util.combineFailureRes(labels.DBError));
+                }else{
+                    res.statusCode = 200;
+                    res.end(util.combineSuccessRes(user));
+                }
+            })
+        }
+    }
+}
+
 
 /**
  * 获取某个目录下的图片信息

@@ -15,6 +15,11 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var EventProxy = require('eventproxy');
 var util = require('../lib/util');
 
+/**
+ * 获取首页的标签
+ * @param userId
+ * @param callback
+ */
 exports.getIndexTags = function(userId, callback){
 
     if(typeof userId === 'string'){
@@ -191,7 +196,11 @@ exports.getRecommendTags = function(userId, callback){
 }
 
 
-
+/**
+ * 获取相册信息
+ * @param userId
+ * @param callback
+ */
 exports.getAlbumInfo = function(userId, callback){
 
     if(typeof userId === 'string'){

@@ -48,6 +48,12 @@ exports.Index = function(req, res){
     }
 }
 
+/**
+ * 打标签推荐标签
+ * @param req
+ * @param res
+ * @constructor
+ */
 exports.Recommend = function(req, res){
     if(!req.session.user){
         res.statusCode = 401;
