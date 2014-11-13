@@ -89,13 +89,18 @@ exports.getUserDetail = function(req, res){
     }else{
         var userId = req.params.userId;
         var isSelf = userId ? false : true;
-        var uid = (isSelf == true) ? req.session.user._id : userId;
+        var uid = (isSelf) ? req.session.user._id : userId;
+        var arr = req.query.select ? req.query.select.split(','): ['all'];
+        var select = {};
+        for(var i=0;i<arr.length;i++){
+           select[arr[i]] = 1;
+        }
         if(!uid){
             res.statusCode = 503;
             res.end(util.combineFailureRes(labels.sessionError));
             return;
         }else{
-            UserService.getUserDetail(uid, function(err,docs){
+            UserService.getUserDetail(uid,select, function(err,docs){
                 if(err){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
@@ -118,15 +123,22 @@ exports.getAllFollowingUser = function(req, res){
         res.statusCode = 401;
         res.end(util.combineFailureRes(labels.AuthError));
     }else{
-        var uid = req.params.userId ? req.params.userId : req.session.user._id ,
-            query = req.query;
+        var uid = req.params.userId,
+            query = req.query,
+            isSelf = true;
+        if(!uid){
+            isSelf = true;
+            uid = req.session.user._id;
+        }else{
+            isSelf = (uid == req.session.user._id);
+        }
         var startIndex = query.startIndex ? query.startIndex : 0,
             size = query.size ? query.size : labels.UserList;
         if(!uid){
             res.statusCode = 503;
             res.end(util.combineFailureRes(labels.sessionError));
             return;
-        }else{
+        }else if(isSelf){
             UserService.getAllFollowingUser(uid,startIndex,size, function(err,docs){
                 if(err){
                     res.statusCode = 500;
@@ -136,6 +148,9 @@ exports.getAllFollowingUser = function(req, res){
                     res.end(util.combineSuccessRes(docs));
                 }
             })
+        }else{
+            res.statusCode = 200;
+            res.end(util.combineSuccessRes([]));
         }
     }
 }

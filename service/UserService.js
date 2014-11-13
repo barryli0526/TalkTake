@@ -125,12 +125,11 @@ exports.UnFollowUser = function(unFollowerId, uid, callback){
  * @param uid
  * @param callback
  */
-exports.getUserDetail = function(uid, callback){
+exports.getUserDetail = function(uid,select, callback){
 
     if(typeof uid === 'string'){
         uid = new ObjectId(uid);
     }
-
     var proxy = new EventProxy(),
         events = ['user','followingCount','followerCount','likeCount','photoCount','Album'],
         userInfo = {};
@@ -146,21 +145,28 @@ exports.getUserDetail = function(uid, callback){
         user.location ? userInfo.location = user.location : null;
         user.avatar ?  userInfo.avatar = user.avatar: null;
       //  userInfo.isFollowing = '';
-        userInfo.photoCount = photoCount;
-        userInfo.followingCount = followingCount;
-        userInfo.followerCount = followerCount;
-        userInfo.likedCount = likeCount;
-        userInfo.album =Album;
+        photoCount ? userInfo.photoCount = photoCount : null;
+        followingCount ? userInfo.followingCount = followingCount : null;
+        followerCount ? userInfo.followerCount = followerCount : null;
+        likeCount ? userInfo.likedCount = likeCount : null;
+        Album ? userInfo.album = Album : null;
+
         return callback(null, userInfo);
     }).fail(callback);
 
-    User.getUserDetailById(uid, proxy.done('user'));
-    User.countFollowing(uid, proxy.done('followingCount'));
-    User.countFollower(uid, proxy.done('followerCount'));
-    Photo.countLikePhotos(uid, proxy.done('likeCount'));
-    Photo.countPhotos(uid, proxy.done('photoCount'));
+    (select['user'] || select['all']) ?  User.getUserDetailById(uid, proxy.done('user')) : proxy.emit('user', {});
+    (select['followingCount'] || select['all']) ?User.countFollowing(uid, proxy.done('followingCount')) : proxy.emit('followingCount', null);
+    (select['followerCount'] || select['all']) ? User.countFollower(uid, proxy.done('followerCount')) : proxy.emit('followerCount', null);
+    (select['likeCount'] || select['all']) ? Photo.countLikePhotos(uid, proxy.done('likeCount')) : proxy.emit('likeCount', null);
+    (select['photoCount'] || select['all']) ? Photo.countPhotos(uid, proxy.done('photoCount')) : proxy.emit('photoCount', null);
+    (select['album'] || select['all']) ? TagService.getAlbumInfo(uid, proxy.done('Album')) : proxy.emit('Album', null);
 
-    TagService.getAlbumInfo(uid, proxy.done('Album'));
+//    User.countFollowing(uid, proxy.done('followingCount'));
+//    User.countFollower(uid, proxy.done('followerCount'));
+//    Photo.countLikePhotos(uid, proxy.done('likeCount'));
+//    Photo.countPhotos(uid, proxy.done('photoCount'));
+//
+//    TagService.getAlbumInfo(uid, proxy.done('Album'));
 //    return callback(null, sampleData.userInfo);
 }
 

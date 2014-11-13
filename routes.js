@@ -31,6 +31,8 @@ module.exports = function (app, client) {
         var SID = basicString[0];   //使用唯一的server ID当做用户名
         var UUID  = basicString[1]; //使用UUID当做密码,128位
 
+        UUID = '99955';
+        SID = '5428d860a185436c240ca611';
 
         res.setHeader("Content-Type","application/json;charset='utf-8'");
         res.setHeader("date",util.getDateTime());
