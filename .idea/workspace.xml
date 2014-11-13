@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2263c5b-ff48-40e8-b4cc-02932417bef7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/UserService.js" afterPath="$PROJECT_DIR$/service/UserService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
     </list>
     <ignored path="barryCode.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -155,10 +155,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="2" selection-start="336" selection-end="336" vertical-scroll-proportion="0.0">
+            <state line="11" column="0" selection-start="234" selection-end="252" vertical-scroll-proportion="0.2679083">
               <folding />
             </state>
           </provider>
@@ -218,10 +218,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserService.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="UserService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/UserService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="145" column="63" selection-start="3880" selection-end="3880" vertical-scroll-proportion="0.78751856">
+            <state line="145" column="63" selection-start="3880" selection-end="3880" vertical-scroll-proportion="-21.2">
               <folding />
             </state>
           </provider>
@@ -263,7 +263,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/models/index.js" />
         <option value="$PROJECT_DIR$/dbHelper/index.js" />
         <option value="$PROJECT_DIR$/models/apiInfo.js" />
         <option value="$PROJECT_DIR$/service/HelpService.js" />
@@ -279,6 +278,7 @@
         <option value="$PROJECT_DIR$/api/user.js" />
         <option value="$PROJECT_DIR$/dbHelper/user.js" />
         <option value="$PROJECT_DIR$/service/UserService.js" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -626,13 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="2" selection-start="336" selection-end="336" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dbHelper/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="369" column="61" selection-start="9575" selection-end="9575" vertical-scroll-proportion="0.0">
@@ -649,7 +642,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/service/UserService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="63" selection-start="3880" selection-end="3880" vertical-scroll-proportion="0.78751856">
+        <state line="145" column="63" selection-start="3880" selection-end="3880" vertical-scroll-proportion="-21.2">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="234" selection-end="252" vertical-scroll-proportion="0.2679083">
           <folding />
         </state>
       </provider>
