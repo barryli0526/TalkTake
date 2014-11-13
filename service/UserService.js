@@ -144,6 +144,9 @@ exports.getUserDetail = function(uid,select, callback){
         user.siteUrl ? userInfo.siteUrl = user.siteUrl: null;
         user.location ? userInfo.location = user.location : null;
         user.avatar ?  userInfo.avatar = user.avatar: null;
+        if(userInfo.avatar && config.qnConfig.compress){
+            userInfo.avatar += config.qnconfig.quality;
+        }
       //  userInfo.isFollowing = '';
         photoCount ? userInfo.photoCount = photoCount : null;
         followingCount ? userInfo.followingCount = followingCount : null;
@@ -520,6 +523,12 @@ exports.updateUserProfile = function(uid, data, callback){
         uid = new ObjectId(uid);
     }
 
+    if(data.avatar){
+        var str = config.qnconfig.domain + '/' + data.avatar;
+        data.avatar = str;
+    }
+
+
     User.updateUserProfile(uid, data, callback);
 }
 
@@ -545,7 +554,11 @@ exports.getUserSetting = function(uid, callback){
             return callback(err,{});
         }else{
             var user = {};
+
             user.avatar = doc.avatar;
+            if(config.qnConfig.compress){
+                user.avatar += config.qnconfig.quality;
+            }
             user.nickName = doc.nick_name;
             user.firstName = doc.first_name;
             user.lastName = doc.second_name;
