@@ -56,6 +56,7 @@ exports.getLatestPhotos = function(uid,category, anchorTime, listSize, callback)
                 });
             }).fail(callback);
 
+
             Photo.getUserLatestPhotosByTag(Ids,category,anchorTime,listSize, function(err, docs){
                 if(err || !docs || docs.length == 0){
                     return callback(err,[]);
@@ -95,32 +96,6 @@ exports.getLatestPhotos = function(uid,category, anchorTime, listSize, callback)
                         }
                         proxy.emit('photo_ready');
 
-//                        if(friends[user._id].isExist){
-//                            var name = "";
-//                            if(!friends[user._id].name){
-//                                var firstName = user.first_name ? user.first_name : '',
-//                                    lastName = user.second_name ? user.second_name : '';
-//                                name = firstName + lastName;
-//                            }else{
-//                                name = friends[user._id].name;
-//                            }
-//                            results[i].uploader.name = name;
-//                            results[i].uploader.bFollowed = true;
-//                            proxy.emit('photo_ready');
-//                        }else{
-//                            User.checkIsFollow(uid, user._id, function(err, isFollow){
-//                                if(err){
-//                                    return proxy.emit('error');
-//                                }else{
-//                                    if(isFollow){
-//                                        results[i] = true;
-//                                    }else{
-//                                        results[i] = false;
-//                                    }
-//                                }
-//                                proxy.emit('photo_ready');
-//                            })
-//                        }
                     })
                 }
             });
@@ -131,13 +106,17 @@ exports.getLatestPhotos = function(uid,category, anchorTime, listSize, callback)
                 }else{
                     proxy.emit('count',count);
                 }
-            })
+            });
+
+
+
+
         }
     })
 
   //  return callback(null,sampleData.LatestList);
-
 }
+
 
 exports.getOldestPhotos = function(uid,category, anchorTime, listSize, callback){
 
@@ -231,7 +210,6 @@ exports.getOldestPhotos = function(uid,category, anchorTime, listSize, callback)
     })
 
    // return callback(null,sampleData.OldestList);
-
 }
 
 
@@ -494,7 +472,7 @@ exports.getComments = function(userId, photoId, startIndex, size, callback){
                 comment.isFollowing = false;
                 doc.content ? comment.comments = doc.content : null;
                 comment.replyTime = util.getDateTime(doc.create_at);
-                User.getRelationInfo(userId, doc.author_id, function(err, relation){
+                User.getRelationInfo(userId, doc.author_id._id, function(err, relation){
                     if(err){
                         proxy1.emit('error');
                     }else{
@@ -568,6 +546,10 @@ exports.createNewPhoto = function(userId,name,key, tags, createTime, location, d
         userId = new ObjectId(userId);
     }
     var url = config.qnConfig.domain + '/' + key;
+    var thumbUrl = url + config.qnConfig.quality;
+//    if(config.qnConfig.compress){
+//
+//    }
 
     if(typeof tags ==='string'){
         tags = tags.split(',');
@@ -575,7 +557,7 @@ exports.createNewPhoto = function(userId,name,key, tags, createTime, location, d
 
     var createTime = new Date(createTime);
 
-    Photo.createNewPhoto(userId, name, url,createTime, location, desc, function(err, doc){
+    Photo.createNewPhoto(userId, name, url, thumbUrl, createTime, location, desc, function(err, doc){
         if(err || !doc || doc.length == 0){
             return callback(err, []);
         }else{
@@ -695,3 +677,355 @@ exports.forwardPhoto = function(userId, photoId, forwardText, forwardTime, callb
     return callback(null,[]);
 
 }
+
+/**
+ * 获取所有新奇的图片
+ * @param uid
+ * @param category
+ * @param anchorTime
+ * @param listSize
+ * @param callback
+ */
+exports.getLatestXQPhotos = function(uid, anchorTime, listSize, callback){
+
+
+    if(typeof uid === 'string'){
+        uid = new ObjectId(uid);
+    }
+
+    if(typeof anchorTime === 'string'){
+        anchorTime = new Date(anchorTime);
+    }
+
+    User.getUserFriendsIdAndNickName(uid, function(err, docs){
+
+        if(err){
+            return callback(err,[]);
+        }else{
+            var Ids = [],friends = {};
+            Ids[0] = uid;
+
+            for(var i=1;i<=docs.length;i++){
+                var doc = docs[i-1];
+                var followId = doc.follow_id;
+                friends[followId] = {};
+                // friends[followId].isExist = true;
+                friends[followId].name = doc.remark_name;
+                Ids[i] = doc.follow_id;
+            }
+
+            Photo.countTagsByUserIds(Ids, function(err, tags){
+                if(err){
+                    return callback(err,[]);
+                }else{
+                    var category = [],count = 0, maxCount = labels.tagRecommendCount;
+                    for(var i=0;i<tags.length;i++){
+
+                        if(tags[i].value.count >= maxCount){
+                            category[count] = tags[i]._id;
+                            count++;
+                        }
+                    }
+
+                    var proxy = new EventProxy(),
+                        events = ['photos','count'];
+
+                    proxy.assign(events, function(photos, count){
+                        var count = count - photos.length;
+                        return callback(null,{
+                            remain:count,
+                            items:photos
+                        });
+                    }).fail(callback);
+
+
+                    Photo.getUserLatestXQPhotosByTag(Ids,category,anchorTime,listSize, function(err, docs){
+                        if(err || !docs || docs.length == 0){
+                            return callback(err,[]);
+                        }else{
+                            var results = [];
+                            proxy.after('photo_ready', docs.length, function(){
+                                proxy.emit('photos', results);
+                            }).fail(callback);
+
+                            docs.forEach(function(doc, i){
+                                results[i] = {};
+                                var photo = doc.photo_id,
+                                    user = doc.author_id;
+                                results[i].photoId = photo._id;
+                                results[i].photoUrl = photo.source_url;
+                                if(config.qnConfig.compress){
+                                    results[i].photoUrl += config.qnConfig.quality;
+                                }
+                                results[i].upCount = doc.like ? doc.like.length : 0;
+                                results[i].commentCount = doc.reply_count;
+                                photo.location ? results[i].location = photo.location : null;
+                                results[i].uploadTime = util.getDateTime(photo.create_at);
+                                results[i].uploader = {};
+                                results[i].uploader.userId = user._id;
+                                user.avatar ? results[i].uploader.avatar = user.avatar : null;
+
+                                if(!friends[user._id] || !friends[user._id].name){
+                                    results[i].uploader.name  = user.showName;
+                                }else{
+                                    results[i].uploader.name = friends[user._id].name;
+                                }
+                                results[i].forwarder = [];
+                                for(var j=0;j<doc.forward.length;j++){
+                                    results[i].forwarder[j] ={};
+                                    results[i].forwarder[j].userId = doc.forward[j].forwarder_id._id;
+                                    doc.forward[j].forwarder_id.avatar ? results[i].forwarder[j].avatar = doc.forward[j].forwarder_id.avatar : null;
+                                }
+                                proxy.emit('photo_ready');
+
+                            })
+                        }
+                    });
+
+                    Photo.getUserLatestXQPhotoCount(Ids,category,anchorTime,listSize,function(err, count){
+                        if(err){
+                            proxy.emit('error');
+                        }else{
+                            proxy.emit('count',count);
+                        }
+                    });
+
+                }
+            })
+        }
+    })
+}
+
+
+exports.getOldestXQPhotos = function(uid, anchorTime, listSize, callback){
+
+    if(typeof uid === 'string'){
+        uid = new ObjectId(uid);
+    }
+
+    if(typeof anchorTime === 'string'){
+        anchorTime = new Date(anchorTime);
+    }
+
+    User.getUserFriendsIdAndNickName(uid, function(err, docs){
+
+        if(err){
+            return callback(err,[]);
+        }else{
+            var Ids = [],friends = {};
+            Ids[0] = uid;
+
+            for(var i=1;i<=docs.length;i++){
+                var doc = docs[i-1];
+                var followId = doc.follow_id;
+                friends[followId] = {};
+                //  friends[followId].isExist = true;
+                friends[followId].name =  doc.remark_name;
+                Ids[i] = doc.follow_id;
+            }
+
+
+            Photo.countTagsByUserIds(Ids, function(err, tags){
+                if(err){
+                    return callback(err,[]);
+                }else{
+                    var category = [],count = 0, maxCount = labels.tagRecommendCount;
+                    for(var i=0;i<tags.length;i++){
+
+                        if(tags[i].value.count >= maxCount){
+                            category[count] = tags[i]._id;
+                            count++;
+                        }
+                    }
+
+                    var proxy = new EventProxy(),
+                        events = ['photos','count'];
+
+                    proxy.assign(events, function(photos, count){
+                        var count = count - photos.length;
+                        return callback(null,{
+                            remain:count,
+                            items:photos
+                        });
+                    }).fail(callback);
+
+                    Photo.getUserXQOldestPhotosByTag(Ids,category,anchorTime,listSize, function(err, docs){
+                        if(err || !docs || docs.length == 0){
+                            return callback(err,[]);
+                        }else{
+                            var results = [];
+                            proxy.after('photo_ready', docs.length, function(){
+                                proxy.emit('photos', results);
+                            }).fail(callback);
+
+                            docs.forEach(function(doc, i){
+                                results[i] = {};
+                                var photo = doc.photo_id,
+                                    user = doc.author_id;
+                                results[i].photoId = photo._id;
+                                results[i].photoUrl = photo.source_url;
+                                if(config.qnConfig.compress){
+                                    results[i].photoUrl += config.qnConfig.quality;
+                                }
+                                results[i].upCount = doc.like ? doc.like.length : 0;
+                                results[i].commentCount = doc.reply_count;
+                                photo.location ? results[i].location = photo.location : null;
+                                results[i].uploadTime = util.getDateTime(photo.create_at);
+                                results[i].uploader = {};
+                                results[i].uploader.userId = user._id;
+                                user.avatar ? results[i].uploader.avatar = user.avatar : null;
+
+                                if(!friends[user._id] || !friends[user._id].name){
+                                    results[i].uploader.name  = user.showName;
+                                }else{
+                                    results[i].uploader.name = friends[user._id].name;
+                                }
+                                results[i].forwarder = [];
+                                for(var j=0;j<doc.forward.length;j++){
+                                    results[i].forwarder[j] ={};
+                                    results[i].forwarder[j].userId = doc.forward[j].forwarder_id._id;
+                                    doc.forward[j].forwarder_id.avatar ? results[i].forwarder[j].avatar = doc.forward[j].forwarder_id.avatar : null;
+                                }
+                                proxy.emit('photo_ready');
+
+                            })
+                        }
+                    });
+
+                    Photo.getUserOldestXQPhotoCount(Ids,category,anchorTime,listSize,function(err, count){
+                        if(err){
+                            proxy.emit('error');
+                        }else{
+                            proxy.emit('count',count);
+                        }
+                    })
+
+                }
+            })
+
+        }
+    })
+}
+
+exports.getSegmentXQPhoto = function(uid, startDate, endDate, listSize, callback){
+
+    if(typeof uid === 'string'){
+        uid = new ObjectId(uid);
+    }
+
+    if(typeof startDate === 'string'){
+        startDate = new Date(startDate);
+    }
+
+    if(typeof endDate === 'string'){
+        endDate = new Date(endDate);
+    }
+
+    User.getUserFriendsIdAndNickName(uid, function(err, docs){
+
+        if(err){
+            return callback(err,[]);
+        }else{
+            var Ids = [],friends = {};
+            Ids[0] = uid;
+
+            for(var i=1;i<=docs.length;i++){
+                var doc = docs[i-1];
+                var followId = doc.follow_id;
+                friends[followId] = {};
+                // friends[followId].isExist = true;
+                friends[followId].name =  doc.remark_name;
+                Ids[i] = doc.follow_id;
+            }
+
+            Photo.countTagsByUserIds(Ids, function(err, tags){
+                if(err){
+                    return callback(err,[]);
+                }else{
+                    var category = [],count = 0, maxCount = labels.tagRecommendCount;
+                    for(var i=0;i<tags.length;i++){
+
+                        if(tags[i].value.count >= maxCount){
+                            category[count] = tags[i]._id;
+                            count++;
+                        }
+                    }
+
+
+                    var proxy = new EventProxy(),
+                        events = ['photos','count'];
+
+                    proxy.assign(events, function(photos, count){
+                        var count = count - photos.length;
+                        return callback(null,{
+                            remain:count,
+                            items:photos
+                        });
+                    }).fail(callback);
+
+                    Photo.getUserSegmentXQPhotosByTag(Ids,category,startDate,endDate,listSize, function(err, docs){
+                        if(err || !docs || docs.length == 0){
+                            return callback(err,[]);
+                        }else{
+                            var results = [];
+                            proxy.after('photo_ready', docs.length, function(){
+                                proxy.emit('photos', results);
+                            }).fail(callback);
+
+                            docs.forEach(function(doc, i){
+                                results[i] = {};
+                                var photo = doc.photo_id,
+                                    user = doc.author_id;
+                                results[i].photoId = photo._id;
+                                results[i].photoUrl = photo.source_url;
+                                if(config.qnConfig.compress){
+                                    results[i].photoUrl += config.qnConfig.quality;
+                                }
+                                results[i].upCount = doc.like ? doc.like.length : 0;
+                                results[i].commentCount = doc.reply_count;
+                                photo.location ? results[i].location = photo.location : null;
+                                results[i].uploadTime = util.getDateTime(photo.create_at);
+                                results[i].uploader = {};
+                                results[i].uploader.userId = user._id;
+                                user.avatar ? results[i].uploader.avatar = user.avatar : null;
+
+                                if(!friends[user._id] || !friends[user._id].name){
+                                    results[i].uploader.name  = user.showName;
+                                }else{
+                                    results[i].uploader.name = friends[user._id].name;
+                                }
+                                results[i].forwarder = [];
+                                for(var j=0;j<doc.forward.length;j++){
+                                    results[i].forwarder[j] ={};
+                                    results[i].forwarder[j].userId = doc.forward[j].forwarder_id._id;
+                                    doc.forward[j].forwarder_id.avatar ? results[i].forwarder[j].avatar = doc.forward[j].forwarder_id.avatar : null;
+                                }
+                                proxy.emit('photo_ready');
+                            })
+                        }
+                    });
+
+                    Photo.getUserSegementXQPhotoCount(Ids,category,startDate,endDate,listSize,function(err, count){
+                        if(err){
+                            proxy.emit('error');
+                        }else{
+                            proxy.emit('count',count);
+                        }
+                    })
+
+                }
+            })
+
+        }
+    })
+}
+
+
+
+
+
+
+
+
+
+

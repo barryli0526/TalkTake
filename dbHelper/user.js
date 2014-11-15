@@ -317,7 +317,7 @@ exports.checkIsFollow = function(uid, followId, callback){
 }
 
 exports.getRelationInfo = function(uid, followId, callback){
-    UserRelation.findOne({'user_id':uid, 'follow_id':followId},'isFollowing remark_name', function(err, doc){
+    UserRelation.findOne({'user_id':uid, 'follow_id':followId},'status remark_first_name remark_second_name', function(err, doc){
         if(err || !doc || doc.length == 0){
             return callback(err,false);
         }else{

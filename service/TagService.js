@@ -42,8 +42,10 @@ exports.getIndexTags = function(userId, callback){
                }else if(!tags || tags.length == 0){
                    return callback(null,{items:[{'tagName':labels.Category}]});
                }else{
-                   var results = [],count = 0, maxCount = labels.tagRecommendCount;
-                   for(var i=0;i<tags.length;i++){
+                   var results = [],count = 1, maxCount = labels.tagRecommendCount;
+                   results[0] = {};
+                   results[0].tagName = labels.Category;
+                   for(var i=1;i<tags.length;i++){
 
                        if(tags[i].value.count >= maxCount){
                            results[count] = {};

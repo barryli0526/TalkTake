@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2263c5b-ff48-40e8-b4cc-02932417bef7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/PhotoService.js" afterPath="$PROJECT_DIR$/service/PhotoService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/TagService.js" afterPath="$PROJECT_DIR$/service/TagService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/UserService.js" afterPath="$PROJECT_DIR$/service/UserService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.txt" afterPath="$PROJECT_DIR$/log.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbHelper/photo.js" afterPath="$PROJECT_DIR$/dbHelper/photo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/photos.js" afterPath="$PROJECT_DIR$/api/photos.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbHelper/user.js" afterPath="$PROJECT_DIR$/dbHelper/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="barryCode.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1416031337728" ignored="false" />
+    <file path="/Dummy.txt" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1416035594912" ignored="false" />
     <file path="/routes.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415845797041" ignored="false" />
     <file path="/site.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1376558091149" ignored="false" />
     <file path="/app.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414397831962" ignored="false" />
@@ -54,24 +60,24 @@
     <file path="/main.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1377663826406" ignored="false" />
     <file path="/article.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1409214974758" ignored="false" />
     <file path="/photoInfo.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414398620151" ignored="false" />
-    <file path="/photo.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414398709890" ignored="false" />
+    <file path="/photo.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1416051070217" ignored="false" />
     <file path="/photoRelation.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411110906687" ignored="false" />
     <file path="/category.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1409625976332" ignored="false" />
     <file path="/userRelation.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411561842029" ignored="false" />
     <file path="/comment.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411555582587" ignored="false" />
     <file path="/server.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415274024916" ignored="false" />
     <file path="/request.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415627794259" ignored="false" />
-    <file path="/UserService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415954018801" ignored="false" />
-    <file path="/photos.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415264615128" ignored="false" />
+    <file path="/UserService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1416044910564" ignored="false" />
+    <file path="/photos.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1416051648663" ignored="false" />
     <file path="/base.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413546803728" ignored="false" />
-    <file path="/PhotoService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414483968909" ignored="false" />
+    <file path="/PhotoService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1416052115426" ignored="false" />
     <file path="/testCase.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415627905720" ignored="false" />
     <file path="/test.html" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1414380265175" ignored="false" />
     <file path="/dispacher.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1410758257269" ignored="false" />
     <file path="/LMS.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1410832295514" ignored="false" />
     <file path="/testService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413457113877" ignored="false" />
     <file path="/tag.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413194558342" ignored="false" />
-    <file path="/TagService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1413550108428" ignored="false" />
+    <file path="/TagService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1416051702724" ignored="false" />
     <file path="$PROJECT_DIR$/../testTalkTake/models/User.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411697962352" ignored="false" />
     <file path="$PROJECT_DIR$/../testTalkTake/flow/InitClient.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1412037973454" ignored="false" />
     <file path="/post.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1411976832464" ignored="false" />
@@ -107,8 +113,8 @@
     <file path="$PROJECT_DIR$/../../nShoperV1/models/mysql/member.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415342934472" ignored="false" />
     <file path="$PROJECT_DIR$/../../nShoperV1/services/mysql/goods_type.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415267690143" ignored="false" />
     <file path="/goods_type.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415330513808" ignored="false" />
-    <file path="$PROJECT_DIR$/../../nShoperV1/test/testDB.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415604119531" ignored="false" />
-    <file path="/testDB.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415604106734" ignored="false" />
+    <file path="$PROJECT_DIR$/../../nShoperV1/test/testDB.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1416035036178" ignored="false" />
+    <file path="/testDB.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1416034780687" ignored="false" />
     <file path="$PROJECT_DIR$/../../nShoperV1/DB/mysql.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415602853180" ignored="false" />
     <file path="$PROJECT_DIR$/../../nShoperV1/services/mysql/goods_brand.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415325111613" ignored="false" />
     <file path="/goods_brand.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415325101168" ignored="false" />
@@ -119,7 +125,7 @@
     <file path="$PROJECT_DIR$/../../nShoperV1/models/mysql/goods_category.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415598974476" ignored="false" />
     <file path="$PROJECT_DIR$/../../nShoperV1/models/mysql/goods_detail.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415341888133" ignored="false" />
     <file path="$PROJECT_DIR$/../../nShoperV1/models/mysql/goods_type.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415341978331" ignored="false" />
-    <file path="/goods_category.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415612178012" ignored="false" />
+    <file path="/goods_category.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1416035017750" ignored="false" />
     <file path="/goods.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415332794396" ignored="false" />
     <file path="/mysql.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415602470198" ignored="false" />
     <file path="/goods_attribute.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415333155664" ignored="false" />
@@ -132,12 +138,13 @@
     <file path="/apiCount.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415347680455" ignored="false" />
     <file path="/apiInfo.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415592086026" ignored="false" />
     <file path="/HelpService.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415591867848" ignored="false" />
-    <file path="$PROJECT_DIR$/../../nShoperV1/services/mysql/goods_category.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415957128492" ignored="false" />
+    <file path="$PROJECT_DIR$/../../nShoperV1/services/mysql/goods_category.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1416035081674" ignored="false" />
     <file path="$PROJECT_DIR$/../../nShoperV1/node_modules/sequelize/lib/associations/helpers.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415602673107" ignored="false" />
     <file path="/helpers.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415602610470" ignored="false" />
     <file path="$PROJECT_DIR$/../../nShoperV1/node_modules/sequelize/lib/associations/belongs-to.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415602842317" ignored="false" />
     <file path="$PROJECT_DIR$/../../TalkTakeAdmin/index.html" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415848558412" ignored="false" />
     <file path="$PROJECT_DIR$/../../qrCode/app.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1415956846302" ignored="false" />
+    <file path="$PROJECT_DIR$/../../angular-app/client/gruntFile.js" changelist="f2263c5b-ff48-40e8-b4cc-02932417bef7" time="1416036322448" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,11 +164,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
+      <file leaf-file-name="UserService.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service/UserService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="92" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="174" column="23" selection-start="5613" selection-end="5613" vertical-scroll-proportion="-19.84">
+              <folding>
+                <element signature="e#831#952#0" expanded="false" />
+                <element signature="e#1689#2205#0" expanded="false" />
+                <element signature="e#2355#2852#0" expanded="false" />
+                <element signature="e#13321#16784#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -169,25 +181,27 @@
       <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="362" column="32" selection-start="11173" selection-end="11173" vertical-scroll-proportion="0.0">
+            <state line="243" column="26" selection-start="7377" selection-end="7377" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="oneapm.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oneapm.js">
+      <file leaf-file-name="PhotoService.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/service/PhotoService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="784" column="64" selection-start="26171" selection-end="26171" vertical-scroll-proportion="0.94947994">
+              <folding>
+                <element signature="e#26560#31112#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
+      <file leaf-file-name="userRelation.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/userRelation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="24" column="46" selection-start="615" selection-end="615" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -196,7 +210,7 @@
       <file leaf-file-name="routes.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="5" selection-start="6222" selection-end="6222" vertical-scroll-proportion="0.0">
+            <state line="104" column="13" selection-start="4143" selection-end="4166" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -205,25 +219,31 @@
       <file leaf-file-name="TagService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/TagService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="46" column="65" selection-start="1448" selection-end="1448" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1975#8439#0" expanded="false" />
+                <element signature="e#8545#9929#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="photo.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbHelper/photo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="816" column="34" selection-start="20609" selection-end="20635" vertical-scroll-proportion="-6.68">
+              <folding>
+                <element signature="e#19889#20479#0" expanded="false" />
+                <element signature="e#20688#21282#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/user.js">
+        <entry file="file://$PROJECT_DIR$/dbHelper/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="38" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserService.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/service/UserService.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="413" column="26" selection-start="12931" selection-end="12931" vertical-scroll-proportion="0.4627507">
+            <state line="319" column="70" selection-start="8051" selection-end="8051" vertical-scroll-proportion="-9.64">
               <folding />
             </state>
           </provider>
@@ -232,16 +252,16 @@
       <file leaf-file-name="base.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="49" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0">
+            <state line="36" column="12" selection-start="986" selection-end="994" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dbHelper/user.js">
+      <file leaf-file-name="photos.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/photos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="369" column="61" selection-start="9575" selection-end="9575" vertical-scroll-proportion="0.0">
+            <state line="82" column="40" selection-start="2700" selection-end="2700" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -265,22 +285,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/dbHelper/index.js" />
-        <option value="$PROJECT_DIR$/models/apiInfo.js" />
         <option value="$PROJECT_DIR$/service/HelpService.js" />
         <option value="$PROJECT_DIR$/dbHelper/apiInfo.js" />
-        <option value="$PROJECT_DIR$/dbHelper/photo.js" />
-        <option value="$PROJECT_DIR$/service/TagService.js" />
         <option value="$PROJECT_DIR$/api/tag.js" />
         <option value="$PROJECT_DIR$/lib/LMS.js" />
         <option value="$PROJECT_DIR$/test/testCase.js" />
         <option value="$PROJECT_DIR$/test/request.js" />
         <option value="$PROJECT_DIR$/models/user.js" />
-        <option value="$PROJECT_DIR$/routes.js" />
         <option value="$PROJECT_DIR$/api/user.js" />
-        <option value="$PROJECT_DIR$/dbHelper/user.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/service/UserService.js" />
+        <option value="$PROJECT_DIR$/dbHelper/user.js" />
+        <option value="$PROJECT_DIR$/dbHelper/photo.js" />
+        <option value="$PROJECT_DIR$/api/photos.js" />
+        <option value="$PROJECT_DIR$/service/TagService.js" />
+        <option value="$PROJECT_DIR$/routes.js" />
+        <option value="$PROJECT_DIR$/service/PhotoService.js" />
       </list>
     </option>
   </component>
@@ -349,13 +369,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="barryCode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TalkTake" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dbHelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="barryCode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TalkTake" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="barryCode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TalkTake" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../angular-app" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
@@ -421,12 +483,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2016487" sideWeight="0.73480666" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2016487" sideWeight="0.73480666" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -506,111 +568,134 @@
           <url>file://$PROJECT_DIR$/public/javascript/dev/index.js</url>
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/testCase.js">
+    <entry file="file://$PROJECT_DIR$/api/tag.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="29" selection-start="4279" selection-end="4279" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/request.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="271" column="27" selection-start="6630" selection-end="6630" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/photos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="272" column="13" selection-start="8183" selection-end="8183" vertical-scroll-proportion="0.0">
+        <state line="36" column="48" selection-start="1021" selection-end="1021" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/photo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbHelper/photo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/tag.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="14" selection-start="1895" selection-end="1895" vertical-scroll-proportion="0.0">
+        <state line="17" column="37" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="38" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.0">
+        <state line="19" column="32" selection-start="556" selection-end="556" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/dbHelper/comment.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/TagService.js">
+    <entry file="file://$PROJECT_DIR$/service/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oneapm.js">
+    <entry file="file://$PROJECT_DIR$/api/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbHelper/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="369" column="61" selection-start="9575" selection-end="9575" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="92" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="5" selection-start="6222" selection-end="6222" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="362" column="32" selection-start="11173" selection-end="11173" vertical-scroll-proportion="0.0">
+        <state line="243" column="26" selection-start="7377" selection-end="7377" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/base.js">
+    <entry file="file://$PROJECT_DIR$/dbHelper/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="49" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0">
+        <state line="319" column="70" selection-start="8051" selection-end="8051" vertical-scroll-proportion="-9.64">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/userRelation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="46" selection-start="615" selection-end="615" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service/UserService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="413" column="26" selection-start="12931" selection-end="12931" vertical-scroll-proportion="0.4627507">
+        <state line="174" column="23" selection-start="5613" selection-end="5613" vertical-scroll-proportion="-19.84">
+          <folding>
+            <element signature="e#831#952#0" expanded="false" />
+            <element signature="e#1689#2205#0" expanded="false" />
+            <element signature="e#2355#2852#0" expanded="false" />
+            <element signature="e#13321#16784#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbHelper/photo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="816" column="34" selection-start="20609" selection-end="20635" vertical-scroll-proportion="-6.68">
+          <folding>
+            <element signature="e#19889#20479#0" expanded="false" />
+            <element signature="e#20688#21282#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="12" selection-start="986" selection-end="994" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/TagService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="65" selection-start="1448" selection-end="1448" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1975#8439#0" expanded="false" />
+            <element signature="e#8545#9929#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="13" selection-start="4143" selection-end="4166" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/photos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="40" selection-start="2700" selection-end="2700" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/PhotoService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="784" column="64" selection-start="26171" selection-end="26171" vertical-scroll-proportion="0.94947994">
+          <folding>
+            <element signature="e#26560#31112#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

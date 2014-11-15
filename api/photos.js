@@ -33,16 +33,27 @@ exports.getLatestPhotoList = function(req, res){
             var listSize = query.listSize ? query.listSize : labels.PhotoListSize;
             var category = query.category ? query.category : labels.Category;
 
-            PhotoService.getLatestPhotos(uid,category, anchorTime, listSize, function(err, docs){
-                if(err){
-                    res.statusCode = 500;
-                    res.end(util.combineFailureRes(labels.DBError));
-                }else{
-                    res.statusCode = 200;
-                    res.end(util.combineSuccessRes(docs));
-                }
-            })
-
+            if(category == labels.Category){
+                PhotoService.getLatestXQPhotos(uid, anchorTime, listSize, function(err, docs){
+                    if(err){
+                        res.statusCode = 500;
+                        res.end(util.combineFailureRes(labels.DBError));
+                    }else{
+                        res.statusCode = 200;
+                        res.end(util.combineSuccessRes(docs));
+                    }
+                })
+            }else{
+                PhotoService.getLatestPhotos(uid,category, anchorTime, listSize, function(err, docs){
+                    if(err){
+                        res.statusCode = 500;
+                        res.end(util.combineFailureRes(labels.DBError));
+                    }else{
+                        res.statusCode = 200;
+                        res.end(util.combineSuccessRes(docs));
+                    }
+                })
+            }
         }
     }
 
@@ -69,15 +80,29 @@ exports.getOldestPhotoList = function(req, res){
             var listSize = query.listSize ? query.listSize : labels.PhotoListSize;
             var category = query.category ? query.category : labels.Category;
 
-            PhotoService.getOldestPhotos(uid,category, anchorTime, listSize, function(err, docs){
-                if(err){
-                    res.statusCode = 500;
-                    res.end(util.combineFailureRes(labels.DBError));
-                }else{
-                    res.statusCode = 200;
-                    res.end(util.combineSuccessRes(docs));
-                }
-            })
+            if(category == labels.Category){
+                PhotoService.getOldestXQPhotos(uid, anchorTime, listSize, function(err, docs){
+                    if(err){
+                        res.statusCode = 500;
+                        res.end(util.combineFailureRes(labels.DBError));
+                    }else{
+                        res.statusCode = 200;
+                        res.end(util.combineSuccessRes(docs));
+                    }
+                })
+            }else{
+                PhotoService.getOldestPhotos(uid,category, anchorTime, listSize, function(err, docs){
+                    if(err){
+                        res.statusCode = 500;
+                        res.end(util.combineFailureRes(labels.DBError));
+                    }else{
+                        res.statusCode = 200;
+                        res.end(util.combineSuccessRes(docs));
+                    }
+                })
+            }
+
+
         }
     }
 }
@@ -114,15 +139,29 @@ exports.getSegmentPhotoList = function(req, res){
             res.end(util.combineFailureRes(labels.requestError));
             return;
         }else{
-            PhotoService.getSegmentPhoto(uid,category, startDate, endDate, listSize, function(err, docs){
-                if(err){
-                    res.statusCode = 500;
-                    res.end(util.combineFailureRes(labels.DBError));
-                }else{
-                    res.statusCode = 200;
-                    res.end(util.combineSuccessRes(docs));
-                }
-            })
+
+            if( category == labels.Category){
+                PhotoService.getSegmentXQPhoto(uid, startDate, endDate, listSize, function(err, docs){
+                    if(err){
+                        res.statusCode = 500;
+                        res.end(util.combineFailureRes(labels.DBError));
+                    }else{
+                        res.statusCode = 200;
+                        res.end(util.combineSuccessRes(docs));
+                    }
+                })
+            }else{
+                PhotoService.getSegmentPhoto(uid,category, startDate, endDate, listSize, function(err, docs){
+                    if(err){
+                        res.statusCode = 500;
+                        res.end(util.combineFailureRes(labels.DBError));
+                    }else{
+                        res.statusCode = 200;
+                        res.end(util.combineSuccessRes(docs));
+                    }
+                })
+            }
+
         }
     }
 }

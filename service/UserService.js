@@ -144,14 +144,20 @@ exports.getUserDetail = function(uid,select, callback){
         user.siteUrl ? userInfo.siteUrl = user.siteUrl: null;
         user.location ? userInfo.location = user.location : null;
         user.avatar ?  userInfo.avatar = user.avatar: null;
-        if(userInfo.avatar && config.qnConfig.compress){
-            userInfo.avatar += config.qnConfig.quality;
-        }
+//        if(userInfo.avatar && config.qnConfig.compress){
+//            userInfo.avatar += config.qnConfig.quality;
+//        }
       //  userInfo.isFollowing = '';
-        photoCount ? userInfo.photoCount = photoCount : null;
-        followingCount ? userInfo.followingCount = followingCount : null;
-        followerCount ? userInfo.followerCount = followerCount : null;
-        likeCount ? userInfo.likedCount = likeCount : null;
+
+        userInfo.photoCount = photoCount ? photoCount : 0;
+        userInfo.followingCount = followingCount ? followingCount : 0;
+        userInfo.followerCount = followerCount ? followerCount : 0;
+        userInfo.likedCount = likeCount ? likeCount : 0;
+
+//        photoCount ? userInfo.photoCount = photoCount : null;
+//        followingCount ? userInfo.followingCount = followingCount : null;
+//        followerCount ? userInfo.followerCount = followerCount : null;
+//        likeCount ? userInfo.likedCount = likeCount : null;
         Album ? userInfo.album = Album : null;
 
         return callback(null, userInfo);
@@ -524,7 +530,7 @@ exports.updateUserProfile = function(uid, data, callback){
     }
 
     if(data.avatar){
-        var str = config.qnConfig.domain + '/' + data.avatar;
+        var str = config.qnConfig.domain + '/' + data.avatar + config.qnConfig.quality;
         data.avatar = str;
     }
 
@@ -556,9 +562,9 @@ exports.getUserSetting = function(uid, callback){
             var user = {};
 
             user.avatar = doc.avatar;
-            if(config.qnConfig.compress){
-                user.avatar += config.qnConfig.quality;
-            }
+//            if(config.qnConfig.compress){
+//                user.avatar += config.qnConfig.quality;
+//            }
             user.nickName = doc.nick_name;
             user.firstName = doc.first_name;
             user.lastName = doc.second_name;
