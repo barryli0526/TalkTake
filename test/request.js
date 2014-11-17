@@ -24,7 +24,8 @@ var makeHttpPost = function(path,post_data){
 // An object of options to indicate where to post to
     var post_options = {
 //        host: '121.199.58.200',
-        host:'210.22.174.102',
+ //       host:'210.22.174.102',
+        host:'127.0.0.1',
         port: '3003',
         path: path,
         method: 'POST',
@@ -52,7 +53,8 @@ var makeHttpPost = function(path,post_data){
 var makeAuthGet = function(auth, path, callback){
     var post_options = {
       //  host: '210.22.174.102',
-        host:'121.199.58.200',
+   //     host:'121.199.58.200',
+        host:'127.0.0.1',
         port: '3003',
         path: path,
         method: 'GET',
@@ -87,8 +89,8 @@ var makeAuthPost = function(auth, path, post_data,callback){
     // console.log(post_data);
 // An object of options to indicate where to post to
     var post_options = {
-        host: '210.22.174.102',
- //       host:'localhost',
+    //    host: '210.22.174.102',
+        host:'localhost',
         port: '3003',
         path: path,
         method: 'POST',
@@ -131,7 +133,7 @@ exports.testLikePhoto = function(){
 
     });
 
-    makeHttpPost('/TalkTake/Photos/123/Like',post_data);
+    makeHttpPost('/TalkTake/Photos/5469e757f8e1c1e02b203070/Like',post_data);
 }
 
 exports.testunLikePhoto = function(){
@@ -275,8 +277,8 @@ exports.getPhotoDetail = function(){
 
 
 exports.postPhoto = function(photo){
-    var UUID = '56F1EB84-F11C-4C87-B7AD-28E763FD3274',
-        SID = '5460b535fcfe2bc518201fb3';
+    var UUID = '1',
+        SID = '54505bfa92a9bfdc04ccea4b';
 
     var auth = new Buffer(SID + ':' + UUID).toString('base64');
 

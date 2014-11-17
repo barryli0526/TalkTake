@@ -109,7 +109,7 @@ exports.removeLikePhotoInfo = function(userId, photoId, callback){
  * @param forwardTime   转发的时间
  * @param callback
  */
-exports.addForwardPhotoInfo = function(userId, photoId, forwardText, forwardTime,type, callback){
+exports.addForwardPhotoInfo = function(userId, photoId, forwardText, forwardTime, type, callback){
     PhotoInfo.findOneAndUpdate({'photo_id':photoId},{
         $addToSet:{
             'forward':{

@@ -560,7 +560,7 @@ exports.postComments = function(photoId, uid, comments, replyTime, callback){
     Photo.increaseCommentCount(photoId, function(){});
 
     //如果进行评论的话则加入转发列表并自动扩散到朋友圈
-    Photo.addForwardPhotoInfo(uid, photoId, data.replyTime, 'comments', function(){});
+    Photo.addForwardPhotoInfo(uid, photoId, data.comment,data.replyTime, 'comments', function(){});
 
     Comment.newAndSave(uid, photoId, data, callback);
 }
@@ -624,7 +624,7 @@ exports.likePhoto = function(userId, photoId,likeTime, callback){
     Photo.addLikePhotoInfo(userId, photoId, likeTime, function(){});
 
     //如果进行评论的话则加入转发列表并自动扩散到朋友圈
-    Photo.addForwardPhotoInfo(uid, photoId, likeTime, 'like', function(){});
+    Photo.addForwardPhotoInfo(userId, photoId, 'like',likeTime, 'like', function(){});
 
     return callback(null,[]);
 

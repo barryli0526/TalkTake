@@ -174,8 +174,10 @@ var photos = [
 //    })
 //}
 
+requestCase.testLikePhoto();
+
 //requestCase.testUpdateUser();
 
-requestCase.getPhotoDetail();
+//requestCase.getPhotoDetail();
 
 //requestCase.testInitClient();

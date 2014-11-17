@@ -10,7 +10,8 @@ exports.config = {
     version: '0.0.1',
 
 
-    host: '121.199.58.200',
+    host: '127.0.0.1',
+    //210.22.174.102
     site_static_host: '', // 静态文件存储域名
 
     upload_dir: 'public/user_data/images',
@@ -20,7 +21,7 @@ exports.config = {
         scope:'talktake',
         ACCESS_KEY : 'NuAufwBA-BaCTCuDJ0P-PMSl3BvkFalvuSyN-qwL',
         SECRET_KEY : 'ZsW_9EPX4IIScrFo-2Gg3k3IB0-N_j0N2FDhQdcw',
-        callbackUrl:'http://210.22.174.102:3003/TalkTake/Photo/Upload/CallBack',
+        callbackUrl:'http://127.0.0.1:3003/TalkTake/Photo/Upload/CallBack',
         callbackBody:'name=${fname}&key=${key}&tags=$(x:tags)&desc=$(x:desc)&createTime=$(x:createTime)&location=$(x:location)&userId=$(x:userId)&isPublic=$(x:isPublic)',
         persistentOps:'avthumb/imageView2/2/w/320',
         expires:7200,
