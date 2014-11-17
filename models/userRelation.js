@@ -13,7 +13,7 @@ var ObjectId = Schema.ObjectId;
  */
 var UserRelationSchema = new Schema({
   user_id: { type: ObjectId },
-  follow_id: { type: ObjectId },
+  follow_id: { type: ObjectId , ref:'User'},
   status:{type:Number, default:0},
   remark_first_name:{type:String},
   remark_second_name:{type:String},

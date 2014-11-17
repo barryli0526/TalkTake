@@ -144,20 +144,11 @@ exports.getUserDetail = function(uid,select, callback){
         user.siteUrl ? userInfo.siteUrl = user.siteUrl: null;
         user.location ? userInfo.location = user.location : null;
         user.avatar ?  userInfo.avatar = user.avatar: null;
-//        if(userInfo.avatar && config.qnConfig.compress){
-//            userInfo.avatar += config.qnConfig.quality;
-//        }
-      //  userInfo.isFollowing = '';
 
         userInfo.photoCount = photoCount ? photoCount : 0;
         userInfo.followingCount = followingCount ? followingCount : 0;
         userInfo.followerCount = followerCount ? followerCount : 0;
         userInfo.likedCount = likeCount ? likeCount : 0;
-
-//        photoCount ? userInfo.photoCount = photoCount : null;
-//        followingCount ? userInfo.followingCount = followingCount : null;
-//        followerCount ? userInfo.followerCount = followerCount : null;
-//        likeCount ? userInfo.likedCount = likeCount : null;
         Album ? userInfo.album = Album : null;
 
         return callback(null, userInfo);
@@ -170,13 +161,6 @@ exports.getUserDetail = function(uid,select, callback){
     (select['photoCount'] || select['all']) ? Photo.countPhotos(uid, proxy.done('photoCount')) : proxy.emit('photoCount', null);
     (select['album'] || select['all']) ? TagService.getAlbumInfo(uid, proxy.done('Album')) : proxy.emit('Album', null);
 
-//    User.countFollowing(uid, proxy.done('followingCount'));
-//    User.countFollower(uid, proxy.done('followerCount'));
-//    Photo.countLikePhotos(uid, proxy.done('likeCount'));
-//    Photo.countPhotos(uid, proxy.done('photoCount'));
-//
-//    TagService.getAlbumInfo(uid, proxy.done('Album'));
-//    return callback(null, sampleData.userInfo);
 }
 
 
@@ -211,31 +195,31 @@ exports.getAllFollowingUser = function(uid, page, size, callback){
             var users = [], Ids = [];
             for(var i=0;i<docs.length;i++){
                 users[i] = {};
-                users[i].userId = docs[i].follow_id;
-                Ids[i] = docs[i].follow_id;
-                users[i].name = docs[i].remark_name;
+                var following = docs[i].follow_id;
+                users[i].userId = following._id;
+            //    Ids[i] = docs[i].follow_id;
+                users[i].name = docs[i].remark_name ? docs[i].remark_name : following.showName;
+                users[i].avatar = following.avatar;
             }
-            User.getUserInfoByIds(Ids, function(err, results){
-                if(err || users.length == 0){
-                    return callback(err,[]);
-                }else{
-                    for(var i=0; i< results.length;i++){
-                        if(!users[i].name){
-                            users[i].name = results[i].showName;
-                        }
-                        results[i].avatar ? users[i].avatar = results[i].avatar : null;
-                    }
-                    proxy.emit('followingUsers', users);
-                }
-            })
+            proxy.emit('followingUsers', users);
+//            User.getUserInfoByIds(Ids, function(err, results){
+//                if(err || users.length == 0){
+//                    return callback(err,[]);
+//                }else{
+//                    for(var i=0; i< results.length;i++){
+//                        if(!users[i].name){
+//                            users[i].name = results[i].showName;
+//                        }
+//                        results[i].avatar ? users[i].avatar = results[i].avatar : null;
+//                    }
+//                    proxy.emit('followingUsers', users);
+//                }
+//            })
 
         }
     })
 
     User.countFollowing(uid, proxy.done('count'));
-
-
-  //  return callback(null, sampleData.followingList);
 }
 
 
@@ -270,34 +254,35 @@ exports.getAllFollowerUser = function(uid, page, size, callback){
             var users = [], Ids = [];
             for(var i=0;i<docs.length;i++){
                 users[i] = {};
-                users[i].userId = docs[i].follow_id;
+                var follower = docs[i].follow_id;//用户
+                users[i].userId = follower._id;
                 if(docs[i].status == 3){
                     users[i].isFollowing = true;
                 }else{
                     users[i].isFollowing = false;
                 }
-                users[i].name = docs[i].remark_name;
-                Ids[i] = docs[i].follow_id;
+                users[i].name = docs[i].remark_name ? docs[i].remark_name : follower.showName;
+                users[i].avatar = follower.avatar;
+             //   Ids[i] = docs[i].follow_id;
             }
-            User.getUserInfoByIds(Ids, function(err, results){
-                if(err || users.length == 0){
-                    return callback(err,[]);
-                }else{
-                    for(var i=0; i< results.length;i++){
-                        if(!users[i].name){
-                            users[i].name = results[i].showName;
-                        }
-                        results[i].avatar ? users[i].avatar = results[i].avatar : null;
-                    }
-                    proxy.emit('followerUsers', users);
-                }
-            })
+            proxy.emit('followerUsers', users);
+//            User.getUserInfoByIds(Ids, function(err, results){
+//                if(err || users.length == 0){
+//                    return callback(err,[]);
+//                }else{
+//                    for(var i=0; i< results.length;i++){
+//                        if(!users[i].name){
+//                            users[i].name = results[i].showName;
+//                        }
+//                        results[i].avatar ? users[i].avatar = results[i].avatar : null;
+//                    }
+//                    proxy.emit('followerUsers', users);
+//                }
+//            })
         }
     })
 
     User.countFollower(uid, proxy.done('count'));
-
-   // return callback(null, sampleData.followerList);
 }
 
 /**
@@ -318,29 +303,32 @@ exports.getAllFriends = function(uid, callback){
             var users = [], Ids = [];
             for(var i=0;i<docs.length;i++){
                 users[i] = {};
-                users[i].userId = docs[i].follow_id;
-                Ids[i] = docs[i].follow_id;
-                var firstName = docs[i].remark_first_name ? docs[i].remark_first_name : '',
-                    lastName = docs[i].remark_second_name ? docs[i].remark_second_name : '';
-                users[i].name = firstName + lastName;
+                var friend = docs[i].follow_id;
+                users[i].userId = friend._id;
+    //            users[i].userId = docs[i].follow_id;
+  //              Ids[i] = docs[i].follow_id;
+//                var firstName = docs[i].remark_first_name ? docs[i].remark_first_name : '',
+//                    lastName = docs[i].remark_second_name ? docs[i].remark_second_name : '';
+                users[i].name = docs[i].remark_name ? docs[i].remark_name : friend.showName;
+                users[i].avatar = friend.avatar;
+                users[i].telephone = friend.telephone;
             }
-            User.getUserInfoByIds(Ids, function(err, results){
-                if(err || users.length == 0){
-                    return callback(err,[]);
-                }else{
-                    for(var i=0; i< results.length;i++){
-                        if(!users[i].name){
-//                            var firstName =   results[i].first_name ?  results[i].first_name : '',
-//                                lastName = results[i].second_name ? results[i].second_name : '';
-                            users[i].name = results[i].showName;
-                        }
-                        results[i].avatar ? users[i].avatar = results[i].avatar : null;
-                        results[i].telephone ? users[i].telephone = results[i].telephone : null;
-                    }
-                    return callback(err, users);
-                }
-            })
 
+            return callback(err, users);
+//            User.getUserInfoByIds(Ids, function(err, results){
+//                if(err || users.length == 0){
+//                    return callback(err,[]);
+//                }else{
+//                    for(var i=0; i< results.length;i++){
+//                        if(!users[i].name){
+//                            users[i].name = results[i].showName;
+//                        }
+//                        results[i].avatar ? users[i].avatar = results[i].avatar : null;
+//                        results[i].telephone ? users[i].telephone = results[i].telephone : null;
+//                    }
+//                    return callback(err, users);
+//                }
+//            })
         }
     })
 }
@@ -400,8 +388,6 @@ exports.getAllLikedPhotoList = function(uid,page,size, callback){
                 results[i].uploader = {};
                 results[i].uploader.userId = user._id;
                 user.avatar ? results[i].uploader.avatar = user.avatar : null;
-//                var firstName = user.first_name ? user.first_name : '',
-//                    lastName = user.second_name ? user.second_name : '';
                 results[i].uploader.name  = user.showName;
                 proxy.emit('photo_ready');
             })
@@ -409,8 +395,6 @@ exports.getAllLikedPhotoList = function(uid,page,size, callback){
     })
 
     Photo.countLikePhotos(uid, proxy.done('count'));
-
-    //return callback(null, sampleData.likedList);
 }
 
 
@@ -432,7 +416,6 @@ exports.HandleContactsRelation = function(uid, users, callback){
         return callback(null,[]);
     }
 
-
     var proxy = new EventProxy(),
          relations = [];
 
@@ -440,21 +423,11 @@ exports.HandleContactsRelation = function(uid, users, callback){
         return callback(null, relations);
     }).fail(callback);
 
-    var phoneObject = {};
-//    for(var k=0;k<users.length;k++){
-//        var phoneNumber = users[k].phoneNumber[0];
-//        if(phoneNumber){
-//            if(phoneNumber.indexOf('-') != -1){
-//                users[k].syncPhone = phoneNumber ? phoneNumber.slice(phoneNumber.length-13,phoneNumber) : null;
-//            }else{
-//                users[k].syncPhone = phoneNumber ? phoneNumber.slice(phoneNumber.length-11,phoneNumber) : null;
-//            }
-//            phoneObject[users[k].syncPhone] = true;
-//        }
-//    }
+    var phoneObject = [];
 
     for(var k=0;k<users.length;k++){
         users[k].syncPhones = [];
+        phoneObject[k] = {};
         for(var j= 0,len=users[k].phoneNumber ? users[k].phoneNumber.length : 0; j< len ; j++){
             var phoneNumber = users[k].phoneNumber[j];
             if(phoneNumber){
@@ -463,7 +436,7 @@ exports.HandleContactsRelation = function(uid, users, callback){
             }
             users[k].syncPhones[j] = phoneNumber;
 
-            phoneObject[phoneNumber] = true;
+            phoneObject[k][phoneNumber] = true;
         }
     }
 
@@ -480,13 +453,13 @@ exports.HandleContactsRelation = function(uid, users, callback){
                 relations[i].relationLevel = 0;   //无法在使用人群中找到好友
                 proxy.emit('relation_ready');
             }else{
-                if(doc.telephone && phoneObject[doc.telephone]/*doc.telephone == user.syncPhone*/){
+                if(doc.telephone && phoneObject[i][doc.telephone]){
                     User.addFriends(uid, doc._id,user.lastName, user.firstName,function(){});
                     User.addFriends(doc._id, uid,'','',function(){});
                     relations[i] = {};
                     relations[i].userId = uid;
                     relations[i].friendsId = doc._id;
-                    relations[i].relationLevel = 3;   //已经成为用户
+                    relations[i].relationLevel = 3;   //已经成为好友
                     proxy.emit('relation_ready');
                 }else{
                     relations[i] = {};
@@ -497,7 +470,7 @@ exports.HandleContactsRelation = function(uid, users, callback){
 
                     exports.getAllFriends(doc._id, function(err, docs){
                         for(var j=0;j<docs.length;j++){
-                            if(phoneObject[docs[j].telephone])
+                            if(phoneObject[i][docs[j].telephone])
                                 friendsCount++;
                         }
                         if(friendsCount >= 1){
@@ -537,13 +510,6 @@ exports.updateUserProfile = function(uid, data, callback){
 
     User.updateUserProfile(uid, data, callback);
 }
-
-//exports.setAvatar = function(uid, avatar, callback){
-//    if(typeof uid === 'string'){
-//        uid = new ObjectId(uid);
-//    }
-//    User.setAvatar(uid, avatar, callback);
-//}
 
 /**
  * 获取个人设置信息

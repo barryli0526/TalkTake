@@ -10,7 +10,6 @@ var routes = require('./routes');
 //var redis = require('redis');
 var fs = require('fs');
 //require('oneapm');
-//var ejsfilter = require('./lib/ejs_filter');
 
 /**
  *   Instantiate redis

@@ -24,25 +24,6 @@ exports.getUserByUUID = function(uuid, callback){
 }
 
 /**
- * 设置头像
- * @param uuid
- * @param avatar
- * @param callback
- */
-//exports.setAvatar = function(uid,avatar, callback){
-//    User.findOne({'_id':uid},function(err, doc){
-//        if(err){
-//            return callback(err,{});
-//        }else if(!doc){
-//            return callback('user not exist', {});
-//        }else{
-//            doc.avatar = avatar;
-//            doc.save(callback);
-//        }
-//    })
-//}
-
-/**
  * 新建关联
  * @param followerId
  * @param uid
@@ -228,6 +209,7 @@ exports.checkIfExist = function(uuid, sid, callback){
  */
 exports.getUserFollowers = function(uid, page, size, callback){
     UserRelation.find({'user_id' : uid,$or:[{'status':1},{'status':3}]})
+        .populate('follow_id')
         .skip(page*size)
         .limit(size)
         .exec(callback);
@@ -242,6 +224,7 @@ exports.getUserFollowers = function(uid, page, size, callback){
  */
 exports.getUserFollowings = function(uid, page, size, callback){
     UserRelation.find({'user_id' : uid,$or:[{'status':2},{'status':3}]})
+        .populate('follow_id')
         .skip(page*size)
         .limit(size)
         .exec(callback);

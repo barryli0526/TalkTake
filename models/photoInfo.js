@@ -19,6 +19,7 @@ var PhotoInfoSchema = new Schema({
             forward_at:{type:Date},
             forwarder_id:{type:ObjectId, ref:'User'},
             forward_text:{type:String} ,
+            forward_from : {type:String},
             _id:false
         }
     ],
@@ -37,7 +38,8 @@ var PhotoInfoSchema = new Schema({
         }
     ],
     reply_count: { type: Number, default: 0 },
-    post_at:{type:Date, default:Date.now()}
+    post_at:{type:Date, default:Date.now()},
+    last_update:{type:Date, default:Date.now()}
 });
 
 mongoose.model('PhotoInfo', PhotoInfoSchema);

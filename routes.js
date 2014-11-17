@@ -55,42 +55,6 @@ module.exports = function (app, client) {
         }
     }
 
-//    var urlList = {
-//        upload : {friendlyName : '上传图片模块'},
-//        index : {friendlyName : '首页图片展示模块'},
-//        like:{friendlyName :'社交模块(赞）'},
-//        detail:{friendlyName:'查看图片详细模块'},
-//        comment_view:{friendlyName : '查看评论模块'},
-//        comment_post : {friendlyName : '参与评论模块'},
-//        follow : {friendlyName : '社交模块（关注/取关)'},
-//        followingInfo:{friendlyName :'查看关注模块'},
-//        followerInfo:{friendlyName:'查看粉丝模块'},
-//        likeInfo:{friendlyName : '查看喜欢模块'},
-//        albumInfo : {friendlyName : '相册模块'},
-//        userInfo : {friendlyName : '查看个人用户信息模块'},
-//        user_post:{friendlyName :'修改个人信息模块'}
-//    }
-////        {baseUrl : '/TalkTake/InitClient', friendlyName : '新用户调用'},
-////        {baseUrl : '/TalkTake/UploadToken', friendlyName : '获取上传凭证'},
-////        {baseUrl : '/TalkTake/Photos/Latest', friendlyName : '获取最新图片列表'},
-////        {baseUrl : '/TalkTake/Photos/Oldest', friendlyName : '获取过往图片列表'},
-////        {baseUrl : '/TalkTake/Photos', friendlyName : '获取图片时间段列表'},
-////        {baseUrl : '/TalkTake/Photos/:photoId/Like', friendlyName : '对某张图片点赞'},
-////        {baseUrl : '/TalkTak/Photos/:photoId/UnLike', friendlyName : '取消对某张图片点赞'},
-////        {baseUrl : '/TalkTake/Photos/:photoId', friendlyName : '获取图片信息'},
-////        {baseUrl : '/TalkTake/Photos/:photoId/Comments', friendlyName : '获取评论列表'},
-////        {baseUrl : '/TalkTake/Photos/:photoId/Comments', friendlyName : '提交图片评论'},
-////        {baseUrl : '/TalkTake/User/SyncContacts', friendlyName : '导入通讯录'},
-////        {baseUrl : '/TalkTake/User/:userId/follow', friendlyName : '关注用户'},
-////        {baseUrl : '/TalkTake/User/:userId/unFollow', friendlyName : '取消关注用户'},
-////        { friendlyName : '获取粉丝列表'},
-////        { friendlyName : '获取所有喜欢的列表'},
-////        { friendlyName : '获取个人相册内容'},
-////        { friendlyName : '获取个人用户信息'},
-////        { friendlyName : '上传'},
-////        { friendlyName : '获取首页的推荐标签'},
-////        { friendlyName : '获取首页的推荐标签'}
-
 
     var addVisit = function(req, res, next){
         HelpService.addApiCount(req.route.path,req.route.method,function(){});

@@ -12,11 +12,18 @@ var User = dbHelper.User;
 var Comment = dbHelper.Comment;
 var labels = require('../config/base').labels;
 var config = require('../config/base').config;
-var sampleData = require('../Sample/photos');
 var ObjectId = require('mongoose').Types.ObjectId;
 var util = require('../lib/util');
 var EventProxy = require('eventproxy');
 
+/**
+ * 首页获取最新图片，不包括新奇的内容
+ * @param uid
+ * @param category
+ * @param anchorTime
+ * @param listSize
+ * @param callback
+ */
 exports.getLatestPhotos = function(uid,category, anchorTime, listSize, callback){
 
 
@@ -40,7 +47,6 @@ exports.getLatestPhotos = function(uid,category, anchorTime, listSize, callback)
                 var doc = docs[i-1];
                 var followId = doc.follow_id;
                 friends[followId] = {};
-               // friends[followId].isExist = true;
                 friends[followId].name = doc.remark_name;
                 Ids[i] = doc.follow_id;
             }
@@ -89,10 +95,15 @@ exports.getLatestPhotos = function(uid,category, anchorTime, listSize, callback)
                              results[i].uploader.name = friends[user._id].name;
                          }
                         results[i].forwarder = [];
+                        var obj = {}, fwCount = 0;
                         for(var j=0;j<doc.forward.length;j++){
-                            results[i].forwarder[j] ={};
-                            results[i].forwarder[j].userId = doc.forward[j].forwarder_id._id;
-                            doc.forward[j].forwarder_id.avatar ? results[i].forwarder[j].avatar = doc.forward[j].forwarder_id.avatar : null;
+                            var forwarder = doc.forward[j].forwarder_id;
+                            if(!obj[forwarder._id]){
+                                results[i].forwarder[fwCount] ={};
+                                results[i].forwarder[fwCount].userId = forwarder._id;
+                                forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                                obj[forwarder._id] = true;
+                            }
                         }
                         proxy.emit('photo_ready');
 
@@ -117,7 +128,14 @@ exports.getLatestPhotos = function(uid,category, anchorTime, listSize, callback)
   //  return callback(null,sampleData.LatestList);
 }
 
-
+/**
+ * 首页获取过往图片，不包括新奇的内容
+ * @param uid
+ * @param category
+ * @param anchorTime
+ * @param listSize
+ * @param callback
+ */
 exports.getOldestPhotos = function(uid,category, anchorTime, listSize, callback){
 
     if(typeof uid === 'string'){
@@ -188,10 +206,15 @@ exports.getOldestPhotos = function(uid,category, anchorTime, listSize, callback)
                             results[i].uploader.name = friends[user._id].name;
                         }
                         results[i].forwarder = [];
+                        var obj = {}, fwCount = 0;
                         for(var j=0;j<doc.forward.length;j++){
-                            results[i].forwarder[j] ={};
-                            results[i].forwarder[j].userId = doc.forward[j].forwarder_id._id;
-                            doc.forward[j].forwarder_id.avatar ? results[i].forwarder[j].avatar = doc.forward[j].forwarder_id.avatar : null;
+                            var forwarder = doc.forward[j].forwarder_id;
+                            if(!obj[forwarder._id]){
+                                results[i].forwarder[fwCount] ={};
+                                results[i].forwarder[fwCount].userId = forwarder._id;
+                                forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                                obj[forwarder._id] = true;
+                            }
                         }
                         proxy.emit('photo_ready');
 
@@ -208,11 +231,18 @@ exports.getOldestPhotos = function(uid,category, anchorTime, listSize, callback)
             })
         }
     })
-
-   // return callback(null,sampleData.OldestList);
 }
 
 
+/**
+ * 首页获取某个时间段的图片，不包括新奇
+ * @param uid
+ * @param category
+ * @param startDate
+ * @param endDate
+ * @param listSize
+ * @param callback
+ */
 exports.getSegmentPhoto = function(uid,category, startDate, endDate, listSize, callback){
 
     if(typeof uid === 'string'){
@@ -287,10 +317,15 @@ exports.getSegmentPhoto = function(uid,category, startDate, endDate, listSize, c
                             results[i].uploader.name = friends[user._id].name;
                         }
                         results[i].forwarder = [];
+                        var obj = {}, fwCount = 0;
                         for(var j=0;j<doc.forward.length;j++){
-                            results[i].forwarder[j] ={};
-                            results[i].forwarder[j].userId = doc.forward[j].forwarder_id._id;
-                            doc.forward[j].forwarder_id.avatar ? results[i].forwarder[j].avatar = doc.forward[j].forwarder_id.avatar : null;
+                            var forwarder = doc.forward[j].forwarder_id;
+                            if(!obj[forwarder._id]){
+                                results[i].forwarder[fwCount] ={};
+                                results[i].forwarder[fwCount].userId = forwarder._id;
+                                forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                                obj[forwarder._id] = true;
+                            }
                         }
                         proxy.emit('photo_ready');
                     })
@@ -429,10 +464,16 @@ exports.getPhotoDetail = function(userId,photoId, callback){
             }
         }
     })
-
-   // return callback(null, sampleData.photoDetail);
 }
 
+/**
+ * 获取评论
+ * @param userId
+ * @param photoId
+ * @param startIndex
+ * @param size
+ * @param callback
+ */
 exports.getComments = function(userId, photoId, startIndex, size, callback){
 
     if(typeof userId === 'string'){
@@ -483,8 +524,6 @@ exports.getComments = function(userId, photoId, startIndex, size, callback){
                     proxy1.emit('comment_ready');
                 })
             })
-
-            //return callback(null, docs);
         }
     })
 
@@ -495,9 +534,6 @@ exports.getComments = function(userId, photoId, startIndex, size, callback){
             proxy.emit('count',count);
         }
     })
-
-
-    //return callback(null, sampleData.comments);
 }
 
 /**
@@ -523,9 +559,10 @@ exports.postComments = function(photoId, uid, comments, replyTime, callback){
 
     Photo.increaseCommentCount(photoId, function(){});
 
-    Comment.newAndSave(uid, photoId, data, callback);
+    //如果进行评论的话则加入转发列表并自动扩散到朋友圈
+    Photo.addForwardPhotoInfo(uid, photoId, data.replyTime, 'comments', function(){});
 
-    //return callback(null,[]);
+    Comment.newAndSave(uid, photoId, data, callback);
 }
 
 /**
@@ -547,9 +584,6 @@ exports.createNewPhoto = function(userId,name,key, tags, createTime, location, d
     }
     var url = config.qnConfig.domain + '/' + key;
     var thumbUrl = url + config.qnConfig.quality;
-//    if(config.qnConfig.compress){
-//
-//    }
 
     if(typeof tags ==='string'){
         tags = tags.split(',');
@@ -561,7 +595,6 @@ exports.createNewPhoto = function(userId,name,key, tags, createTime, location, d
         if(err || !doc || doc.length == 0){
             return callback(err, []);
         }else{
-//            Photo.createNewPostPhotoRelation(userId, doc._id, tags, createTime, function(){}) ;
             Photo.createNewPhotoInfo(userId, doc._id, tags, createTime, isPublic, function(){});
             return callback(null, {photoId:doc._id, photoUrl:doc.source_url});
         }
@@ -589,6 +622,9 @@ exports.likePhoto = function(userId, photoId,likeTime, callback){
     likeTime = new Date(likeTime);
 
     Photo.addLikePhotoInfo(userId, photoId, likeTime, function(){});
+
+    //如果进行评论的话则加入转发列表并自动扩散到朋友圈
+    Photo.addForwardPhotoInfo(uid, photoId, likeTime, 'like', function(){});
 
     return callback(null,[]);
 
@@ -621,35 +657,35 @@ exports.unlikePhoto = function(userId, photoId, callback){
  * @param callback
  * @returns {*}
  */
-exports.sharePhoto = function(userId, photoId,shareTime, callback){
-
-    if(typeof userId === 'string'){
-        userId = new ObjectId(userId);
-    }
-
-    if(typeof photoId === 'string'){
-        photoId = new ObjectId(photoId);
-    }
-
-    var shareTime = new Date(shareTime);
+//exports.sharePhoto = function(userId, photoId,shareTime, callback){
 //
-//    Photo.getPhotoTags(photoId, function(err, doc){
-//        if(err){
-//            return callback(err,[]);
-//        }else{
-//            var tags = [];
-//            if(!doc || doc.length == 0){
-//                tags[0] = labels.Category;
-//            }else{
-//                tags = doc.tags;
-//            }
-//            Photo.createNewSharePhotoRelation(userId, photoId, tags, shareTime, function(){});
-//        }
-//    })
-
-    return callback(null,[]);
-
-}
+//    if(typeof userId === 'string'){
+//        userId = new ObjectId(userId);
+//    }
+//
+//    if(typeof photoId === 'string'){
+//        photoId = new ObjectId(photoId);
+//    }
+//
+//    var shareTime = new Date(shareTime);
+////
+////    Photo.getPhotoTags(photoId, function(err, doc){
+////        if(err){
+////            return callback(err,[]);
+////        }else{
+////            var tags = [];
+////            if(!doc || doc.length == 0){
+////                tags[0] = labels.Category;
+////            }else{
+////                tags = doc.tags;
+////            }
+////            Photo.createNewSharePhotoRelation(userId, photoId, tags, shareTime, function(){});
+////        }
+////    })
+//
+//    return callback(null,[]);
+//
+//}
 
 
 /**
@@ -661,25 +697,25 @@ exports.sharePhoto = function(userId, photoId,shareTime, callback){
  * @param callback
  * @returns {*}
  */
-exports.forwardPhoto = function(userId, photoId, forwardText, forwardTime, callback){
-    if(typeof userId === 'string'){
-        userId = new ObjectId(userId);
-    }
-
-    if(typeof photoId === 'string'){
-        photoId = new ObjectId(photoId);
-    }
-
-    forwardTime = new Date(forwardTime);
-
-    Photo.addForwardPhotoInfo(userId, photoId, forwardText, forwardTime, function(){});
-
-    return callback(null,[]);
-
-}
+//exports.forwardPhoto = function(userId, photoId, forwardText, forwardTime, callback){
+//    if(typeof userId === 'string'){
+//        userId = new ObjectId(userId);
+//    }
+//
+//    if(typeof photoId === 'string'){
+//        photoId = new ObjectId(photoId);
+//    }
+//
+//    forwardTime = new Date(forwardTime);
+//
+//    Photo.addForwardPhotoInfo(userId, photoId, forwardText, forwardTime, function(){});
+//
+//    return callback(null,[]);
+//
+//}
 
 /**
- * 获取所有新奇的图片
+ * 获取最新的新奇的图片
  * @param uid
  * @param category
  * @param anchorTime
@@ -771,10 +807,15 @@ exports.getLatestXQPhotos = function(uid, anchorTime, listSize, callback){
                                     results[i].uploader.name = friends[user._id].name;
                                 }
                                 results[i].forwarder = [];
+                                var obj = {}, fwCount = 0;
                                 for(var j=0;j<doc.forward.length;j++){
-                                    results[i].forwarder[j] ={};
-                                    results[i].forwarder[j].userId = doc.forward[j].forwarder_id._id;
-                                    doc.forward[j].forwarder_id.avatar ? results[i].forwarder[j].avatar = doc.forward[j].forwarder_id.avatar : null;
+                                    var forwarder = doc.forward[j].forwarder_id;
+                                    if(!obj[forwarder._id]){
+                                        results[i].forwarder[fwCount] ={};
+                                        results[i].forwarder[fwCount].userId = forwarder._id;
+                                        forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                                        obj[forwarder._id] = true;
+                                    }
                                 }
                                 proxy.emit('photo_ready');
 
@@ -796,7 +837,13 @@ exports.getLatestXQPhotos = function(uid, anchorTime, listSize, callback){
     })
 }
 
-
+/**
+ * 获取过往的新奇图片
+ * @param uid
+ * @param anchorTime
+ * @param listSize
+ * @param callback
+ */
 exports.getOldestXQPhotos = function(uid, anchorTime, listSize, callback){
 
     if(typeof uid === 'string'){
@@ -881,10 +928,15 @@ exports.getOldestXQPhotos = function(uid, anchorTime, listSize, callback){
                                     results[i].uploader.name = friends[user._id].name;
                                 }
                                 results[i].forwarder = [];
+                                var obj = {}, fwCount = 0;
                                 for(var j=0;j<doc.forward.length;j++){
-                                    results[i].forwarder[j] ={};
-                                    results[i].forwarder[j].userId = doc.forward[j].forwarder_id._id;
-                                    doc.forward[j].forwarder_id.avatar ? results[i].forwarder[j].avatar = doc.forward[j].forwarder_id.avatar : null;
+                                    var forwarder = doc.forward[j].forwarder_id;
+                                    if(!obj[forwarder._id]){
+                                        results[i].forwarder[fwCount] ={};
+                                        results[i].forwarder[fwCount].userId = forwarder._id;
+                                        forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                                        obj[forwarder._id] = true;
+                                    }
                                 }
                                 proxy.emit('photo_ready');
 
@@ -907,6 +959,14 @@ exports.getOldestXQPhotos = function(uid, anchorTime, listSize, callback){
     })
 }
 
+/**
+ * 获取某个时间段的新奇图片
+ * @param uid
+ * @param startDate
+ * @param endDate
+ * @param listSize
+ * @param callback
+ */
 exports.getSegmentXQPhoto = function(uid, startDate, endDate, listSize, callback){
 
     if(typeof uid === 'string'){
@@ -995,10 +1055,15 @@ exports.getSegmentXQPhoto = function(uid, startDate, endDate, listSize, callback
                                     results[i].uploader.name = friends[user._id].name;
                                 }
                                 results[i].forwarder = [];
+                                var obj = {}, fwCount = 0;
                                 for(var j=0;j<doc.forward.length;j++){
-                                    results[i].forwarder[j] ={};
-                                    results[i].forwarder[j].userId = doc.forward[j].forwarder_id._id;
-                                    doc.forward[j].forwarder_id.avatar ? results[i].forwarder[j].avatar = doc.forward[j].forwarder_id.avatar : null;
+                                    var forwarder = doc.forward[j].forwarder_id;
+                                    if(!obj[forwarder._id]){
+                                        results[i].forwarder[fwCount] ={};
+                                        results[i].forwarder[fwCount].userId = forwarder._id;
+                                        forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                                        obj[forwarder._id] = true;
+                                    }
                                 }
                                 proxy.emit('photo_ready');
                             })

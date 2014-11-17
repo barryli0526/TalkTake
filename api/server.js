@@ -34,7 +34,6 @@ exports.InitClient = function(req, res){
 
     UserService.createClient(UUID, function(err, doc){
         if(err || !doc || doc.length == 0){
-            console.log(err);
             res.statusCode = 500;
             res.end(util.combineFailureRes(labels.DBError));
         }else{
