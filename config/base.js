@@ -41,6 +41,10 @@ exports.labels = {
     UserList : 100,
     tagRecommendCount:5,
 
+    Latest : 'latest',
+    Oldest : 'oldest',
+    Segment : 'segment',
+
     avatar:'http://www.gravatar.com/avatar?size=48',
 
     qnDomain:'',

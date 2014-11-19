@@ -10,7 +10,6 @@ var User = dbHelper.User;
 var Photo = dbHelper.Photo;
 var labels = require('../config/base').labels;
 var config = require('../config/base').config;
-var sampleData = require('../Sample/photos');
 var ObjectId = require('mongoose').Types.ObjectId;
 var EventProxy = require('eventproxy');
 var util = require('../lib/util');

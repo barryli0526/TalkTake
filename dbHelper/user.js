@@ -290,7 +290,7 @@ exports.checkUserByNameAndPhones = function(phones, firstName, lastName, callbac
  * @param callback
  */
 exports.checkIsFollow = function(uid, followId, callback){
-   UserRelation.findOne({'user_id':uid, 'follow_id':followId},'isFollowing', function(err, doc){
+   UserRelation.findOne({'user_id':uid, 'follow_id':followId},'status', function(err, doc){
        if(err || !doc || doc.length == 0){
            return callback(err,false);
        }else{

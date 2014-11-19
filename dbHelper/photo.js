@@ -9,6 +9,9 @@
 
 var Photo = require('../models').Photo;
 var PhotoInfo = require('../models').PhotoInfo;
+var Helper = require('../lib/Helper');
+var queryStringBuilder = Helper.queryStringBuilder;
+var labels = require('../config/base').labels;
 
 
 /**
@@ -74,7 +77,7 @@ exports.addLikePhotoInfo = function(userId, photoId, likeTime, callback){
 }
 
 /**
- * 图片浏览
+ * 增加图片浏览计数
  * @param userId
  * @param photoId
  * @param visitTime
@@ -405,204 +408,6 @@ exports.increaseCommentCount = function(photoId, callback){
 
 
 /**
- * 根据tag获取某个用户朋友圈的过往图片ID
- * @param Ids
- * @param tagName
- * @param anchorTime
- * @param size
- * @param callback
- */
-exports.getUserOldestPhotosByTag = function(Ids, tagName, anchorTime, size, callback){
-//    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$lt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$lt: anchorTime}}]}]};
-//    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
-//        .limit(size)
-//        .exec(callback);
-    var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$lt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$lt:anchorTime}}]}]},
-        privacyQuery = {'isPublic':true};
-
-
-    if(tagName){
-        var tagQuery = {'tags':{$all:tagName}};
-        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
-    }else{
-        query  = {$and:[basicQuery, privacyQuery]};
-    }
-
-    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
-        .limit(size)
-        .exec(callback);
-}
-
-/**
- * 根据tag获取某个用户朋友圈的最新图片ID
- * @param Ids
- * @param tagName
- * @param anchorTime
- * @param size
- * @param callback
- */
-exports.getUserLatestPhotosByTag = function(Ids, tagName, anchorTime, size, callback){
-//    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$gt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$gt: anchorTime}}]}]};
-//    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
-//        .limit(size)
-//        .exec(callback);
-
-
-    var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$gt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$gt:anchorTime}}]}]},
-        privacyQuery = {'isPublic':true};
-
-
-    if(tagName){
-        var tagQuery = {'tags':{$all:tagName}};
-        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
-    }else{
-        query  = {$and:[basicQuery, privacyQuery]};
-    }
-
-    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
-        .limit(size)
-        .exec(callback);
-
-
-}
-
-
-
-
-/**
- *  根据tag获取某个用户朋友圈的某个阶段的图片ID
- * @param Ids
- * @param tagName
- * @param startDate
- * @param endDate
- * @param size
- * @param callback
- */
-exports.getUserSegmentPhotosByTag = function(Ids, tagName, startDate,endDate, size, callback){
-//    var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'post_at':{$gte: startDate}},{'post_at':{$lte: endDate}}]}]},
-//        {$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'forward.forward_at':{$gte: startDate}},{'forward.forward_at':{$lte: endDate}}]}]}]};
-//    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
-//        .limit(size)
-//        .exec(callback);
-
-    var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{$and:[{'post_at':{$gte:startDate}},{'post_at':{$lte:endDate}}]}]},
-            {$and:[{'forward.forwarder_id' : {$in:Ids}},{$and:[{'forward.forward_at':{$gte:startDate}},{'forward.forward_at':{$lte:endDate}}]}]}]},
-        privacyQuery = {'isPublic':true};
-
-    if(tagName){
-        var tagQuery = {'tags':{$all:tagName}};
-        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
-    }else{
-        query  = {$and:[basicQuery, privacyQuery]};
-    }
-
-    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
-        .limit(size)
-        .exec(callback);
-
-}
-
-
-/**
- * 获取过往的总数
- * @param Ids
- * @param tagName
- * @param anchorTime
- * @param size
- * @param callback
- */
-exports.getUserOldestPhotoCount = function(Ids, tagName, anchorTime, size, callback){
-  //  var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$lt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$lt: anchorTime}}]}]};
-    var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$lt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$lt:anchorTime}}]}]},
-        privacyQuery = {'isPublic':true};
-
-
-    if(tagName){
-        var tagQuery = {'tags':{$all:tagName}};
-        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
-    }else{
-        query  = {$and:[basicQuery, privacyQuery]};
-    }
-
-    PhotoInfo.count(query, callback);
-}
-
-
-/**
- * 获取最新的总数
- * @param Ids
- * @param tagName
- * @param anchorTime
- * @param size
- * @param callback
- */
-exports.getUserLatestPhotoCount  = function(Ids, tagName, anchorTime, size, callback){
-   // var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$gt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$gt: anchorTime}}]}]};
-    var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$gt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$gt:anchorTime}}]}]},
-        privacyQuery = {'isPublic':true};
-
-
-    if(tagName){
-        var tagQuery = {'tags':{$all:tagName}};
-        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
-    }else{
-        query  = {$and:[basicQuery, privacyQuery]};
-    }
-
-    PhotoInfo.count(query,callback);
-}
-
-
-/**
- * 获取某个阶段的总数
- * @param Ids
- * @param tagName
- * @param startDate
- * @param endDate
- * @param size
- * @param callback
- */
-exports.getUserSegementPhotoCount = function(Ids, tagName, startDate,endDate, size, callback){
-  //  var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'post_at':{$gte: startDate}},{'post_at':{$lte: endDate}}]}]},
-//        {$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{$and:[{'forward.forward_at':{$gte: startDate}},{'forward.forward_at':{$lte: endDate}}]}]}]};
-
-    var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{$and:[{'post_at':{$gte:startDate}},{'post_at':{$lte:endDate}}]}]},
-            {$and:[{'forward.forwarder_id' : {$in:Ids}},{$and:[{'forward.forward_at':{$gte:startDate}},{'forward.forward_at':{$lte:endDate}}]}]}]},
-        privacyQuery = {'isPublic':true};
-
-    if(tagName){
-        var tagQuery = {'tags':{$all:tagName}};
-        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
-    }else{
-        query  = {$and:[basicQuery, privacyQuery]};
-    }
-
-    PhotoInfo.count(query, callback);
-}
-
-
-
-exports.getLatestPhotos = function(Ids, tagName, anchorTime, size ,callback){
-
-}
-
-exports.getOldestPhotos = function(Ids, tagName, anchorTime, size, callback){
-
-}
-
-exports.getSegementPhotos = function(Ids, tagName, startDate,endDate, size, callback){
-
-}
-
-
-
-/**
  * 统计赞过的图片数
  * @param userId
  * @param callback
@@ -648,8 +453,6 @@ exports.getUserAllTag = function(userId, callback){
         }
         return { count : total };
     }
-    //只提取出属于该用户发布和分享的
-    //  o.query = {$and : [{'user_id':{$in:Ids}},{$or:[{'post_at' : {$ne:null}},{'share_at':{$ne:null}}]}]};
     o.query = {'author_id':userId};
 
     PhotoInfo.mapReduce(o,callback);
@@ -746,9 +549,6 @@ exports.getLikePhotoList = function(userId, page, size, callback){
         .exec(callback);
 }
 
-
-
-
 /**
  * 根据图片ID获取图片信息
  * @param photoId
@@ -778,174 +578,396 @@ exports.checkIfLiked = function(userId, photoId, callback){
 }
 
 
-/**
- * 测试
- */
-exports.deleteAll = function(){
-    Photo.remove().exec();
-    PhotoInfo.remove().exec();
-}
-
-
-
-
-exports.getUserXQOldestPhotosByTag = function(Ids, tagName, anchorTime, size, callback){
-    var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$lt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$lt:anchorTime}}]}]},
-        privacyQuery = {'isPublic':true};
-
-
-    if(tagName){
-        var tagQuery = {'tags':{nin:tagName}};
-        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
-    }else{
-        query  = {$and:[basicQuery, privacyQuery]};
-    }
-
-    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
-        .limit(size)
-        .exec(callback);
-}
 
 /**
- * 根据tag获取某个用户朋友圈的最新图片ID
+ * 根据标签获取首页的图片列表
  * @param Ids
- * @param tagName
- * @param anchorTime
- * @param size
- * @param callback
- */
-exports.getUserLatestXQPhotosByTag = function(Ids, tagName, anchorTime, size, callback){
-
-
-    var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$gt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$gt:anchorTime}}]}]},
-        privacyQuery = {'isPublic':true};
-
-
-    if(tagName){
-        var tagQuery = {'tags':{nin:tagName}};
-        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
-    }else{
-        query  = {$and:[basicQuery, privacyQuery]};
-    }
-
-    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
-        .limit(size)
-        .exec(callback);
-
-
-}
-
-
-
-
-/**
- *  根据tag获取某个用户朋友圈的某个阶段的图片ID
- * @param Ids
- * @param tagName
+ * @param tags
  * @param startDate
  * @param endDate
  * @param size
+ * @param type
+ * "latest"
+ * "oldest"
+ * "segment"
+ * @param isXQ
+ * true 表示新奇的内容
+ * false 普通标签
  * @param callback
  */
-exports.getUserSegmentXQPhotosByTag = function(Ids, tagName, startDate,endDate, size, callback){
+exports.getUserIndexPhotosByTag = function(Ids, tags , startDate, endDate, size, type,isXQ, callback){
 
-    var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{$and:[{'post_at':{$gte:startDate}},{'post_at':{$lte:endDate}}]}]},
-            {$and:[{'forward.forwarder_id' : {$in:Ids}},{$and:[{'forward.forward_at':{$gte:startDate}},{'forward.forward_at':{$lte:endDate}}]}]}]},
-        privacyQuery = {'isPublic':true};
-
-    if(tagName){
-        var tagQuery = {'tags':{nin:tagName}};
-        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
-    }else{
-        query  = {$and:[basicQuery, privacyQuery]};
+    var query = {};
+    if(type == labels.Latest){
+        query = queryStringBuilder.buildLatestPhotosQuery(Ids, tags, startDate, isXQ);
+    }else if(type == labels.Oldest){
+        query = queryStringBuilder.buildOldestPhotosQuery(Ids, tags, startDate, isXQ);
+    }else if(type == labels.Segment){
+        query = queryStringBuilder.buildSegmentPhotosQuery(Ids, tags, startDate, endDate, isXQ);
     }
 
     PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
         .limit(size)
         .exec(callback);
-
 }
 
-
 /**
- * 获取过往的总数
+ * 根据标签获取首页的图片列表数目
  * @param Ids
- * @param tagName
- * @param anchorTime
+ * @param tags
+ * @param startDate
+ * @param endDate
  * @param size
+ * @param type
+ * "latest"
+ * "oldest"
+ * "segment"
+ * @param isXQ
+ * true 表示新奇的内容
+ * false 普通标签
  * @param callback
  */
-exports.getUserOldestXQPhotoCount = function(Ids, tagName, anchorTime, size, callback){
-    //  var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$lt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$lt: anchorTime}}]}]};
-    var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$lt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$lt:anchorTime}}]}]},
-        privacyQuery = {'isPublic':true};
+exports.getUserIndexPhotosCountByTag = function(Ids, tags , startDate, endDate, size, type,isXQ, callback){
 
-
-    if(tagName){
-        var tagQuery = {'tags':{$nin:tagName}};
-        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
-    }else{
-        query  = {$and:[basicQuery, privacyQuery]};
+    var query = {};
+    if(type == labels.Latest){
+        query = queryStringBuilder.buildLatestPhotosQuery(Ids, tags, startDate, isXQ);
+    }else if(type == labels.Oldest){
+        query = queryStringBuilder.buildOldestPhotosQuery(Ids, tags, startDate, isXQ);
+    }else if(type == labels.Segment){
+        query = queryStringBuilder.buildSegmentPhotosQuery(Ids, tags, startDate, endDate, isXQ);
     }
 
     PhotoInfo.count(query, callback);
 }
 
+//back up for old get photo logic
+//todo remove after valid
+///**
+// * 获取新奇图片
+// * @param Ids
+// * @param tagName
+// * @param anchorTime
+// * @param size
+// * @param callback
+// */
+//exports.getUserXQOldestPhotosByTag = function(Ids, tagName, anchorTime, size, callback){
+//    var query = {},
+//        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$lt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$lt:anchorTime}}]}]},
+//        privacyQuery = {'isPublic':true};
+//
+//
+//    if(tagName){
+//        var tagQuery = {'tags':{$nin:tagName}};
+//        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+//    }else{
+//        query  = {$and:[basicQuery, privacyQuery]};
+//    }
+//
+//    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
+//        .limit(size)
+//        .exec(callback);
+//}
+//
+///**
+// * 根据tag获取某个用户朋友圈的最新图片ID
+// * @param Ids
+// * @param tagName
+// * @param anchorTime
+// * @param size
+// * @param callback
+// */
+//exports.getUserLatestXQPhotosByTag = function(Ids, tagName, anchorTime, size, callback){
+//
+//
+//    var query = {},
+//        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$gt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$gt:anchorTime}}]}]},
+//        privacyQuery = {'isPublic':true};
+//
+//
+//    if(tagName){
+//        var tagQuery = {'tags':{$nin:tagName}};
+//        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+//    }else{
+//        query  = {$and:[basicQuery, privacyQuery]};
+//    }
+//
+//    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
+//        .limit(size)
+//        .exec(callback);
+//
+//
+//}
+//
+//
+//
+//
+///**
+// *  根据tag获取某个用户朋友圈的某个阶段的图片ID
+// * @param Ids
+// * @param tagName
+// * @param startDate
+// * @param endDate
+// * @param size
+// * @param callback
+// */
+//exports.getUserSegmentXQPhotosByTag = function(Ids, tagName, startDate,endDate, size, callback){
+//
+//    var query = {},
+//        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{$and:[{'post_at':{$gte:startDate}},{'post_at':{$lte:endDate}}]}]},
+//            {$and:[{'forward.forwarder_id' : {$in:Ids}},{$and:[{'forward.forward_at':{$gte:startDate}},{'forward.forward_at':{$lte:endDate}}]}]}]},
+//        privacyQuery = {'isPublic':true};
+//
+//    if(tagName){
+//        var tagQuery = {'tags':{$nin:tagName}};
+//        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+//    }else{
+//        query  = {$and:[basicQuery, privacyQuery]};
+//    }
+//
+//    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
+//        .limit(size)
+//        .exec(callback);
+//
+//}
+//
+//
+///**
+// * 获取过往的总数
+// * @param Ids
+// * @param tagName
+// * @param anchorTime
+// * @param size
+// * @param callback
+// */
+//exports.getUserOldestXQPhotoCount = function(Ids, tagName, anchorTime, size, callback){
+//    //  var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$lt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$lt: anchorTime}}]}]};
+//    var query = {},
+//        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$lt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$lt:anchorTime}}]}]},
+//        privacyQuery = {'isPublic':true};
+//
+//
+//    if(tagName){
+//        var tagQuery = {'tags':{$nin:tagName}};
+//        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+//    }else{
+//        query  = {$and:[basicQuery, privacyQuery]};
+//    }
+//
+//    PhotoInfo.count(query, callback);
+//}
+//
+//
+///**
+// * 获取最新的总数
+// * @param Ids
+// * @param tagName
+// * @param anchorTime
+// * @param size
+// * @param callback
+// */
+//exports.getUserLatestXQPhotoCount  = function(Ids, tagName, anchorTime, size, callback){
+//    // var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$gt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$gt: anchorTime}}]}]};
+//    var query = {},
+//        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$gt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$gt:anchorTime}}]}]},
+//        privacyQuery = {'isPublic':true};
+//
+//
+//    if(tagName){
+//        var tagQuery = {'tags':{$nin:tagName}};
+//        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+//    }else{
+//        query  = {$and:[basicQuery, privacyQuery]};
+//    }
+//
+//    PhotoInfo.count(query,callback);
+//}
+//
+//
+///**
+// * 获取某个阶段的总数
+// * @param Ids
+// * @param tagName
+// * @param startDate
+// * @param endDate
+// * @param size
+// * @param callback
+// */
+//exports.getUserSegementXQPhotoCount = function(Ids, tagName, startDate,endDate, size, callback){
+//    var query = {},
+//        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{$and:[{'post_at':{$gte:startDate}},{'post_at':{$lte:endDate}}]}]},
+//            {$and:[{'forward.forwarder_id' : {$in:Ids}},{$and:[{'forward.forward_at':{$gte:startDate}},{'forward.forward_at':{$lte:endDate}}]}]}]},
+//        privacyQuery = {'isPublic':true};
+//
+//    if(tagName){
+//        var tagQuery = {'tags':{$nin:tagName}};
+//        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+//    }else{
+//        query  = {$and:[basicQuery, privacyQuery]};
+//    }
+//
+//    PhotoInfo.count(query, callback);
+//}
+//
+///**
+// * 根据tag获取某个用户朋友圈的过往图片ID
+// * @param Ids
+// * @param tagName
+// * @param anchorTime
+// * @param size
+// * @param callback
+// */
+//exports.getUserOldestPhotosByTag = function(Ids, tagName, anchorTime, size, callback){
+//
+//    var query = {},
+//        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$lt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$lt:anchorTime}}]}]},
+//        privacyQuery = {'isPublic':true};
+//
+//
+//    if(tagName){
+//        var tagQuery = {'tags':{$all:tagName}};
+//        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+//    }else{
+//        query  = {$and:[basicQuery, privacyQuery]};
+//    }
+//
+//    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
+//        .limit(size)
+//        .exec(callback);
+//}
+//
+///**
+// * 根据tag获取某个用户朋友圈的最新图片ID
+// * @param Ids
+// * @param tagName
+// * @param anchorTime
+// * @param size
+// * @param callback
+// */
+//exports.getUserLatestPhotosByTag = function(Ids, tagName, anchorTime, size, callback){
+//    var query = {},
+//        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$gt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$gt:anchorTime}}]}]},
+//        privacyQuery = {'isPublic':true};
+//
+//
+//    if(tagName){
+//        var tagQuery = {'tags':{$all:tagName}};
+//        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+//    }else{
+//        query  = {$and:[basicQuery, privacyQuery]};
+//    }
+//
+//    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
+//        .limit(size)
+//        .exec(callback);
+//
+//
+//}
+//
+///**
+// *  根据tag获取某个用户朋友圈的某个阶段的图片ID
+// * @param Ids
+// * @param tagName
+// * @param startDate
+// * @param endDate
+// * @param size
+// * @param callback
+// */
+//exports.getUserSegmentPhotosByTag = function(Ids, tagName, startDate,endDate, size, callback){
+//    var query = {},
+//        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{$and:[{'post_at':{$gte:startDate}},{'post_at':{$lte:endDate}}]}]},
+//            {$and:[{'forward.forwarder_id' : {$in:Ids}},{$and:[{'forward.forward_at':{$gte:startDate}},{'forward.forward_at':{$lte:endDate}}]}]}]},
+//        privacyQuery = {'isPublic':true};
+//
+//    if(tagName){
+//        var tagQuery = {'tags':{$all:tagName}};
+//        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+//    }else{
+//        query  = {$and:[basicQuery, privacyQuery]};
+//    }
+//
+//    PhotoInfo.find(query).sort({'post_at':'desc'}).populate('photo_id author_id forward.forwarder_id')
+//        .limit(size)
+//        .exec(callback);
+//
+//}
+//
+//
+///**
+// * 获取过往的总数
+// * @param Ids
+// * @param tagName
+// * @param anchorTime
+// * @param size
+// * @param callback
+// */
+//exports.getUserOldestPhotoCount = function(Ids, tagName, anchorTime, size, callback){
+//    var query = {},
+//        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$lt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$lt:anchorTime}}]}]},
+//        privacyQuery = {'isPublic':true};
+//
+//
+//    if(tagName){
+//        var tagQuery = {'tags':{$all:tagName}};
+//        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+//    }else{
+//        query  = {$and:[basicQuery, privacyQuery]};
+//    }
+//
+//    PhotoInfo.count(query, callback);
+//}
+//
+//
+///**
+// * 获取最新的总数
+// * @param Ids
+// * @param tagName
+// * @param anchorTime
+// * @param size
+// * @param callback
+// */
+//exports.getUserLatestPhotoCount  = function(Ids, tagName, anchorTime, size, callback){
+//    var query = {},
+//        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$gt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$gt:anchorTime}}]}]},
+//        privacyQuery = {'isPublic':true};
+//
+//
+//    if(tagName){
+//        var tagQuery = {'tags':{$all:tagName}};
+//        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+//    }else{
+//        query  = {$and:[basicQuery, privacyQuery]};
+//    }
+//
+//    PhotoInfo.count(query,callback);
+//}
+//
+//
+///**
+// * 获取某个阶段的总数
+// * @param Ids
+// * @param tagName
+// * @param startDate
+// * @param endDate
+// * @param size
+// * @param callback
+// */
+//exports.getUserSegementPhotoCount = function(Ids, tagName, startDate,endDate, size, callback){
+//    var query = {},
+//        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{$and:[{'post_at':{$gte:startDate}},{'post_at':{$lte:endDate}}]}]},
+//            {$and:[{'forward.forwarder_id' : {$in:Ids}},{$and:[{'forward.forward_at':{$gte:startDate}},{'forward.forward_at':{$lte:endDate}}]}]}]},
+//        privacyQuery = {'isPublic':true};
+//
+//    if(tagName){
+//        var tagQuery = {'tags':{$all:tagName}};
+//        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
+//    }else{
+//        query  = {$and:[basicQuery, privacyQuery]};
+//    }
+//
+//    PhotoInfo.count(query, callback);
+//}
 
-/**
- * 获取最新的总数
- * @param Ids
- * @param tagName
- * @param anchorTime
- * @param size
- * @param callback
- */
-exports.getUserLatestXQPhotoCount  = function(Ids, tagName, anchorTime, size, callback){
-    // var query = {$or:[{$and:[{'author_id':{$in:Ids}},{'tags':{$all:tagName}},{'post_at':{$gt: anchorTime}}]},{$and:[{'forward.forwarder_id':{$in:Ids}},{'tags':{$all:tagName}},{'forward.forward_at':{$gt: anchorTime}}]}]};
-    var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{'post_at':{$gt:anchorTime}}]},{$and:[{'forward.forwarder_id' : {$in:Ids}},{'forward.forward_at':{$gt:anchorTime}}]}]},
-        privacyQuery = {'isPublic':true};
-
-
-    if(tagName){
-        var tagQuery = {'tags':{$nin:tagName}};
-        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
-    }else{
-        query  = {$and:[basicQuery, privacyQuery]};
-    }
-
-    PhotoInfo.count(query,callback);
-}
-
-
-/**
- * 获取某个阶段的总数
- * @param Ids
- * @param tagName
- * @param startDate
- * @param endDate
- * @param size
- * @param callback
- */
-exports.getUserSegementXQPhotoCount = function(Ids, tagName, startDate,endDate, size, callback){
-    var query = {},
-        basicQuery = {$or:[{$and:[{'author_id':{$in:Ids}},{$and:[{'post_at':{$gte:startDate}},{'post_at':{$lte:endDate}}]}]},
-            {$and:[{'forward.forwarder_id' : {$in:Ids}},{$and:[{'forward.forward_at':{$gte:startDate}},{'forward.forward_at':{$lte:endDate}}]}]}]},
-        privacyQuery = {'isPublic':true};
-
-    if(tagName){
-        var tagQuery = {'tags':{$nin:tagName}};
-        query  = {$and:[basicQuery, privacyQuery, tagQuery]};
-    }else{
-        query  = {$and:[basicQuery, privacyQuery]};
-    }
-
-    PhotoInfo.count(query, callback);
-}
 
 
 

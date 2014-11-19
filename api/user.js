@@ -174,7 +174,7 @@ exports.getAllFollowerUser = function(req, res){
             res.end(util.combineFailureRes(labels.sessionError));
             return;
         }else{
-            UserService.getAllFollowerUser(uid,startIndex,size, function(err,docs){
+            UserService.getAllFollowerUser(uid, req.session.user._id, startIndex,size, function(err,docs){
                 if(err){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
@@ -332,30 +332,30 @@ exports.getUserSetting = function(req, res){
  * @param req
  * @param res
  */
-exports.uploadAvatar = function(req, res){
-    if(!req.session.user){
-        res.statusCode = 401;
-        res.end(util.combineFailureRes(labels.AuthError));
-    }else{
-        var uid = req.session.user._id;
-        var avatar = req.body.avatar;
-        if(!uid){
-            res.statusCode = 503;
-            res.end(util.combineFailureRes(labels.sessionError));
-            return;
-        }else{
-            UserService.setAvatar(uid,avatar, function(err,user){
-                if(err){
-                    res.statusCode = 500;
-                    res.end(util.combineFailureRes(labels.DBError));
-                }else{
-                    res.statusCode = 200;
-                    res.end(util.combineSuccessRes(user));
-                }
-            })
-        }
-    }
-}
+//exports.uploadAvatar = function(req, res){
+//    if(!req.session.user){
+//        res.statusCode = 401;
+//        res.end(util.combineFailureRes(labels.AuthError));
+//    }else{
+//        var uid = req.session.user._id;
+//        var avatar = req.body.avatar;
+//        if(!uid){
+//            res.statusCode = 503;
+//            res.end(util.combineFailureRes(labels.sessionError));
+//            return;
+//        }else{
+//            UserService.setAvatar(uid,avatar, function(err,user){
+//                if(err){
+//                    res.statusCode = 500;
+//                    res.end(util.combineFailureRes(labels.DBError));
+//                }else{
+//                    res.statusCode = 200;
+//                    res.end(util.combineSuccessRes(user));
+//                }
+//            })
+//        }
+//    }
+//}
 
 
 /**

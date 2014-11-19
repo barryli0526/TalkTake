@@ -25,14 +25,15 @@ module.exports = function (app, client) {
      * @constructor
      */
     var BasicAuth = function(req, res, next){
+
         var basic=req.headers['authorization']||'';
         var basicString = new Buffer(basic, 'base64').toString().split(':');
 
         var SID = basicString[0];   //使用唯一的server ID当做用户名
         var UUID  = basicString[1]; //使用UUID当做密码,128位
 
-        UUID = '1';
-        SID = '54505bfa92a9bfdc04ccea4b';
+   //     UUID = '1';
+   //     SID = '54505bfa92a9bfdc04ccea4b';
 
         res.setHeader("Content-Type","application/json;charset='utf-8'");
         res.setHeader("date",util.getDateTime());

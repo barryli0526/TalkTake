@@ -16,6 +16,168 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var util = require('../lib/util');
 var EventProxy = require('eventproxy');
 
+
+var queryPhotoInfoAndMapToOutPut = function(Ids,category,startDate, endDate,listSize, type, isXQ, callback){
+    var proxy = new EventProxy(),
+        events = ['photos','count'];
+
+    proxy.assign(events, function(photos, count){
+        var count = count - photos.length;
+        return callback(null,{
+            remain:count,
+            items:photos
+        });
+    }).fail(callback);
+
+    //根据type和isXQ参数动态执行对应语句获取数据
+    Photo.getUserIndexPhotosByTag(Ids,category,startDate, endDate,listSize, type, isXQ, function(err, docs){
+        if(err || !docs || docs.length == 0){
+            return callback(err,[]);
+        }else{              //抓取到数据
+            var results = [];
+
+            proxy.after('photo_ready', docs.length, function(){
+                proxy.emit('photos', results);
+            }).fail(callback);
+            //遍历图片列表
+            docs.forEach(function(doc, i){
+                results[i] = {};
+                var photo = doc.photo_id,   //图片信息
+                    user = doc.author_id;   //用户信息
+                results[i].photoId = photo._id;
+                results[i].photoUrl = photo.source_url;
+                if(config.qnConfig.compress){
+                    results[i].photoUrl += config.qnConfig.quality;
+                }
+                results[i].upCount = doc.like ? doc.like.length : 0;
+                results[i].commentCount = doc.reply_count;
+                photo.location ? results[i].location = photo.location : null;
+                results[i].uploadTime = util.getDateTime(photo.create_at);
+                results[i].uploader = {};
+                results[i].uploader.userId = user._id;
+                user.avatar ? results[i].uploader.avatar = user.avatar : null;
+                //如果图片作者与当前app用户为好友关系
+                if(!friends[user._id] || !friends[user._id].name){
+                    results[i].uploader.name  = user.showName;
+                }else{
+                    results[i].uploader.name = friends[user._id].name;
+                }
+                results[i].forwarder = [];
+                var obj = {}, fwCount = 0;
+                //遍历图片的forward列表
+                for(var j=0;j<doc.forward.length;j++){
+                    var forwarder = doc.forward[j].forwarder_id;
+                    //确保没有重复的forwarder存在在列表中
+                    if(!obj[forwarder._id]){
+                        results[i].forwarder[fwCount] ={};
+                        results[i].forwarder[fwCount].userId = forwarder._id;
+                        forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                        if(friends[forwarder._id] && friends[forwarder._id].name){
+                            results[i].forwarder[fwCount].name = friends[forwarder._id].name;
+                            results[i].forwarder[fwCount].isFollowing = true;
+                        }else{
+                            results[i].forwarder[fwCount].name = forwarder.showName;
+                            if(friends[forwarder._id] && friends[forwarder._id].isExist){
+                                results[i].forwarder[fwCount].isFollowing = true;
+                            }else{
+                                results[i].forwarder[fwCount].isFollowing = false;
+                            }
+                        }
+                        obj[forwarder._id] = true;
+                    }
+                }
+                proxy.emit('photo_ready');
+            })
+        }
+    });
+
+    Photo.getUserIndexPhotosCountByTag(Ids,category,startDate, endDate,listSize, type, isXQ,function(err, count){
+        if(err){
+            proxy.emit('error');
+        }else{
+            proxy.emit('count',count);
+        }
+    });
+}
+
+/**
+ * 根据目录获取用户的图片
+ * @param userId
+ * @param category
+ * @param startDate
+ * @param endDate
+ * @param listSize
+ * @param type
+ * "latest" 取startDate之后生成的图片
+ * "oldest" 取startDate之前生成的图片
+ * "segment" 取startDate和endDate之间生成的图片
+ * @param callback
+ */
+exports.getIndexPhotosByTag = function(userId, category, startDate, endDate, listSize, type, callback){
+
+    if( typeof userId === 'string'){
+        userId = new ObjectId(userId);
+    }
+
+    if(typeof startDate === 'string'){
+        startDate = new Date(startDate);
+    }
+
+    if(type == 'segment' && typeof endDate === 'string'){
+        endDate = new Date(endDate);
+    }
+
+    var isXQ = false;
+    //如果是新奇则不按照常规标签处理
+    if(category == labels.Category){
+        isXQ = true;
+    }
+    //根据用户ID获取好友列表
+    User.getUserFriendsIdAndNickName(userId, function(err, docs){
+        if(err){
+            return callback(err,[]);   //若有错误返回空
+        }else{
+            var Ids = [],friends = {};
+            Ids[0] = userId;   //将自己也加入用户列表，因为也需要拿出自己发表转发的图片
+            //存储好友信息，方便接下来使用
+            for(var i=1;i<=docs.length;i++){
+                var doc = docs[i-1];
+                var followId = doc.follow_id;
+                friends[followId] = {};
+                friends[followId].name = doc.remark_name;
+                friends[followId].isExist = true;
+                Ids[i] = doc.follow_id;
+            }
+            //如果获取新奇的内容，则需要先获取已经存在的标签
+            if(isXQ){
+                Photo.countTagsByUserIds(Ids, function(err, tags){
+                    if(err){
+                        return callback(err,[]);
+                    }else{
+                        var ExistTags = [],count = 0, maxCount = labels.tagRecommendCount;
+                        for(var i=0;i<tags.length;i++){
+
+                            if(tags[i].value.count >= maxCount){
+                                ExistTags[count] = tags[i]._id;
+                                count++;
+                            }
+                        }
+                        queryPhotoInfoAndMapToOutPut(Ids, ExistTags, startDate, endDate, listSize, type, isXQ, callback);
+                    }
+                })
+            }else{
+                var tag = category;
+                queryPhotoInfoAndMapToOutPut(Ids, tag, startDate, endDate, listSize, type, isXQ, callback);
+            }
+
+        }
+    })
+}
+
+
+
+
+
 /**
  * 首页获取最新图片，不包括新奇的内容
  * @param uid
@@ -42,7 +204,6 @@ exports.getLatestPhotos = function(uid,category, anchorTime, listSize, callback)
         }else{
             var Ids = [],friends = {};
             Ids[0] = uid;
-
             for(var i=1;i<=docs.length;i++){
                 var doc = docs[i-1];
                 var followId = doc.follow_id;
@@ -102,6 +263,13 @@ exports.getLatestPhotos = function(uid,category, anchorTime, listSize, callback)
                                 results[i].forwarder[fwCount] ={};
                                 results[i].forwarder[fwCount].userId = forwarder._id;
                                 forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                                if(friends[forwarder._id] && friends[forwarder._id].name){
+                                    results[i].forwarder[fwCount].name = friends[forwarder._id].name;
+                                    results[i].forwarder[fwCount].isFollowing = true;
+                                }else{
+                                    results[i].forwarder[fwCount].name = forwarder.showName;
+                                    results[i].forwarder[fwCount].isFollowing = false;
+                                }
                                 obj[forwarder._id] = true;
                             }
                         }
@@ -213,6 +381,13 @@ exports.getOldestPhotos = function(uid,category, anchorTime, listSize, callback)
                                 results[i].forwarder[fwCount] ={};
                                 results[i].forwarder[fwCount].userId = forwarder._id;
                                 forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                                if(friends[forwarder._id] && friends[forwarder._id].name){
+                                    results[i].forwarder[fwCount].name = friends[forwarder._id].name;
+                                    results[i].forwarder[fwCount].isFollowing = true;
+                                }else{
+                                    results[i].forwarder[fwCount].name = forwarder.showName;
+                                    results[i].forwarder[fwCount].isFollowing = false;
+                                }
                                 obj[forwarder._id] = true;
                             }
                         }
@@ -324,6 +499,13 @@ exports.getSegmentPhoto = function(uid,category, startDate, endDate, listSize, c
                                 results[i].forwarder[fwCount] ={};
                                 results[i].forwarder[fwCount].userId = forwarder._id;
                                 forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                                if(friends[forwarder._id] && friends[forwarder._id].name){
+                                    results[i].forwarder[fwCount].name = friends[forwarder._id].name;
+                                    results[i].forwarder[fwCount].isFollowing = true;
+                                }else{
+                                    results[i].forwarder[fwCount].name = forwarder.showName;
+                                    results[i].forwarder[fwCount].isFollowing = false;
+                                }
                                 obj[forwarder._id] = true;
                             }
                         }
@@ -814,6 +996,13 @@ exports.getLatestXQPhotos = function(uid, anchorTime, listSize, callback){
                                         results[i].forwarder[fwCount] ={};
                                         results[i].forwarder[fwCount].userId = forwarder._id;
                                         forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                                        if(friends[forwarder._id] && friends[forwarder._id].name){
+                                            results[i].forwarder[fwCount].name = friends[forwarder._id].name;
+                                            results[i].forwarder[fwCount].isFollowing = true;
+                                        }else{
+                                            results[i].forwarder[fwCount].name = forwarder.showName;
+                                            results[i].forwarder[fwCount].isFollowing = false;
+                                        }
                                         obj[forwarder._id] = true;
                                     }
                                 }
@@ -935,6 +1124,13 @@ exports.getOldestXQPhotos = function(uid, anchorTime, listSize, callback){
                                         results[i].forwarder[fwCount] ={};
                                         results[i].forwarder[fwCount].userId = forwarder._id;
                                         forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                                        if(friends[forwarder._id] && friends[forwarder._id].name){
+                                            results[i].forwarder[fwCount].name = friends[forwarder._id].name;
+                                            results[i].forwarder[fwCount].isFollowing = true;
+                                        }else{
+                                            results[i].forwarder[fwCount].name = forwarder.showName;
+                                            results[i].forwarder[fwCount].isFollowing = false;
+                                        }
                                         obj[forwarder._id] = true;
                                     }
                                 }
@@ -1062,6 +1258,13 @@ exports.getSegmentXQPhoto = function(uid, startDate, endDate, listSize, callback
                                         results[i].forwarder[fwCount] ={};
                                         results[i].forwarder[fwCount].userId = forwarder._id;
                                         forwarder.avatar ? results[i].forwarder[fwCount].avatar = forwarder.avatar : null;
+                                        if(friends[forwarder._id] && friends[forwarder._id].name){
+                                            results[i].forwarder[fwCount].name = friends[forwarder._id].name;
+                                            results[i].forwarder[fwCount].isFollowing = true;
+                                        }else{
+                                            results[i].forwarder[fwCount].name = forwarder.showName;
+                                            results[i].forwarder[fwCount].isFollowing = false;
+                                        }
                                         obj[forwarder._id] = true;
                                     }
                                 }

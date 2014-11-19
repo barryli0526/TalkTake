@@ -230,10 +230,18 @@ exports.getAllFollowingUser = function(uid, page, size, callback){
  * @param size
  * @param callback
  */
-exports.getAllFollowerUser = function(uid, page, size, callback){
+exports.getAllFollowerUser = function(uid, currentUserId, page, size, callback){
 
     if(typeof uid === 'string'){
         uid = new ObjectId(uid);
+    }
+
+    if(typeof currentUserId === 'string'){
+        currentUserId = new ObjectId(currentUserId);
+    }
+    var isSelf = false;
+    if(currentUserId.equals(uid)){
+        isSelf = true;
     }
 
     var proxy = new EventProxy(),
@@ -249,23 +257,49 @@ exports.getAllFollowerUser = function(uid, page, size, callback){
 
     User.getUserFollowers(uid, page, size, function(err, docs){
         if(err || docs.length == 0){
-            return callback(err,[]);
-        }else{
-            var users = [], Ids = [];
-            for(var i=0;i<docs.length;i++){
+             callback(err,[]);
+        } else{
+            var users = [];
+            proxy.after('followerInfo_ready', docs.length, function(){
+                proxy.emit('followerUsers', users);
+            }).fail(callback);
+
+            docs.forEach(function(doc, i){
                 users[i] = {};
-                var follower = docs[i].follow_id;//用户
+                var follower = doc.follow_id;
                 users[i].userId = follower._id;
-                if(docs[i].status == 3){
-                    users[i].isFollowing = true;
-                }else{
-                    users[i].isFollowing = false;
-                }
-                users[i].name = docs[i].remark_name ? docs[i].remark_name : follower.showName;
+                users[i].name = doc.remark_name ? doc.remark_name : follower.showName;
                 users[i].avatar = follower.avatar;
-             //   Ids[i] = docs[i].follow_id;
-            }
-            proxy.emit('followerUsers', users);
+                if(isSelf){
+                    users[i].isFollowing = (doc.status == 3);
+                    proxy.emit('followerInfo_ready');
+                }else{
+                    User.checkIsFollow(currentUserId, follower._id, function(err, isFollowing){
+                        if(err){
+                            proxy.emit('error');
+                        }else{
+                            users[i].isFollowing = isFollowing;
+                        }
+                        proxy.emit('followerInfo_ready')
+                    })
+                }
+            });
+
+//            var users = [];
+//            for(var i=0;i<docs.length;i++){
+//                users[i] = {};
+//                var follower = docs[i].follow_id;//用户
+//                users[i].userId = follower._id;
+//                if(!isSelf){
+//                    users[i].isFollowing = (docs[i].status == 3);
+//                }else{
+//
+//                }
+//
+//                users[i].name = docs[i].remark_name ? docs[i].remark_name : follower.showName;
+//                users[i].avatar = follower.avatar;
+//                //   Ids[i] = docs[i].follow_id;
+//            }
 //            User.getUserInfoByIds(Ids, function(err, results){
 //                if(err || users.length == 0){
 //                    return callback(err,[]);
@@ -280,7 +314,7 @@ exports.getAllFollowerUser = function(uid, page, size, callback){
 //                }
 //            })
         }
-    })
+    });
 
     User.countFollower(uid, proxy.done('count'));
 }

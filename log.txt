@@ -28,4 +28,14 @@ ReferenceError: results is not defined
     at E:\src\TalkTakeSD\TalkTake\node_modules\mongoose\node_modules\mongodb\lib\mongodb\collection\aggregation.js:107:14
     at E:\src\TalkTakeSD\TalkTake\node_modules\mongoose\node_modules\mongodb\lib\mongodb\db.js:1890:9
     at Server.Base._callHandler (E:\src\TalkTakeSD\TalkTake\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\base.js:448:41)
-    at E:\src\TalkTakeSD\TalkTake\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:481:18
+    at E:\src\TalkTakeSD\TalkTake\node_modules\mongoose\node_modules\mongodb\lib\mongodb\connection\server.js:481:18Error: listen EADDRINUSE
+    at errnoException (net.js:901:11)
+    at HTTPServer.Server._listen2 (net.js:1039:14)
+    at listen (net.js:1061:10)
+    at HTTPServer.Server.listen (net.js:1127:5)
+    at Object.<anonymous> (E:\src\TalkTakeSD\TalkTake\app.js:55:5)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Function.Module.runMain (module.js:497:10)

@@ -28,6 +28,7 @@ var requestCase = require('./request');
 var photos = [
 
     {
+        userId:'54408cdce2aecef304f8d078',
         name : 'test1.jpg',
         key : 'test1.jpg',
         tags : '摄影',
@@ -37,7 +38,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce606f',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test2.jpg',
         key : 'test2.jpg',
         tags : '摄影',
@@ -47,7 +48,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce6070',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test3.jpg',
         key : 'test3.jpg',
         tags : '摄影',
@@ -57,7 +58,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce6070',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test4.jpg',
         key : 'test4.jpg',
         tags : '摄影',
@@ -67,7 +68,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce6071',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test5.jpg',
         key : 'test5.jpg',
         tags : '摄影',
@@ -77,7 +78,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce6071',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test6.jpg',
         key : 'test6.jpg',
         tags : '摄影',
@@ -87,7 +88,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce6072',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test7.jpg',
         key : 'test7.jpg',
         tags : '摄影',
@@ -97,7 +98,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce6072',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test8.jpg',
         key : 'test8.jpg',
         tags : '摄影',
@@ -107,7 +108,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce6073',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test9.jpg',
         key : 'test9.jpg',
         tags : '摄影',
@@ -117,7 +118,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce6073',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test10.jpg',
         key : 'test10.jpg',
         tags : '摄影',
@@ -127,7 +128,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce6073',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test11.jpg',
         key : 'test11.jpg',
         tags : '摄影',
@@ -137,7 +138,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce6073',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test12.jpg',
         key : 'test12.jpg',
         tags : '摄影',
@@ -147,7 +148,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce6073',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test13.jpg',
         key : 'test13.jpg',
         tags : '摄影',
@@ -157,7 +158,7 @@ var photos = [
         isPublic : true
     },
     {
-        userId : '541930ce3466dde424ce6073',
+        userId : '54408cdce2aecef304f8d078',
         name : 'test14.jpg',
         key : 'test14.jpg',
         tags : '摄影',
@@ -174,7 +175,9 @@ var photos = [
 //    })
 //}
 
-requestCase.testLikePhoto();
+//requestCase.testLikePhoto();
+
+requestCase.testArray();
 
 //requestCase.testUpdateUser();
 
