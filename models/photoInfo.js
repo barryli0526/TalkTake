@@ -34,6 +34,7 @@ var PhotoInfoSchema = new Schema({
         {
             visit_at:{type:Date},
             visiter_id:{type:ObjectId, ref:'User'},
+            visit_count:{type:Number, default:1},
             _id:false
         }
     ],

@@ -84,14 +84,46 @@ exports.addLikePhotoInfo = function(userId, photoId, likeTime, callback){
  * @param callback
  */
 exports.addVisitPhotoInfo = function(userId, photoId, visitTime, callback){
-    PhotoInfo.findOneAndUpdate({'photo_id':photoId},{
-        $addToSet:{
-            'visit':{
-                'visit_at':visitTime,
-                'visiter_id':userId
-            }
+
+    PhotoInfo.findOneAndUpdate({
+        'photo_id':photoId,
+        'visit.visiter_id' : userId
+    },{
+        $set:{
+            "visit.$.visit_at" : visitTime
+        },
+        $inc:{
+            "visit.$.visit_count" : 1
         }
-    }, callback);
+    },function(err,doc){
+
+        if(err){
+            return callback(err,null);
+        }
+
+        if(!doc){
+             PhotoInfo.findOneAndUpdate({'photo_id':photoId},{
+                $addToSet:{
+                    'visit':{
+                        'visit_at':visitTime,
+                        'visiter_id':userId ,
+                        'visit_count' : 1
+                    }
+                }
+            },callback)
+        }else{
+            return callback(null, doc);
+        }
+    });
+
+//    PhotoInfo.findOneAndUpdate({'photo_id':photoId},{
+//        $addToSet:{
+//            'visit':{
+//                'visit_at':visitTime,
+//                'visiter_id':userId
+//            }
+//        }
+//    }, callback);
 }
 
 /**
@@ -482,7 +514,7 @@ exports.getTagOnShowPhotos = function(userId, tagName, callback){
 exports.getPhotosByTag = function(userId, tagName, page, size, callback){
     var query = {'author_id':userId, 'tags':{$all:tagName}};
 
-    PhotoInfo.find(query).populate('photo_id')
+    PhotoInfo.find(query).populate('photo_id visit.visiter_id')
         .skip(page*size)
         .limit(size)
         .exec(callback);
@@ -500,7 +532,7 @@ exports.getPhotosByTag = function(userId, tagName, page, size, callback){
 exports.getSegementPhotosByTag = function(userId, tagName, startDate, endDate, size, callback){
     var query = {'author_id':userId,'tags':{$all:tagName},'post_at':{$gte: startDate, $lte:endDate}};
 
-    PhotoInfo.find(query).populate('photo_id')
+    PhotoInfo.find(query).populate('photo_id visit.visiter_id')
         .limit(size)
         .exec(callback);
 
@@ -564,7 +596,7 @@ exports.getPhotoById = function(photoId, callback){
  * @param callback
  */
 exports.getPhotoInfoById = function(photoId, callback){
-   PhotoInfo.findOne({'photo_id':photoId}).populate('photo_id author_id like.liker_id').exec(callback);
+   PhotoInfo.findOne({'photo_id':photoId}).populate('photo_id author_id like.liker_id visit.visiter_id').exec(callback);
 }
 
 /**

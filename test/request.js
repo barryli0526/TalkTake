@@ -90,8 +90,8 @@ var makeAuthPost = function(auth, path, post_data,callback){
 // An object of options to indicate where to post to
     var post_options = {
     //    host: '210.22.174.102',
-  //      host:'121.199.58.200',
-        host : '127.0.0.1',
+        host:'121.199.58.200',
+//        host : '127.0.0.1',
         port: '3003',
         path: path,
         method: 'POST',
@@ -177,7 +177,7 @@ exports.testFollow = function(){
 
     });
 
-    makeHttpPost('/TalkTake/User/541930ce3466dde424ce606f/follow',post_data);
+    makeHttpPost('/TalkTake/User/543a58b437a2e3e86f70cb68/follow',post_data);
 }
 
 exports.testunFollow = function(){
@@ -209,8 +209,8 @@ exports.testSyncContacts = function(){
 }
 
 exports.testUpdateUser = function(){
-    var UUID = '56F1EB84-F11C-4C87-B7AD-28E763FD3274',
-        SID = '5460b535fcfe2bc518201fb3';
+    var UUID = '5A139B0F-F8CE-4E79-9BEC-178F45CC4852',
+        SID = '54698ed4fdc0c06c74bfe3f0';
 
     var auth =  new Buffer(SID + ':' + UUID).toString('base64');
 
@@ -229,7 +229,8 @@ exports.testUpdateUser = function(){
     constellation:'双子',
     selfDesc:'烟火下的孤独是每一个梦想必须经过的地方',
     qrCode:null,
-    privacy:0
+    privacy:0,
+    avatar:'http://talktake.qiniudn.com/test1.jpg?imageView2/2/q/1'
     };
     makeAuthPost(auth,'/TalkTake/User',post_data,function(err, doc){
         console.log(err);

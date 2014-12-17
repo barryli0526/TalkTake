@@ -31,7 +31,8 @@ exports.config = {
     },
 
     db: 'mongodb://127.0.0.1/perTalkTake',
-    port: 3003
+    port: 3003,
+    enableRedisCache : true
 };
 
 exports.labels = {
@@ -40,6 +41,7 @@ exports.labels = {
     CommentListSize : 100,
     UserList : 100,
     tagRecommendCount:5,
+    visitList : 10,
 
     Latest : 'latest',
     Oldest : 'oldest',

@@ -17,7 +17,7 @@ var util = require('../lib/util');
 var EventProxy = require('eventproxy');
 
 
-var queryPhotoInfoAndMapToOutPut = function(Ids,category,startDate, endDate,listSize, type, isXQ, callback){
+var queryPhotoInfoAndMapToOutPut = function(friends,Ids,category,startDate, endDate,listSize, type, isXQ, callback){
     var proxy = new EventProxy(),
         events = ['photos','count'];
 
@@ -162,12 +162,12 @@ exports.getIndexPhotosByTag = function(userId, category, startDate, endDate, lis
                                 count++;
                             }
                         }
-                        queryPhotoInfoAndMapToOutPut(Ids, ExistTags, startDate, endDate, listSize, type, isXQ, callback);
+                        queryPhotoInfoAndMapToOutPut(friends,Ids, ExistTags, startDate, endDate, listSize, type, isXQ, callback);
                     }
                 })
             }else{
                 var tag = category;
-                queryPhotoInfoAndMapToOutPut(Ids, tag, startDate, endDate, listSize, type, isXQ, callback);
+                queryPhotoInfoAndMapToOutPut(friends,Ids, tag, startDate, endDate, listSize, type, isXQ, callback);
             }
 
         }
@@ -588,7 +588,7 @@ exports.getPhotoDetail = function(userId,photoId, callback){
                 author = doc.author_id;
 
             //添加路过信息
-            if(author._id.toString() != userId.toString()){
+            if(author._id.toString() !== userId.toString()){
                 Photo.addVisitPhotoInfo(userId, photoId, Date.now(), function(){})
             }
 
@@ -618,6 +618,7 @@ exports.getPhotoDetail = function(userId,photoId, callback){
                 photo.uploader.isFollowing = relation.isfollowing;
                 relation.remark_name ? photo.uploader.name = relation.remark_name : null;
                 photo.likedUserList = likeList;
+//                photo.visitList = visitList;
                 return callback(null,photo);
             }).fail(callback);
 
@@ -644,6 +645,25 @@ exports.getPhotoDetail = function(userId,photoId, callback){
              //   return callback(null, photo) ;
                 photoProxy.emit('likeList', []);
             }
+
+            //添加路过信息
+//            var visitList = [];
+//            if(doc.visit && doc.visit.length > 0){
+//                var filter = {},
+//                    j=0;
+//                for(var i= 0,j=0;(i<doc.visit.length && j< 10);i++){
+//                    var visiter = doc.visit[i].visiter_id;
+//                    var uid = visiter._id;
+//                    if(!filter[uid]){
+//                        visitList[j] = {};
+//                        visitList[j].userId = uid;
+//                        visitList[j].avatar = visiter.avatar ? visiter.avatar : null;
+//                        j++;
+//                    }
+//                }
+//            }
+//            photoProxy.emit('visitList', visitList);
+
         }
     })
 }

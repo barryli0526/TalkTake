@@ -57,7 +57,6 @@ exports.createClient = function(uuid, callback){
             return callback(null, {userId : doc._id});
         }
     })
-
 }
 
 /**
@@ -619,6 +618,7 @@ exports.getPhotosByAlbumInfo = function(uid, tagName, page, size, callback){
             docs.forEach(function(doc, i){
                 results[i] = {};
                 var photo = doc.photo_id;
+                var visits = doc.visit;
                 results[i].photoId = photo._id;
                 results[i].photoUrl = photo.source_url;
                 if(config.qnConfig.compress){
@@ -629,6 +629,17 @@ exports.getPhotosByAlbumInfo = function(uid, tagName, page, size, callback){
                 photo.location ? results[i].location = photo.location : null;
                 results[i].uploadTime = util.getDateTime(photo.create_at);
                 photo.description ? results[i].description = photo.description : null;
+                //添加路过信息，默认返回十条
+                results[i].passbySize = visits.length ? visits.length : 0;
+                results[i].passbyList = [];
+                if(visits && visits.length > 0){
+                    for(var j=0;j<visits.length && j<labels.visitList;j++){
+                        results[i].passbyList[j] = {};
+                        var visitorInfo = visits[j].visiter_id;
+                        results[i].passbyList[j].userId = visitorInfo._id;
+                        results[i].passbyList[j].avatar = visitorInfo.avatar;
+                    }
+                }
                 proxy.emit('photo_ready');
             })
         }
@@ -685,6 +696,7 @@ exports.getSegementPhotosByAlbumInfo = function(uid, tagName, startDate, endDate
             docs.forEach(function(doc, i){
                 results[i] = {};
                 var photo = doc.photo_id;
+                var visits = doc.visit;
                 results[i].photoId = photo._id;
                 results[i].photoUrl = photo.source_url;
                 if(config.qnConfig.compress){
@@ -695,6 +707,18 @@ exports.getSegementPhotosByAlbumInfo = function(uid, tagName, startDate, endDate
                 photo.location ? results[i].location = photo.location : null;
                 results[i].uploadTime = util.getDateTime(doc.post_at);
                 photo.description ? results[i].description = photo.description : null;
+                //添加路过信息，默认返回十条
+                results[i].passbySize = visits.length ? visits.length : 0;
+                results[i].passbyList = [];
+                if(visits && visits.length > 0){
+                    for(var j=0;j<visits.length && j<labels.visitList;j++){
+                        results[i].passbyList[j] = {};
+                        var visitorInfo = visits[j].visiter_id;
+                        results[i].passbyList[j].userId = visitorInfo._id;
+                        results[i].passbyList[j].avatar = visitorInfo.avatar;
+                    }
+                }
+
                 proxy.emit('photo_ready');
             })
         }

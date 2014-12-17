@@ -12,8 +12,6 @@ var UserService = require('../service/UserService');
 var config = require('../config/base').config;
 var labels = require('../config/base').labels;
 
-var sampleData = require('../Sample/photos');
-
 var qn = require('qiniu');
 
 
