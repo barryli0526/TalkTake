@@ -29,6 +29,7 @@ exports.InitClient = function(req, res){
     var rqData = req.body;
 
     var UUID = rqData.UUID;
+    console.log('ssss') ;
 
     UserService.createClient(UUID, function(err, doc){
         if(err || !doc || doc.length == 0){

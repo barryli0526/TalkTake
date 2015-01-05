@@ -157,7 +157,7 @@ exports.getIndexPhotosByTag = function(userId, category, startDate, endDate, lis
                         var ExistTags = [],count = 0, maxCount = labels.tagRecommendCount;
                         for(var i=0;i<tags.length;i++){
 
-                            if(tags[i].value.count >= maxCount){
+                            if(tags[i]._id != labels.Category && tags[i].value.count >= maxCount){
                                 ExistTags[count] = tags[i]._id;
                                 count++;
                             }
@@ -1308,6 +1308,56 @@ exports.getSegmentXQPhoto = function(uid, startDate, endDate, listSize, callback
     })
 }
 
+
+/**
+ * 获取图片路过信息
+ * @param uid
+ * @param photoId
+ * @param point
+ * @param size
+ * @param callback
+ */
+exports.getPhotoVisitors = function(uid, photoId, point, size, callback){
+    if(typeof photoId === 'string'){
+        photoId = new ObjectId(photoId);
+    }
+
+    Photo.getPhotoVisitorsByPhotoId(photoId, point, size, function(err, doc){
+        if(err || !doc){
+            return callback(err, {});
+        }else{
+            var results = [];
+
+
+            if(doc.visit){
+                var proxy = new EventProxy();
+                proxy.after('visit_ready', doc.visit.length, function(){
+                     return callback(null, {items:results});
+                }).fail(callback);
+
+                doc.visit.forEach(function(visitor, i){
+                   var vs = {};
+                   var followId = visitor.visiter_id._id;
+                   vs.userId = followId;
+                   vs.avatar = visitor.visiter_id.avatar;
+                   vs.name = visitor.visiter_id.showName;
+                   User.checkIsFollow(uid, followId, function(err, followed){
+                       if(err){
+                            return proxy.emit('error');
+                       }
+                       vs.isFollowing = followed;
+                       results[i] = vs;
+                       proxy.emit('visit_ready');
+                   })
+                })
+            }else{
+                return callback(null,{items:[]});
+            }
+
+        }
+    })
+
+}
 
 
 

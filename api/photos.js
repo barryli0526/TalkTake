@@ -332,6 +332,39 @@ exports.getComments = function(req, res){
     }
 }
 
+exports.getPhotoPassByInfo = function(req, res){
+    if(!req.session.user){
+        res.statusCode = 401;
+        res.end(util.combineFailureRes(labels.AuthError));
+    }else{
+        var photoId = req.params.photoId,
+            uid = req.session.user._id;
+        if(!photoId){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.requestError));
+            return;
+        }else if(!uid){
+            res.statusCode = 503;
+            res.end(util.combineFailureRes(labels.sessionError));
+            return;
+        }else{
+            var query = req.query;
+//            var startIndex = query.startIndex ? query.startIndex : 0,
+//                size = query.size ? query.size : labels.CommentListSize;
+            //todo 分页支持，目前第三个第四个参数默认为0
+            PhotoService.getPhotoVisitors(uid,photoId, 0, 0, function(err, doc){
+                if(err){
+                    res.statusCode = 500;
+                    res.end(util.combineFailureRes(labels.DBError));
+                }else{
+                    res.statusCode = 200;
+                    res.end(util.combineSuccessRes(doc));
+                }
+            })
+        }
+    }
+}
+
 /**
  * 发表一条评论
  * @param req

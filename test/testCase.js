@@ -12,7 +12,10 @@ var db = require('../dbHelper').Photo;
 
 
 
-  db.addVisitPhotoInfo('5428d860a185436c240ca611','5428e8baa109d7e81bfccf6d',Date.now(),function(){})
+//  db.addVisitPhotoInfo('5428d860a185436c240ca611','5428e8baa109d7e81bfccf6d',Date.now(),function(){})
+
+
+requestCase.testInitClient();
 
 
 //requestCase.testUpdateUser();

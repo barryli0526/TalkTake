@@ -673,6 +673,17 @@ exports.getUserIndexPhotosCountByTag = function(Ids, tags , startDate, endDate, 
     PhotoInfo.count(query, callback);
 }
 
+/*
+*获取路过信息
+*/
+exports.getPhotoVisitorsByPhotoId = function(photoId, point, size, callback){
+    PhotoInfo.find({'photo_id':photoId})
+        .populate('visit.visiter_id')
+        .exec(callback);
+}
+
+
+
 //back up for old get photo logic
 //todo remove after valid
 ///**

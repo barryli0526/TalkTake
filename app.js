@@ -7,6 +7,7 @@ var path = require('path');
 var express = require('express');
 var config = require('./config/base').config;
 var routes = require('./routes');
+//var log4js = require('log4js');
 //var redis = require('redis');
 var fs = require('fs');
 //require('oneapm');

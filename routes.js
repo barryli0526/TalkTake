@@ -78,6 +78,8 @@ module.exports = function (app, client) {
     app.post('/TalkTake/Photos/:photoId/UnLike',addVisit, BasicAuth, photos.unLikePhoto);
     //获取图片信息     -done
     app.get('/TalkTake/Photos/:photoId',addVisit, BasicAuth, photos.getPhotoDetail);
+    //获取图片路过信息     -done
+    app.get('/TalkTake/Photos/:photoId/passBy',addVisit, BasicAuth, photos.getPhotoPassByInfo);
     //获取评论列表     -done
     app.get('/TalkTake/Photos/:photoId/Comments',addVisit, BasicAuth, photos.getComments);
     //提交图片评论     -done
