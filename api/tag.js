@@ -7,6 +7,7 @@
  */
 
 var TagService = require('../service/TagService');
+var TagProxy = require('../proxy/tagProxy');
 var util = require('../lib/util');
 
 var config = require('../config/base').config;
@@ -65,7 +66,7 @@ exports.Recommend = function(req, res){
             res.end(util.combineFailureRes(labels.sessionError));
             return;
         }else{
-            TagService.getRecommendTags(uid, function(err,docs){
+            TagProxy.getRecommendTags(uid, function(err,docs){
                 if(err){
                     res.statusCode = 500;
                     res.end(util.combineFailureRes(labels.DBError));
